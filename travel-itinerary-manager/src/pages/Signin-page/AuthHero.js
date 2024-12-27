@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import SignInImage from "./images/hero-image.jpg";
 
 export function AuthHero() {
   return (
@@ -7,7 +8,7 @@ export function AuthHero() {
       <HeroWrapper>
         <HeroImage
           loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0119bb6d2ed59730d698bc1d879f225dd9c44d2b4b3de31d392beaf037a5ef82?placeholderIfAbsent=true&apiKey=25badedd98e242a3bd9df8a26a4bfa36"
+          src={SignInImage}
           alt="Hero background"
         />
         <HeroContent>
@@ -28,7 +29,7 @@ const HeroColumn = styled.div`
   display: flex;
   flex-direction: column;
   line-height: normal;
-  width: 55%;
+  width: 56%
   margin-left: 0px;
   @media (max-width: 991px) {
     width: 100%;
@@ -44,7 +45,7 @@ const HeroWrapper = styled.div`
   align-items: start;
   font-family: Poppins, sans-serif;
   color: #fff;
-  padding: 182px 72px 518px;
+  width: 56%
   @media (max-width: 991px) {
     max-width: 100%;
     margin-top: 40px;
@@ -53,10 +54,9 @@ const HeroWrapper = styled.div`
 `;
 
 const HeroImage = styled.img`
-  position: absolute;
-  inset: 0;
   height: 100%;
-  width: 100%;
+  width: 95%;
+  max-height:100vh;
   object-fit: cover;
   object-position: center;
 `;

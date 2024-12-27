@@ -29,24 +29,18 @@ export function PasswordInput() {
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  max-width: 568px;
+  
   flex-direction: column;
-  justify-content: start;
   @media (max-width: 991px) {
     max-width: 100%;
   }
 `;
 
 const InputHeader = styled.div`
-  display: flex;
-  width: 100%;
-  padding-right: 9px;
-  gap: 20px;
-  flex-wrap: wrap;
+   display: flex;
   justify-content: space-between;
-  @media (max-width: 991px) {
-    max-width: 100%;
-  }
+  align-items: center;
+  padding-right: 9px;
 `;
 
 const Label = styled.label`
@@ -76,12 +70,10 @@ const VisibilityIcon = styled.img`
 `;
 
 const Input = styled.input`
-  border-radius: 12px;
+   border-radius: 12px;
   min-height: 56px;
   margin-top: 4px;
   width: 100%;
   border: 1px solid rgba(102, 102, 102, 0.35);
-  @media (max-width: 991px) {
-    max-width: 100%;
-  }
+  padding: 0 16px;
 `;

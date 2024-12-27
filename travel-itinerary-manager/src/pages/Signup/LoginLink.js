@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { Link as RouterLink } from "react-router-dom";
 
 export function LoginLink() {
   return (
     <LinkText>
       <span>Already have an account?</span>{" "}
-      <Link href="/login">Log in</Link>
+      <Link to="/signin">Log in</Link>
     </LinkText>
   );
 }
@@ -16,7 +17,7 @@ const LinkText = styled.p`
   padding: 2px;
 `;
 
-const Link = styled.a`
+const Link = styled(RouterLink)`
   color: rgba(17, 17, 17, 1);
   text-decoration: none;
   

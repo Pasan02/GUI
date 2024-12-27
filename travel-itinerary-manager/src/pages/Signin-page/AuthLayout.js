@@ -1,15 +1,16 @@
 import * as React from "react";
 import styled from "styled-components";
-import { SignInForm } from "./SignInForm";
 import { AuthHero } from "./AuthHero";
 
-export function AuthLayout() {
+export function AuthLayout({ children }) {
   return (
     <Container>
       <ContentWrapper>
-        <AuthHero />
+        <ImageColumn>
+          <AuthHero />
+        </ImageColumn>
         <FormColumn>
-          <SignInForm />
+          <Content>{children}</Content>
         </FormColumn>
       </ContentWrapper>
     </Container>
@@ -18,8 +19,9 @@ export function AuthLayout() {
 
 const Container = styled.div`
   background-color: #fff;
-  padding-right: 48px;
+  padding-right: 24px;
   overflow: hidden;
+  height: 100vh;
   @media (max-width: 991px) {
     padding-right: 20px;
   }
@@ -28,20 +30,43 @@ const Container = styled.div`
 const ContentWrapper = styled.div`
   gap: 20px;
   display: flex;
+  height: 100%;
   @media (max-width: 991px) {
     flex-direction: column;
     align-items: stretch;
-    gap: 0px;
+    gap: 0;
+  }
+`;
+
+const ImageColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 56%;
+  @media (max-width: 991px) {
+    width: 100%;
   }
 `;
 
 const FormColumn = styled.div`
   display: flex;
   flex-direction: column;
-  line-height: normal;
-  width: 45%;
+  width: 44%;
   margin-left: 20px;
   @media (max-width: 991px) {
     width: 100%;
+  }
+`;
+
+const Content = styled.div`
+  display: flex;
+  margin-top: 24px;
+  align-items: flex-start;
+  gap: 40px 57px;
+  font-family: Poppins, sans-serif;
+  flex-wrap: wrap;
+  @media (max-width: 991px) {
+    max-width: 100%;
+    margin-top: 40px;
   }
 `;
