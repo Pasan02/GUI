@@ -1,19 +1,22 @@
-import * as React from "react";
 import styled from "styled-components";
-import SignupImage from "../images/signup-image.jpg"
+import SignupImage from "./Images/signup-image.jpg";
 
 export function AuthLayout({ children }) {
   return (
     <Container>
       <ContentWrapper>
         <ImageColumn>
-          <HeroImage loading="lazy" src={SignupImage} alt="" />
+          <AuthImage
+            loading="lazy"
+                      src={SignupImage}
+            alt="Authentication illustration"
+          />
         </ImageColumn>
         <FormColumn>
-          <FormWrapper>
+          <Content>
             {children}
-            <BrandLogo />
-          </FormWrapper>
+          
+          </Content>
         </FormColumn>
       </ContentWrapper>
     </Container>
@@ -21,69 +24,72 @@ export function AuthLayout({ children }) {
 }
 
 const Container = styled.div`
-  background-color: white;
+  background-color: #fff;
   padding-right: 24px;
   overflow: hidden;
-
+  height:100vh;
   @media (max-width: 991px) {
     padding-right: 20px;
   }
 `;
 
 const ContentWrapper = styled.div`
-  display: flex;
   gap: 20px;
-
+  display: flex;
+  height: 100%;
   @media (max-width: 991px) {
     flex-direction: column;
+    align-items: stretch;
     gap: 0;
   }
 `;
 
 const ImageColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   width: 56%;
-
   @media (max-width: 991px) {
     width: 100%;
   }
 `;
 
-const HeroImage = styled.img`
-  aspect-ratio: 0.7;
-  object-fit: contain;
-  width: 100%;
+const AuthImage = styled.img`
+  object-fit: cover;
+  width: 95%;
+  height: 100%;
+  max-height: 100vh;
   
   @media (max-width: 991px) {
-    margin-top: 40px;
+    max-width: 100%;
+    max-height: 100px;
+    
+  
+
+    
   }
 `;
 
 const FormColumn = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 44%;
   margin-left: 20px;
-
   @media (max-width: 991px) {
     width: 100%;
-    margin-left: 0;
   }
 `;
 
-const FormWrapper = styled.div`
+const Content = styled.div`
   display: flex;
-  margin-top: 96px;
+  margin-top: 24px;
+  align-items: flex-start;
   gap: 40px 57px;
   font-family: Poppins, sans-serif;
   flex-wrap: wrap;
-
   @media (max-width: 991px) {
+    max-width: 100%;
     margin-top: 40px;
   }
 `;
 
-const BrandLogo = styled.div`
-  background-color: rgba(196, 196, 196, 1);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  margin-top: 40px;
-`;

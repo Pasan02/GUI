@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\AuthLayout.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:pages\\Signup\\AuthLayout.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\Button.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:pages\\Signup\\Button.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\InputField.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:pages\\Signup\\InputField.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\LoginLink.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:pages\\Signup\\LoginLink.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\PasswordField.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:pages\\Signup\\PasswordField.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\SignUpForm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:pages\\Signup\\SignUpForm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\TermsText.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:pages\\Signup\\TermsText.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TermsText.js",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\TermsText.js",
+              "RelativeDocumentMoniker": "pages\\Signup\\TermsText.js",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\TermsText.js",
+              "RelativeToolTip": "pages\\Signup\\TermsText.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-26T09:57:16.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SignUpForm.js",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\SignUpForm.js",
+              "RelativeDocumentMoniker": "pages\\Signup\\SignUpForm.js",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\SignUpForm.js",
+              "RelativeToolTip": "pages\\Signup\\SignUpForm.js",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-26T09:57:15.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PasswordField.js",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\PasswordField.js",
+              "RelativeDocumentMoniker": "pages\\Signup\\PasswordField.js",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\PasswordField.js",
+              "RelativeToolTip": "pages\\Signup\\PasswordField.js",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-26T09:57:14.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginLink.js",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\LoginLink.js",
+              "RelativeDocumentMoniker": "pages\\Signup\\LoginLink.js",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\LoginLink.js",
+              "RelativeToolTip": "pages\\Signup\\LoginLink.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-26T09:57:13.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InputField.js",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\InputField.js",
+              "RelativeDocumentMoniker": "pages\\Signup\\InputField.js",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\InputField.js",
+              "RelativeToolTip": "pages\\Signup\\InputField.js",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-26T09:57:13.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Button.js",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\Button.js",
+              "RelativeDocumentMoniker": "pages\\Signup\\Button.js",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\Button.js",
+              "RelativeToolTip": "pages\\Signup\\Button.js",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-26T09:57:10.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthLayout.js",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\AuthLayout.js",
+              "RelativeDocumentMoniker": "pages\\Signup\\AuthLayout.js",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\travel-itinerary-manager\\src\\pages\\Signup\\AuthLayout.js",
+              "RelativeToolTip": "pages\\Signup\\AuthLayout.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-26T09:57:00.466Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
