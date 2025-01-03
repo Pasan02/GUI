@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import { Clock, Trash2, Edit2, Bed, Coffee, Bus, Camera, Utensils } from "lucide-react";
 import "react-datepicker/dist/react-datepicker.css";
+import { Save } from 'react-feather';
 
 const ACTIVITY_CATEGORIES = {
   LODGING: { label: 'Lodging', icon: Bed, color: '#7c3aed' },
@@ -21,6 +22,20 @@ export function TripForm() {
   const [activities, setActivities] = React.useState({});
   const [isAddingActivity, setIsAddingActivity] = React.useState(false);
   const [editingActivity, setEditingActivity] = React.useState(null);
+  const [tripName, setTripName] = React.useState('');
+  const [tripCost, setTripCost] = React.useState('');
+
+  const handleSaveTrip = () => {
+    const tripData = {
+      name: tripName,
+      startDate,
+      endDate,
+      activities,
+      cost: tripCost
+    };
+    console.log('Saving trip:', tripData);
+    // Add actual save logic here
+  };
 
   // Activity form state
   const [newActivity, setNewActivity] = React.useState({
@@ -138,6 +153,12 @@ export function TripForm() {
 
 <h1>Plan a New Trip</h1>
 <FormContainer>
+<TripNameInput
+          type="text"
+          placeholder="Enter Trip Name"
+          value={tripName}
+          onChange={(e) => setTripName(e.target.value)}
+        />
   <DatePickerWrapper>
     <DateLabel>Start Date</DateLabel>
     <DatePickerButton onClick={() => setIsStartDatePickerOpen(true)}>
@@ -329,7 +350,24 @@ export function TripForm() {
             </ActivitiesList>
           </ItineraryContent>
         </ItineraryContainer>
+        
       )}
+         <CostSection>
+        <h3>Trip Cost</h3>
+        <CostInput
+          type="number"
+          min="0"
+          placeholder="Enter total cost"
+          value={tripCost}
+          onChange={(e) => setTripCost(e.target.value)}
+        />
+      </CostSection>
+<SaveTripSection>
+      <SaveTripButton onClick={handleSaveTrip}>
+        <Save size={20} />
+        Save Trip
+      </SaveTripButton>
+    </SaveTripSection>
     </PageContainer>
   );
 }
@@ -692,5 +730,53 @@ const ActionButton = styled.button`
   
   &:hover {
     color: #374151;
+  }
+`;
+const TripNameInput = styled.input`
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  
+  &:focus {
+    outline: none;
+    border-color: #2563eb;
+  }
+`;
+const CostSection = styled.div`
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+`;
+
+const CostInput = styled.input`
+  width: 200px;
+  padding: 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-size: 1.1em;
+  
+  &:focus {
+    outline: none;
+    border-color: #2563eb;
+  }
+`;
+
+const SaveTripSection = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+`;
+
+const SaveTripButton = styled(AddButton)`
+  background: #10b981;
+  padding: 10px 20px;
+  
+  &:hover {
+    background: #059669;
   }
 `;
