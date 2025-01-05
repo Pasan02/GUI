@@ -2,15 +2,22 @@ import * as React from "react";
 import styled from "styled-components";
 import { NavigationMenu } from "./NavigationMenu";
 import { AuthButtons } from "./AuthButtons";
-
+import { useNavigate } from "react-router-dom";
+import Logo from "../images/1.png";
 export function Header() {
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate("/");
+  }
   return (
     <HeaderContainer>
-      <LogoBlock>
+      <LogoBlock onClick={handleLogoClick}>
         <LogoWrapper>
           <LogoImage
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/a10ce06b94eb5d8e95b452e68f87a132199206123acda962fec5de042a78ea59?placeholderIfAbsent=true&apiKey=25badedd98e242a3bd9df8a26a4bfa36"
+            src={Logo}
+            
             alt="Company Logo"
           />
         </LogoWrapper>
@@ -23,7 +30,7 @@ export function Header() {
 
 const HeaderContainer = styled.header`
   background-color: #fff;
-  border-bottom: 1px solid #d9d9d9;
+  
   display: flex;
   width: 100%;
   align-items: center;
@@ -31,7 +38,7 @@ const HeaderContainer = styled.header`
   overflow: hidden;
   justify-content: start;
   flex-wrap: wrap;
-  padding: 32px;
+  padding: 22px;
   @media (max-width: 991px) {
     max-width: 100%;
     padding: 0 20px;
@@ -58,10 +65,10 @@ const LogoWrapper = styled.div`
 `;
 
 const LogoImage = styled.img`
-  aspect-ratio: 0.69;
+  aspect-ratio: 2;
   object-fit: contain;
   object-position: center;
-  width: 24px;
+  width: 90px;
   align-self: stretch;
   margin: auto 0;
 `;

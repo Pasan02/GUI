@@ -411,7 +411,7 @@ const InputField = styled.input`
   border: none;
   outline: none;
   padding: 8px 0;
-  font-family: Montserrat, sans-serif;
+ font-family: Poppins, sans-serif;
 `;
 
 const DatePickerWrapper = styled.div`
@@ -419,7 +419,7 @@ const DatePickerWrapper = styled.div`
   margin-top: 21px;
   width: 100%;
   flex-direction: column;
-  font-family: Inter, sans-serif;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
   justify-content: start;
   position: relative;
@@ -472,7 +472,7 @@ const DatePickerOverlay = styled.div`
 
   .react-datepicker {
     border: none;
-    font-family: Inter, sans-serif;
+    font-family: Poppins, sans-serif;
   }
 
   .react-datepicker__header {
@@ -519,7 +519,7 @@ const TabButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  font-family: Inter, sans-serif;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
   color: ${props => props.isActive ? '#000' : '#666'};
   border-bottom: 2px solid ${props => props.isActive ? '#000' : 'transparent'};
@@ -545,7 +545,7 @@ const ItineraryContent = styled.div`
 `;
 
 const DayTitle = styled.h2`
-  font-family: Inter, sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: 20px;
   font-weight: 600;
   margin: 0 0 24px 0;
@@ -557,7 +557,7 @@ const AddButton = styled.button`
   background: #000;
   color: white;
   border-radius: 4px;
-  font-family: Inter, sans-serif;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
@@ -584,7 +584,7 @@ const ActivityForm = styled.div`
 
 const FormTitle = styled.h3`
   margin: 0 0 20px 0;
-  font-family: Inter, sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: 18px;
 `;
 
@@ -614,7 +614,7 @@ const FormField = styled.div`
     padding: 8px 12px;
     border: 1px solid #e5e5e5;
     border-radius: 4px;
-    font-family: Inter, sans-serif;
+    font-family: Poppins, sans-serif;
     
     &:focus {
       outline: none;
@@ -637,7 +637,7 @@ const FormActions = styled.div`
 const Button = styled.button`
   padding: 8px 16px;
   border-radius: 4px;
-  font-family: Inter, sans-serif;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;

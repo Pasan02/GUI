@@ -1,18 +1,33 @@
 import * as React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import { useAuth} from "../context/AuthContext";
 
-const navigationItems = [
-  { label: "Home", isActive: true },
-  { label: "Add Trip", isActive: false }
+const guestNavItems = [
+  { label: "Home", path: "/" },
+  { label: "Add Trip", path: "/plan-trip" }
 ];
 
+const userNavItems = [
+  { label: "Home", path: "/" }, 
+  { label: "Dashboard", path: "/dashboard" },
+  { label: "My Trips", path: "/my-trips" },
+  { label: "Add Trip", path: "/plan-trip" }
+];
+
+
+ 
 export function NavigationMenu() {
+  const { isLoggedIn } = useAuth();
+  const navigationItems = isLoggedIn ? userNavItems : guestNavItems;
+
+
   return (
     <NavContainer>
       {navigationItems.map((item, index) => (
-        <NavItem key={index} $isActive={item.isActive}>
+        <StyledNavLink key={index} to={item.path}>
           {item.label}
-        </NavItem>
+        </StyledNavLink>
       ))}
     </NavContainer>
   );
@@ -49,5 +64,20 @@ const NavItem = styled.button`
   cursor: pointer;
   @media (max-width: 991px) {
     white-space: initial;
+  }
+`;
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 4px;
+  
+  &.active {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  &:hover {
+    background-color: #e0e0e0;
   }
 `;

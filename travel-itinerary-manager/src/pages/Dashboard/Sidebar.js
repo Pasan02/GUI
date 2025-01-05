@@ -50,7 +50,7 @@ const SidebarContainer = styled.aside`
 const BrandTitle = styled.h1`
   color: #fff;
   margin-left: 11px;
-  font: 900 36px Roboto, sans-serif;
+  font: 900 36px Poppins, sans-serif;
   @media (max-width: 991px) {
     margin-left: 10px;
   }

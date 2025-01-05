@@ -57,7 +57,7 @@ const TopNavLinks = styled.nav`
 const NavLink = styled.a`
   color: #fff;
   text-align: center;
-  font: 700 20px Raleway, sans-serif;
+  font-family: Poppins, sans-serif;
   cursor: pointer;
 `;
 
@@ -66,5 +66,5 @@ const ContentWrapper = styled.main`
   margin-top: -94px;
   width: 831px;
   max-width: 100%;
-  font-family: Plus Jakarta Sans, sans-serif;
+  font-family: Poppins, sans-serif;
 `;

@@ -145,7 +145,7 @@ const ActionButtons = styled.div`
 const Button = styled.button`
   padding: 8px 16px;
   border-radius: 4px;
-  font-family: Inter, sans-serif;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
   border: none;
   background: #2563eb;
@@ -230,7 +230,7 @@ const TextArea = styled.textarea`
   padding: 12px;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  font-family: Inter, sans-serif;
+  font-family: Poppins, sans-serif;
   resize: vertical;
   
   &:focus {

@@ -1,9 +1,11 @@
 import * as React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useAuth} from "../context/AuthContext";
 
 export function AuthButtons() {
   const navigate = useNavigate();
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
 
   const handleSignIn = () => {
     navigate("/signin");
@@ -12,6 +14,18 @@ export function AuthButtons() {
   const handleRegister = () => {
     navigate("/signup");
   };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    navigate("/");
+  };
+
+  if (isLoggedIn) {
+    return (
+      <AuthContainer>
+        <SignInButton onClick={handleLogout}>Logout</SignInButton>
+      </AuthContainer>
+    );
+  }
 
   return (
     <AuthContainer>
