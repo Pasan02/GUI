@@ -38,7 +38,7 @@ const NavContainer = styled.nav`
   display: flex;
   min-width: 240px;
   align-items: start;
-  gap: 8px;
+  gap: 40px;
   justify-content: end;
   flex-wrap: wrap;
   flex: 1;
@@ -67,17 +67,33 @@ const NavItem = styled.button`
   }
 `;
 const StyledNavLink = styled(NavLink)`
+  position: relative;
   text-decoration: none;
   color: #333;
-  padding: 8px 16px;
-  border-radius: 4px;
-  
-  &.active {
-    background-color: #f0f0f0;
-    font-weight: bold;
-  }
-  
+  font-size: 16px;
+  padding: 5px 0;
+  transition: color 0.2s ease;
+
   &:hover {
-    background-color: #e0e0e0;
+    color: #2c7a7b;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #2c7a7b;
+    transition: width 0.3s ease;
+  }
+
+  &.active {
+    color: #2c7a7b;
+    
+    &::after {
+      width: 100%;
+    }
   }
 `;
