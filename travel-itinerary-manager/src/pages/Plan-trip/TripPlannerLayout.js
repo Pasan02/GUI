@@ -8,7 +8,7 @@ export function TripPlannerLayout() {
     <MainContainer>
       <Header />
       <MenuHeading>
-        <div>Plan a New Trip</div>
+        <h1>Plan a New Trip</h1>
       </MenuHeading>
       <TripForm />
     </MainContainer>

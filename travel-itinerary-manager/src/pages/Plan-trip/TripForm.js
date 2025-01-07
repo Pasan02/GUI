@@ -36,6 +36,8 @@ export function TripForm() {
     console.log('Saving trip:', tripData);
     // Add actual save logic here
   };
+// Add state for currency
+const [currency, setCurrency] = React.useState('USD');
 
   // Activity form state
   const [newActivity, setNewActivity] = React.useState({
@@ -151,7 +153,7 @@ export function TripForm() {
   return (
     <PageContainer>
 
-<h1>Plan a New Trip</h1>
+
 <FormContainer>
 <TripNameInput
           type="text"
@@ -353,14 +355,31 @@ export function TripForm() {
         
       )}
          <CostSection>
-        <h3>Trip Cost</h3>
-        <CostInput
-          type="number"
-          min="0"
-          placeholder="Enter total cost"
-          value={tripCost}
-          onChange={(e) => setTripCost(e.target.value)}
-        />
+         <Label>Trip Cost</Label>
+         <CostInputGroup>
+  <CostInputWrapper>
+    <CostInput
+      type="number"
+      placeholder="Enter trip cost"
+      value={tripCost}
+      onChange={(e) => setTripCost(e.target.value)}
+      min="0"
+      step="0.01"
+    />
+  </CostInputWrapper>
+  <CurrencySelect 
+      value={currency} 
+      onChange={(e) => setCurrency(e.target.value)}
+    >
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+      <option value="JPY">JPY</option>
+      <option value="AUD">AUD</option>
+      <option value="CAD">CAD</option>
+      <option value="LKR">LKR</option>
+    </CurrencySelect>
+  </CostInputGroup>
       </CostSection>
 <SaveTripSection>
       <SaveTripButton onClick={handleSaveTrip}>
@@ -413,7 +432,12 @@ const InputField = styled.input`
   padding: 8px 0;
  font-family: Poppins, sans-serif;
 `;
-
+const Label = styled.label`
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8px;
+`;
 const DatePickerWrapper = styled.div`
   display: flex;
   margin-top: 21px;
@@ -733,12 +757,13 @@ const ActionButton = styled.button`
   }
 `;
 const TripNameInput = styled.input`
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #e5e5e5;
-  border-radius: 4px;
-  font-size: 1.1em;
-  margin-bottom: 20px;
+  width: 93%;
+  padding: 16px;
+  border: 2px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: Poppins, sans-serif;
+  transition: border-color 0.2s;
   
   &:focus {
     outline: none;
@@ -746,37 +771,97 @@ const TripNameInput = styled.input`
   }
 `;
 const CostSection = styled.div`
-  margin-top: 20px;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 24px;
 `;
 
+const CostInputWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  
+
+`;
+const CostInputGroup = styled.div`
+  display: flex;
+  gap: 12px;
+  width: 100%;
+`;
 const CostInput = styled.input`
-  width: 200px;
-  padding: 12px;
-  border: 1px solid #e5e5e5;
-  border-radius: 4px;
-  font-size: 1.1em;
+  width: 100%;
+  padding: 16px;
+  padding-left: 18px;
+  border: 2px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: Poppins, sans-serif;
+  transition: border-color 0.2s;
+  
+  &:focus {
+    outline: none;
+    border-color: #2563eb;
+  }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`;
+
+const CurrencySelect = styled.select`
+  padding: 16px;
+  border: 2px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: Poppins, sans-serif;
+  background-color: white;
+  cursor: pointer;
+  width: 100px;
   
   &:focus {
     outline: none;
     border-color: #2563eb;
   }
 `;
+const SaveTripButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: auto;
+  margin-left: auto;
+
+  &:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+`;
 
 const SaveTripSection = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
-`;
-
-const SaveTripButton = styled(AddButton)`
-  background: #10b981;
-  padding: 10px 20px;
-  
-  &:hover {
-    background: #059669;
-  }
+  padding: 24px 0;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 32px;
 `;
