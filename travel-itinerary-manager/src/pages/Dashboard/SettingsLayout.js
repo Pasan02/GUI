@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import { NavigationMenu } from "../../components/NavigationMenu";
+import Header from "../../components/Header1";
+import Footer from "../../components/Footer";
 import { Sidebar } from "./Sidebar";
 import { SettingsContent } from "./SettingsContent";
 

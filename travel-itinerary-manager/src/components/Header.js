@@ -3,9 +3,13 @@ import styled from "styled-components";
 import { NavigationMenu } from "./NavigationMenu";
 import { AuthButtons } from "./AuthButtons";
 import { useNavigate } from "react-router-dom";
-import Logo from "../images/1.png";
+
+
+import { Map } from 'lucide-react';
+
 export function Header() {
   const navigate = useNavigate();
+  
 
   const handleLogoClick = () => {
     navigate("/");
@@ -14,12 +18,10 @@ export function Header() {
     <HeaderContainer>
       <LogoBlock onClick={handleLogoClick}>
         <LogoWrapper>
-          <LogoImage
-            loading="lazy"
-            src={Logo}
-            
-            alt="Company Logo"
-          />
+          <LogoImage>
+            <Map size={32} color="#2563EB" />
+              <span>TravelPlanner</span>
+              </LogoImage>
         </LogoWrapper>
       </LogoBlock>
       <NavigationMenu />

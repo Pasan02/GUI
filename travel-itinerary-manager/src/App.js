@@ -4,7 +4,7 @@ import {SignUpForm} from "./pages/Signup/SignUpForm";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { SignInForm } from "./pages/Signin-page/SignInForm";
 import {TripPlannerLayout} from "./pages/Plan-trip/TripPlannerLayout";
-import { Home } from "./pages/Home/home";
+import HomePage  from "./pages/Home/home";
 import { AuthProvider } from "./context/AuthContext";
 //import { DashboardLayout } from "./pages/Dashboard/DashboardLayout";
 //import{ItinerariesLayout} from "../src/pages/Dashboard/ItinerariesLayout";
@@ -22,7 +22,7 @@ function App() {
    <Route path="/signup" element={<SignUpForm/>} />
     <Route path="/signin" element={<SignInForm/>} />
      
-    <Route path="/" element={<Home/>} />
+    <Route path="/" element={<HomePage/>} />
     <Route path="/plan-trip" element={<TripPlannerLayout/>} />
 
       {/* <Route path="/" element={<DashboardLayout/>} />

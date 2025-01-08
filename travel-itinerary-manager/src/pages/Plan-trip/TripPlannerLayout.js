@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import {Header} from "../../components/Header";
+import Header from "../../components/Header1";
 import { TripForm } from "./TripForm";
 
 export function TripPlannerLayout() { 
