@@ -8,18 +8,12 @@ import { SettingsContent } from "./SettingsContent";
 export function SettingsLayout() {
   return (
     <LayoutContainer>
-      <NavigationWrapper>
-        <TopNavLinks>
-          <NavLink>熱門景點</NavLink>
-          <NavLink>出國旅遊</NavLink>
-          <NavLink>台灣旅遊</NavLink>
-        </TopNavLinks>
-        <NavigationMenu />
-      </NavigationWrapper>
+      <Header/>
       <ContentWrapper>
         <Sidebar />
         <SettingsContent />
       </ContentWrapper>
+      <Footer/>
     </LayoutContainer>
   );
 }

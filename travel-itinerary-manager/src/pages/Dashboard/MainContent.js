@@ -49,11 +49,12 @@ const ContentContainer = styled.section`
   gap: 40px;
   flex-wrap: wrap;
   font-size: 50px;
+ 
   color: #000;
   font-weight: 700;
   @media (max-width: 991px) {
     font-size: 40px;
-    flex-direction: column;
+    flex-direction: row;
   }
 `;
 
@@ -77,6 +78,7 @@ const TripsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+  margin-right: -600px;
 `;
 
 const TripCard = styled.div`

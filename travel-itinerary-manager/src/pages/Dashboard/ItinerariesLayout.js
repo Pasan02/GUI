@@ -1,24 +1,20 @@
 import * as React from "react";
 import styled from "styled-components";
-import { NavigationMenu } from "../../components/NavigationMenu";
+import Header from "../../components/Header1";
+import Footer from "../../components/Footer";
 import { Sidebar } from "./Sidebar";
 import { ItinerariesContent } from "./ItinerariesContent";
 
 export function ItinerariesLayout() {
   return (
     <LayoutContainer>
-      <NavigationWrapper>
-        <TopNavLinks>
-          <NavLink>熱門景點</NavLink>
-          <NavLink>出國旅遊</NavLink>
-          <NavLink>台灣旅遊</NavLink>
-        </TopNavLinks>
-        <NavigationMenu />
-      </NavigationWrapper>
+      <Header/>
+      
       <ContentWrapper>
         <Sidebar />
         <ItinerariesContent />
       </ContentWrapper>
+      <Footer/>
     </LayoutContainer>
   );
 }

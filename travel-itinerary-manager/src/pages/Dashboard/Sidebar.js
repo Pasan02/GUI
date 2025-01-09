@@ -1,17 +1,18 @@
 import * as React from "react";
 import styled from "styled-components";
+import {NavLink} from "react-router-dom";
 
 const menuItems = [
-  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/d3fab88e26d43a5895b3cdb44dd35cb16999a5d62e7baabe02f60944f2131b54?placeholderIfAbsent=true&apiKey=25badedd98e242a3bd9df8a26a4bfa36", label: "Dashboard", active: true },
-  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/184f9ba7ada8b0c56dd557c35cd84ecc431129fc6a64b13080e016ae7cce4004?placeholderIfAbsent=true&apiKey=25badedd98e242a3bd9df8a26a4bfa36", label: "My Information" },
-  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/9de4d59ff93afe11d438d6462faaf2c0114076dfa3ec79dd101cc4c8158c1804?placeholderIfAbsent=true&apiKey=25badedd98e242a3bd9df8a26a4bfa36", label: "Settings" },
-  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/9de4d59ff93afe11d438d6462faaf2c0114076dfa3ec79dd101cc4c8158c1804?placeholderIfAbsent=true&apiKey=25badedd98e242a3bd9df8a26a4bfa36", label: "Itinerary" }
+  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/d3fab88e26d43a5895b3cdb44dd35cb16999a5d62e7baabe02f60944f2131b54?placeholderIfAbsent=true&apiKey=25badedd98e242a3bd9df8a26a4bfa36", label: "Dashboard",path:"/dashboard", active: true },
+  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/184f9ba7ada8b0c56dd557c35cd84ecc431129fc6a64b13080e016ae7cce4004?placeholderIfAbsent=true&apiKey=25badedd98e242a3bd9df8a26a4bfa36", label: "My Information", path:"/my-information" },
+  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/9de4d59ff93afe11d438d6462faaf2c0114076dfa3ec79dd101cc4c8158c1804?placeholderIfAbsent=true&apiKey=25badedd98e242a3bd9df8a26a4bfa36", label: "Settings", path:"/settings" },
+  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/9de4d59ff93afe11d438d6462faaf2c0114076dfa3ec79dd101cc4c8158c1804?placeholderIfAbsent=true&apiKey=25badedd98e242a3bd9df8a26a4bfa36", label: "Itinerary", path:"/Itinerary" }
 ];
 
 export function Sidebar() {
   return (
     <SidebarContainer>
-      <BrandTitle>BonVoyage</BrandTitle>
+      
       <UserProfile>
         <ProfileImage
           loading="lazy"
@@ -20,19 +21,19 @@ export function Sidebar() {
         />
         <ProfileInfo>
           <UserName>Weiwei WANG</UserName>
-          <MembershipStatus>Standard Member</MembershipStatus>
+          
         </ProfileInfo>
       </UserProfile>
       <MenuList>
         {menuItems.map((item, index) => (
-          <MenuItem key={index}>
+         <StyledNavLink key={index} to={item.path}>
             <MenuIcon
               loading="lazy"
               src={item.icon}
               alt={`${item.label} icon`}
             />
             <MenuLabel>{item.label}</MenuLabel>
-          </MenuItem>
+          </StyledNavLink>
         ))}
       </MenuList>
     </SidebarContainer>
@@ -42,19 +43,16 @@ export function Sidebar() {
 const SidebarContainer = styled.aside`
   z-index: 10;
   display: flex;
-  width: 245px;
+  width: 240px;
   max-width: 100%;
   flex-direction: column;
+  padding: 0px 30px;
+  margin-left:-100px;
+  margin-top:-80px;
+  
 `;
 
-const BrandTitle = styled.h1`
-  color: #fff;
-  margin-left: 11px;
-  font: 900 36px Poppins, sans-serif;
-  @media (max-width: 991px) {
-    margin-left: 10px;
-  }
-`;
+
 
 const UserProfile = styled.div`
   border-radius: 43px;
@@ -87,12 +85,7 @@ const UserName = styled.span`
   font-weight: 600;
 `;
 
-const MembershipStatus = styled.span`
-  color: #7c7c7c;
-  font-size: 10px;
-  font-weight: 500;
-  margin-top: 12px;
-`;
+
 
 const MenuList = styled.nav`
   display: flex;
@@ -127,5 +120,28 @@ const MenuLabel = styled.span`
   white-space: nowrap;
   @media (max-width: 991px) {
     white-space: initial;
+  }
+`;
+const StyledNavLink = styled(NavLink)`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #c4c4c4;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #f5f5f5;
+    color: #000;
+  }
+
+  &.active {
+    background: #2563eb;
+    color: white;
   }
 `;
