@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Calendar, Share2, Download, Map, Coffee, Home, Car } from 'lucide-react';
 import Header from '../../components/Header1';
 import Footer from '../../components/Footer';
+import { useNavigate } from 'react-router-dom';
 // Layout Components
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -148,6 +149,15 @@ const Button = styled.button`
 
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  const handleStartPlanning = () => {
+    navigate('/plan-trip');
+  };
+  const handleCreateAccount = () => {
+      navigate('/signup');
+    };
+  
+  
   return (
     <PageWrapper>
       <Header/>
@@ -162,7 +172,8 @@ const HomePage = () => {
               <HeroText>
                 Create detailed travel itineraries, collaborate with friends, and keep all your plans in one place.
               </HeroText>
-              <Button variant="primary" large>Start Planning</Button>
+              <Button variant="primary" large onClick={handleStartPlanning}>
+                Start Planning</Button>
             </HeroContent>
           </Container>
         </HeroSection>
@@ -233,7 +244,8 @@ const HomePage = () => {
           <Container>
             <HeroContent>
               <Title light>Ready to Start Planning Your Next Adventure?</Title>
-              <Button large>Create Free Account</Button>
+              <Button large onClick={handleCreateAccount}>
+                Create Free Account</Button>
             </HeroContent>
           </Container>
         </Section>

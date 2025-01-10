@@ -12,7 +12,18 @@ export function SettingsContent() {
 
   return (
     <Container>
-      <Button onClick={() => setIsModalOpen(true)}>Delete Account</Button>
+      <Divider />
+      <ContentWrapper>
+        <PageTitle>Account Settings</PageTitle>
+        <Section>
+          <SectionTitle>Delete Account</SectionTitle>
+          <WarningText>
+            Warning: This action cannot be undone. All your data will be permanently deleted.
+          </WarningText>
+          <Button onClick={() => setIsModalOpen(true)}>Delete Account</Button>
+        </Section>
+      </ContentWrapper>
+
       {isModalOpen && (
         <Modal>
           <ModalContent>
@@ -29,10 +40,46 @@ export function SettingsContent() {
   );
 }
 
+
+
 const Container = styled.div`
-  padding: 20px;
+  display: flex;
+  gap: 40px;
+`;
+
+const Divider = styled.div`
+  width: 3px;
+  height: 100%;
+  background: rgba(196, 196, 196, 0.5);
+`;
+
+const ContentWrapper = styled.div`
+  flex: 1;
+  padding: 0 20px;
+`;
+
+const PageTitle = styled.h2`
+  font-size: 30px;
+  margin-bottom: 40px;
+`;
+
+const Section = styled.div`
+  background: white;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 600px;
-  margin: auto;
+`;
+
+const SectionTitle = styled.h3`
+  font-size: 20px;
+  color: #dc3545;
+  margin-bottom: 16px;
+`;
+
+const WarningText = styled.p`
+  color: #666;
+  margin-bottom: 24px;
 `;
 
 const Button = styled.button`
@@ -42,6 +89,11 @@ const Button = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #c82333;
+  }
 `;
 
 const Modal = styled.div`
@@ -77,6 +129,11 @@ const CancelButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #5a6268;
+  }
 `;
 
 const ConfirmButton = styled.button`
@@ -86,5 +143,9 @@ const ConfirmButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-`;
+  transition: background-color 0.2s;
 
+  &:hover {
+    background-color: #c82333;
+  }
+`;

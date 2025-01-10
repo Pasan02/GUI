@@ -47,7 +47,7 @@ const SidebarContainer = styled.aside`
   max-width: 100%;
   flex-direction: column;
   padding: 0px 30px;
-  margin-left:-100px;
+  
   margin-top:-80px;
   
 `;
@@ -100,15 +100,6 @@ const MenuList = styled.nav`
   }
 `;
 
-const MenuItem = styled.a`
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  color: #c4c4c4;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-`;
 
 const MenuIcon = styled.img`
   aspect-ratio: 1;

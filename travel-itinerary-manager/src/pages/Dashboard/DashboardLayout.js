@@ -22,6 +22,8 @@ const LayoutContainer = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  postion: relative;
+  padding: 0;
 `;
 
 
@@ -29,8 +31,11 @@ const LayoutContainer = styled.div`
 const ContentWrapper = styled.div`
   flex: 1;
   display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
+
+
   width: 100%;
-  padding: 2rem 0.5rem;
+  gap: 24px;
+  padding: 44px 80px 76px 31px;
+  overflow-y: auto;
+
 `;

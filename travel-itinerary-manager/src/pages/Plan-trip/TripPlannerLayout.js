@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import Header from "../../components/Header1";
+import Footer from "../../components/Footer";
 import { TripForm } from "./TripForm";
 
 export function TripPlannerLayout() { 
@@ -11,6 +12,7 @@ export function TripPlannerLayout() {
         <h1>Plan a New Trip</h1>
       </MenuHeading>
       <TripForm />
+      <Footer />
     </MainContainer>
   );
 }
@@ -20,7 +22,7 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 0 68px 187px;
+  padding: 0 0px 0px;
   @media (max-width: 991px) {
     padding: 0 20px 100px;
   }

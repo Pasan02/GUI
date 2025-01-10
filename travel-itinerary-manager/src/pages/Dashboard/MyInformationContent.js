@@ -25,114 +25,167 @@ export function MyInformationContent() {
   };
 
   return (
-    <Container>
-      <PageTitle>My Information</PageTitle>
-      <Form>
-        <Label>
-          Name:
-          <Input
-            type="text"
-            name="name"
-            value={userInfo.name}
-            onChange={handleChange}
-            disabled={!isEditing}
-          />
-        </Label>
-        <Label>
-          Email:
-          <Input
-            type="email"
-            name="email"
-            value={userInfo.email}
-            onChange={handleChange}
-            disabled={!isEditing}
-          />
-        </Label>
-        <Label>
-          Country:
-          <Input
-            type="text"
-            name="country"
-            value={userInfo.country}
-            onChange={handleChange}
-            placeholder="Enter your country"
-            disabled={!isEditing}
-          />
-        </Label>
-        <Label>
-          Phone Number:
-          <Input
-            type="tel"
-            name="phone"
-            value={userInfo.phone}
-            onChange={handleChange}
-            placeholder="Enter your phone number"
-            disabled={!isEditing}
-          />
-        </Label>
-        <ButtonContainer>
-          {isEditing ? (
-            <SaveButton onClick={handleSave}>Save Changes</SaveButton>
-          ) : (
-            <EditButton onClick={() => setIsEditing(true)}>Edit</EditButton>
-          )}
-        </ButtonContainer>
-      </Form>
-    </Container>
+    <ContentContainer>
+      <Divider />
+      <ContentWrapper>
+        <PageTitle>My Information</PageTitle>
+        <InfoGrid>
+          <InfoCard>
+            <Form>
+              <FormField>
+                <Label>Name:</Label>
+                <Input
+                  type="text"
+                  name="name"
+                  value={userInfo.name}
+                  onChange={handleChange}
+                  disabled={!isEditing}
+                />
+              </FormField>
+              <FormField>
+                <Label>Email:</Label>
+                <Input
+                  type="email"
+                  name="email"
+                  value={userInfo.email}
+                  onChange={handleChange}
+                  disabled={!isEditing}
+                />
+              </FormField>
+              <FormField>
+                <Label>Country:</Label>
+                <Input
+                  type="text"
+                  name="country"
+                  value={userInfo.country}
+                  onChange={handleChange}
+                  placeholder="Enter your country"
+                  disabled={!isEditing}
+                />
+              </FormField>
+              <FormField>
+                <Label>Phone Number:</Label>
+                <Input
+                  type="tel"
+                  name="phone"
+                  value={userInfo.phone}
+                  onChange={handleChange}
+                  placeholder="Enter your phone number"
+                  disabled={!isEditing}
+                />
+              </FormField>
+              <ButtonContainer>
+                {isEditing ? (
+                  <ActionButton onClick={handleSave}>Save Changes</ActionButton>
+                ) : (
+                  <ActionButton onClick={() => setIsEditing(true)}>Edit</ActionButton>
+                )}
+              </ButtonContainer>
+            </Form>
+          </InfoCard>
+        </InfoGrid>
+      </ContentWrapper>
+    </ContentContainer>
   );
 }
 
-const Container = styled.div`
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
+
+const ContentContainer = styled.section`
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  font-size: 50px;
+  color: #000;
+  font-weight: 700;
+  @media (max-width: 991px) {
+    font-size: 40px;
+    flex-direction: row;
+  }
 `;
 
-const PageTitle = styled.h1`
-  font-size: 24px;
+const Divider = styled.div`
+  width: 3px;
+  height: 100%;
+  background: rgba(196, 196, 196, 0.5);
+`;
+
+const ContentWrapper = styled.div`
+  flex: 1;
+  padding-left: 20px;
+`;
+
+const PageTitle = styled.h2`
+  font-size: 30px;
   margin-bottom: 20px;
+`;
+
+const InfoGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-right: -600px;
+`;
+
+const InfoCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 `;
 
 const Form = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
+`;
+
+const FormField = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 `;
 
 const Label = styled.label`
-  display: flex;
-  flex-direction: column;
   font-size: 16px;
+  color: #555;
+  font-weight: 500;
 `;
 
 const Input = styled.input`
-  padding: 10px;
+  padding: 12px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  margin-top: 5px;
-  &:disabled {
-    background-color: #f9f9f9;
-    color: #888;
+  background-color: ${props => props.disabled ? '#f5f5f5' : 'white'};
+  color: ${props => props.disabled ? '#666' : '#333'};
+  
+  &:focus {
+    outline: none;
+    border-color: #2563eb;
   }
 `;
 
 const ButtonContainer = styled.div`
-  margin-top: 20px;
   display: flex;
-  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
 `;
 
-const EditButton = styled.button`
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: #fff;
+const ActionButton = styled.button`
+  padding: 10px 20px;
+  background-color: #2563eb;
+  color: white;
   border: none;
   border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
-`;
+  transition: background-color 0.2s;
 
-const SaveButton = styled(EditButton)`
-  background-color: #28a745;
+  &:hover {
+    background-color: #1d4ed8;
+  }
 `;
-

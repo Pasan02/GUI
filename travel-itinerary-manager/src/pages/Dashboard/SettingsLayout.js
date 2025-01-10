@@ -19,47 +19,25 @@ export function SettingsLayout() {
 }
 
 const LayoutContainer = styled.div`
-  background-color: #fff;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  padding: 44px 80px 76px 31px;
-  @media (max-width: 991px) {
-    padding: 0 20px;
-  }
+  postion: relative;
+  padding: 0;
 `;
 
-const NavigationWrapper = styled.div`
-  align-self: end;
-  z-index: 10;
+
+
+
+
+const ContentWrapper = styled.div`
+  flex: 1;
   display: flex;
+
+
   width: 100%;
-  max-width: 1200px;
-  flex-direction: column;
-  padding: 3px 0;
-  @media (max-width: 991px) {
-    max-width: 100%;
-  }
-`;
+  gap: 24px;
+  padding: 44px 80px 76px 31px;
+  overflow-y: auto;
 
-const TopNavLinks = styled.nav`
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 10px;
-`;
-
-const NavLink = styled.a`
-  color: #fff;
-  text-align: center;
-  font: 700 20px Poppins, sans-serif;
-  cursor: pointer;
-`;
-
-const ContentWrapper = styled.main`
-  display: flex;
-  margin-top: -94px;
-  width: 831px;
-  max-width: 100%;
- font-family: Poppins, sans-serif;
 `;
