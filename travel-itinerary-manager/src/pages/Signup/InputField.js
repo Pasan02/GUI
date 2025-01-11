@@ -1,12 +1,14 @@
   import styled from "styled-components";
 
-export function InputField({ id, label, type }) {
+export function InputField({ id, label, type,value,onChange }) {
   return (
     <InputWrapper>
       <Label htmlFor={id}>{label}</Label>
       <Input
         id={id}
         type={type}
+        value={value}
+        onChange={onChange}
         aria-label={label}
       />
     </InputWrapper>

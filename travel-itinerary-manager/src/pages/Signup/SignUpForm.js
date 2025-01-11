@@ -5,6 +5,8 @@ import { InputField } from "./InputField";
 import { PasswordField } from "./PasswordField";
 import { Button } from "./Button";
 import { LoginLink } from "./LoginLink";
+import {addUser} from "../../api";
+import { useNavigate } from "react-router-dom";
 
 
 const formFields = [
@@ -13,6 +15,47 @@ const formFields = [
 ];
 
 export function SignUpForm() {
+  const navigate = useNavigate();
+  const [formData, setFormData] = React.useState({
+    username: "",
+    email: "",
+    password: ""
+  });
+  const [error, setError] = React.useState("");
+
+  const handleInputChange = (id, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handlePasswordChange = (value) => {
+    setFormData(prev => ({
+      ...prev,
+      password: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    // Basic validation
+    if (!formData.username || !formData.email || !formData.password) {
+      setError("All fields are required");
+      return;
+    }
+
+    try {
+      await addUser(formData);
+      // Redirect to signin page after successful registration
+      navigate("/signin");
+    } catch (err) {
+      setError(err.response?.data || "Error creating account");
+    }
+  };
+
   return (
     <AuthLayout>
       <FormContainer>
@@ -21,19 +64,24 @@ export function SignUpForm() {
           <LoginLink />
         </FormHeader>
         
-        <form>
+        <form onSubmit={handleSubmit}>
           {formFields.map((field) => (
             <InputField
               key={field.id}
               id={field.id}
               label={field.label}
               type={field.type}
+              value={formData[field.id]}
+              onChange={(e) => handleInputChange(field.id, e.target.value)}
             />
           ))}
           
-          <PasswordField />
+          <PasswordField 
+            value={formData.password}
+            onChange={(e) => handlePasswordChange(e.target.value)}
+          />
           
-          
+          {error && <ErrorMessage>{error}</ErrorMessage>}
           <ActionSection>
             <Button>Create an account</Button>
             <LoginLink />
@@ -75,4 +123,9 @@ const ActionSection = styled.div`
   gap: 8px;
   margin-top: 32px;
   width: 270px;
+`;
+const ErrorMessage = styled.div`
+  color: #dc2626;
+  font-size: 14px;
+  margin-top: 8px;
 `;

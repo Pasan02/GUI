@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-export function PasswordField() {
+export function PasswordField({value,onChange}) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -25,6 +25,8 @@ export function PasswordField() {
       <Input
         id="password"
         type={showPassword ? "text" : "password"}
+        value={value}
+        onChange={onChange}
         aria-label="Password"
       />
       
