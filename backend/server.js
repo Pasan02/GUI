@@ -49,3 +49,44 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+app.post('/api/login', (req, res) => {
+  const { username, password } = req.body;
+
+  const query = 'SELECT * FROM users WHERE (username = ? OR email = ?) AND password = ?';
+  db.query(query, [username, username, password], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Database error' });
+    }
+
+    if (results.length === 0) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    // User found
+    res.json({ 
+      success: true, 
+      user: {
+        id: results[0].id,
+        username: results[0].username,
+        email: results[0].email
+      }
+    });
+  });
+});
+
+app.get('/api/users/:username', (req, res) => {
+  const { username } = req.params;
+  const query = 'SELECT username, email, name, country, phone FROM users WHERE username = ?';
+  
+  db.query(query, [username], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Database error' });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    res.json(results[0]);
+  });
+});
+

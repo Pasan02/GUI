@@ -21,3 +21,13 @@ export const getUsers = async () => {
     throw error;
   }
 };
+export const loginUser = async (credentials) => {
+  try {
+    const response = await axios.post(`${API_URL}/login`, credentials);
+    return response.data;
+  } catch (error) {
+    console.error('Error logging in:', error);
+    throw error;
+  }
+};
+

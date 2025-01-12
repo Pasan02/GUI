@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { getUserInfo, updateUserInfo } from "../../api";
 
 export function MyInformationContent() {
   // Sample initial data (to be replaced with actual data from API or user context)
   const [userInfo, setUserInfo] = useState({
-    name: "Weiwei Wang",
-    email: "weiwei@example.com",
+    username: "",
+    name: "",
+    email: "",
     country: "",
     phone: ""
   });
 
   const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,12 +39,21 @@ export function MyInformationContent() {
           <InfoCard>
             <Form>
               <FormField>
+              <Label>Username:</Label>
+              <Input
+                type="text"
+                name="username"
+                value={userInfo.username}
+                onChange={handleChange}
+                disabled={!isEditing}
+              />
                 <Label>Name:</Label>
                 <Input
                   type="text"
                   name="name"
                   value={userInfo.name}
                   onChange={handleChange}
+                  placeholder="Enter your Name"
                   disabled={!isEditing}
                 />
               </FormField>
@@ -133,6 +148,8 @@ const InfoCard = styled.div`
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px; // Add max-width to control form width
+  width: 100%;
 `;
 
 const Form = styled.div`
@@ -146,6 +163,8 @@ const FormField = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  max-width: 400px; // Add max-width to control input field width
+  width: 100%;
 `;
 
 const Label = styled.label`
@@ -161,13 +180,13 @@ const Input = styled.input`
   border-radius: 5px;
   background-color: ${props => props.disabled ? '#f5f5f5' : 'white'};
   color: ${props => props.disabled ? '#666' : '#333'};
+  width: 100%; // Make sure input takes full width of FormField
   
   &:focus {
     outline: none;
     border-color: #2563eb;
   }
 `;
-
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;

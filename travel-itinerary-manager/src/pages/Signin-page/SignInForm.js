@@ -4,12 +4,60 @@ import { AccountLink } from "./AccountLink";
 import { PasswordInput } from "./PasswordInput";
 import { AuthLayout } from "./AuthLayout";
 import { InputField } from "./InputField";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import axios from 'axios';
 
 const formFields = [
   { id: "username", label: "User name or email address", type: "text" }
 ];
 
 export function SignInForm() {
+  const navigate = useNavigate();
+  const { setIsLoggedIn } = useAuth();
+  const [formData, setFormData] = React.useState({
+    username: "",
+    password: ""
+  });
+  const [error, setError] = React.useState("");
+
+  const handleInputChange = (id, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handlePasswordChange = (value) => {
+    setFormData(prev => ({
+      ...prev,
+      password: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!formData.username || !formData.password) {
+      setError("All fields are required");
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/login', formData);
+      
+      if (response.data.success) {
+        setIsLoggedIn(true);
+        navigate("/dashboard");
+      } else {
+        setError("Invalid credentials");
+      }
+    } catch (err) {
+      setError(err.response?.data?.error || "Login failed");
+    }
+  };
+
   return (
     <AuthLayout>
       <FormContainer>
@@ -18,29 +66,36 @@ export function SignInForm() {
           <TopAccountLink />
         </FormHeader>
 
-        <form>
-                  {formFields.map((field) => (
-                    <InputField
-                      key={field.id}
-                      id={field.id}
-                      label={field.label}
-                      type={field.type}
-                    />
-                  ))}
+        <form onSubmit={handleSubmit}>
+          {formFields.map((field) => (
+            <InputField
+              key={field.id}
+              id={field.id}
+              label={field.label}
+              type={field.type}
+              value={formData[field.id]}
+              onChange={(e) => handleInputChange(field.id, e.target.value)}
+            />
+          ))}
 
-          <PasswordSection>
-            <PasswordInput />
+<PasswordSection>
+            <PasswordInput 
+              value={formData.password}
+              onChange={(e) => handlePasswordChange(e.target.value)}
+            />
             <ForgotPassword>Forget your password</ForgotPassword>
           </PasswordSection>
 
-          <ActionSection>
-            <Button>Sign in</Button>
-            <AccountLink />
-          </ActionSection>
-        </form>
-      </FormContainer>
-    </AuthLayout>
-  );
+          {error && <ErrorMessage>{error}</ErrorMessage>}
+
+<ActionSection>
+  <Button type="submit">Sign in</Button>
+  <AccountLink />
+</ActionSection>
+</form>
+</FormContainer>
+</AuthLayout>
+);
 }
 
 const FormContainer = styled.div`
@@ -116,4 +171,9 @@ const InputGroup = styled.div`
   font-size: 16px;
   color: #666;
   justify-content: start;
+`;
+const ErrorMessage = styled.div`
+  color: #dc2626;
+  font-size: 14px;
+  margin-top: 8px;
 `;

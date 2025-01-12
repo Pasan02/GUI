@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-export function PasswordInput() {
+export function PasswordInput({ value, onChange }) {
   const [showPassword, setShowPassword] = React.useState(false);
 
   return (
@@ -21,6 +21,9 @@ export function PasswordInput() {
         id="password"
         type={showPassword ? 'text' : 'password'}
         aria-label="Password input"
+        value={value}
+        onChange={onChange}
+        required
       />
     </Wrapper>
   );
