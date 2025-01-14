@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4885D79A-9D84-4F10-A481-D1C6A536367C}|DesktopApp\\DesktopApp.csproj|c:\\users\\user\\desktop\\gui project\\gui\\desktopapp\\desktopapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4885D79A-9D84-4F10-A481-D1C6A536367C}|DesktopApp\\DesktopApp.csproj|solutionrelative:desktopapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4885D79A-9D84-4F10-A481-D1C6A536367C}|DesktopApp\\DesktopApp.csproj|c:\\users\\user\\desktop\\gui project\\gui\\desktopapp\\desktopapp\\desktopapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{4885D79A-9D84-4F10-A481-D1C6A536367C}|DesktopApp\\DesktopApp.csproj|solutionrelative:desktopapp\\desktopapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4885D79A-9D84-4F10-A481-D1C6A536367C}|DesktopApp\\DesktopApp.csproj|c:\\users\\user\\desktop\\gui project\\gui\\desktopapp\\desktopapp\\pages\\page1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4885D79A-9D84-4F10-A481-D1C6A536367C}|DesktopApp\\DesktopApp.csproj|solutionrelative:desktopapp\\pages\\page1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4885D79A-9D84-4F10-A481-D1C6A536367C}|DesktopApp\\DesktopApp.csproj|c:\\users\\user\\desktop\\gui project\\gui\\desktopapp\\desktopapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4885D79A-9D84-4F10-A481-D1C6A536367C}|DesktopApp\\DesktopApp.csproj|solutionrelative:desktopapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4885D79A-9D84-4F10-A481-D1C6A536367C}|DesktopApp\\DesktopApp.csproj|c:\\users\\user\\desktop\\gui project\\gui\\desktopapp\\desktopapp\\pages\\page1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4885D79A-9D84-4F10-A481-D1C6A536367C}|DesktopApp\\DesktopApp.csproj|solutionrelative:desktopapp\\pages\\page1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Page1.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page1.xaml.cs",
+              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page1.xaml.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page1.xaml.cs",
+              "RelativeToolTip": "DesktopApp\\Pages\\Page1.xaml.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-13T14:25:24.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Page1.xaml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page1.xaml",
+              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page1.xaml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page1.xaml",
+              "RelativeToolTip": "DesktopApp\\Pages\\Page1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-13T14:06:31.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DesktopApp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\DesktopApp.csproj",
+              "RelativeDocumentMoniker": "DesktopApp\\DesktopApp.csproj",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\DesktopApp.csproj",
+              "RelativeToolTip": "DesktopApp\\DesktopApp.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-01-13T13:22:27.21Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "DesktopApp\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\MainWindow.xaml",
+              "RelativeToolTip": "DesktopApp\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-13T02:46:28.606Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "DesktopApp\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\MainWindow.xaml.cs",
+              "RelativeToolTip": "DesktopApp\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABYAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-13T02:46:25.961Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
