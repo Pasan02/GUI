@@ -23,5 +23,14 @@ namespace DesktopApp
             InitializeComponent();
             
         }
+        private void SignUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.Page1());
+        }
+
+        private void SignInButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.Page2());
+        }
     }
 }

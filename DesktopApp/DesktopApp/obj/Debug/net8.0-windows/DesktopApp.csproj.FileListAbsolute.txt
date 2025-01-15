@@ -21,3 +21,13 @@ C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-win
 C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\ref\DesktopApp.dll
 C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page1.g.cs
 C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page1.baml
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page2.g.cs
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page2.baml
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page3.g.cs
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page4.g.cs
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page3.baml
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page4.baml
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page5.g.cs
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page6.g.cs
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page5.baml
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page6.baml

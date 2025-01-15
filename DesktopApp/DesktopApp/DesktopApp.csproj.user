@@ -10,12 +10,42 @@
     <Compile Update="Pages\Page1.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\Page2.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Page3.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Page4.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Page5.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Page6.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\Page1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Page2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Page3.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Page4.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Page5.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Page6.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

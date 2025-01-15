@@ -25,30 +25,30 @@
         Source="../Images/hero-image.jpg" Stretch="Fill"/>
 
         <StackPanel Background="White" Grid.Column="1" Grid.RowSpan="5">
-            <TextBox Grid.Row="0" Text="Create An Account" HorizontalAlignment="Left" FontSize="20"
+            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="0" Text="Create An Account" IsReadOnly="True" HorizontalAlignment="Left" FontSize="20"
                  Padding="20,20">
             </TextBox>
-            <TextBox Grid.Row="0" Text="Already have an account?"
+            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="0" Text="Already have an account?" IsReadOnly="True"
                      Padding="20,-20">
             </TextBox>
-            <TextBox Grid.Row="1" Text="User name" Padding="20,20,0,0">
+            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="1" Text="User name" IsReadOnly="True" Padding="20,20,0,0">
             </TextBox>
             <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                <TextBox HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
+                <TextBox Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
             </Border>
 
-            <TextBox Grid.Row="2" Text="Email Address" Padding="20,20,0,0">
+            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="2" Text="Email Address" IsReadOnly="True" Padding="20,20,0,0">
             </TextBox>
             <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                <TextBox HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
+                <TextBox Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
             </Border>
 
-            <TextBox Grid.Row="3" Text="Password" Padding="20,20,0,0">
+            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="3" Text="Password" IsReadOnly="True" Padding="20,20,0,0">
             </TextBox>
             <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                <TextBox HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
+                <TextBox Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
             </Border>
-            <TextBox Grid.Row="3" FontSize="8" Text="Use 8 or more characters with a mix of letters, numbers and symbols" Padding="20,0,0,0">
+            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="3" FontSize="8" IsReadOnly="True" Text="Use 8 or more characters with a mix of letters, numbers and symbols" Padding="20,0,0,0">
             </TextBox>
 
             <Button Grid.Row="4" 
@@ -58,7 +58,9 @@
                     Background="Black"
                     Foreground="White"
                     Content="Create an account" HorizontalAlignment="Left" Width="150" Margin="20,20,0,0"/>
-
+            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="4" Text="Already have an account?" IsReadOnly="True"
+          Padding="20,5">
+            </TextBox>
 
         </StackPanel>
     </Grid>

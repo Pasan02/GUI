@@ -52,8 +52,9 @@ export function SignUpForm() {
       // Redirect to signin page after successful registration
       navigate("/signin");
     } catch (err) {
-      setError(err.response?.data || "Error creating account");
+      setError(err.response?.data?.message || err.message || "Error creating account");
     }
+    
   };
 
   return (

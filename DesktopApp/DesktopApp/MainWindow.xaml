@@ -25,9 +25,10 @@
             
                  FontSize="20" FontWeight="Normal" Margin="10" HorizontalAlignment="Center"/>
         <StackPanel Grid.Column="1" Grid.RowSpan="2" Grid.Row="1" Orientation="Vertical" Margin="10">
-            <Button Content="Sign up" Width="100" Margin="10"/>
-            <Button Content="Sign in" Width="100" Margin="10"/>
+            <Button Content="Sign up" Width="100" Margin="10" Click="SignUpButton_Click"/>
+            <Button Content="Sign in" Width="100" Margin="10" Click="SignInButton_Click"/>
         </StackPanel>
-        
+        <Frame x:Name="MainFrame" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
+        <Frame x:Name="Signin"  Grid.Column="2" Grid.RowSpan="3"/> 
     </Grid>
 </Window>
