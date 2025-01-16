@@ -33,4 +33,5 @@ namespace DesktopApp
             MainFrame.Navigate(new Pages.Page2());
         }
     }
+
 }

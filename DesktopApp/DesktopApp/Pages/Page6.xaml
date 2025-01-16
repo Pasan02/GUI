@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:DesktopApp.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Page6">
+      Title="Page6"
+      >
 
     <Grid Background="White">
         <Grid.ColumnDefinitions>

@@ -13,6 +13,9 @@ export function ItinerariesContent() {
   const handleNewItinerary = () => {
     navigate('/plan-trip');
   };
+  const handleItineraryClick = (id) => {
+    navigate(`/itinerary/${id}`);
+  };
 
   return (
     <ContentContainer>
@@ -26,12 +29,16 @@ export function ItinerariesContent() {
         </HeaderContainer>
         <ItinerariesGrid>
           {itineraries.map((itinerary) => (
-            <ItineraryCard key={itinerary.id}>
-              <ItineraryImage src="https://via.placeholder.com/150" alt={itinerary.name} />
-              <ItineraryTitle>{itinerary.name}</ItineraryTitle>
-              <ItineraryDate>{itinerary.date}</ItineraryDate>
-            </ItineraryCard>
-          ))}
+         <ItineraryCard 
+         key={itinerary.id} 
+         onClick={() => handleItineraryClick(itinerary.id)}
+         style={{ cursor: 'pointer' }}
+       >
+         <ItineraryImage src="https://via.placeholder.com/150" alt={itinerary.name} />
+         <ItineraryTitle>{itinerary.name}</ItineraryTitle>
+         <ItineraryDate>{itinerary.date}</ItineraryDate>
+       </ItineraryCard>
+     ))}
         </ItinerariesGrid>
       </ContentWrapper>
     </ContentContainer>

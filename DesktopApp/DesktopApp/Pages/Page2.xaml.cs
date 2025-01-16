@@ -24,5 +24,9 @@ namespace DesktopApp.Pages
         {
             InitializeComponent();
         }
+        private void Dashboard_Nav_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Page3());
+        }
     }
 }

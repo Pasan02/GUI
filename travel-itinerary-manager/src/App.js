@@ -10,7 +10,7 @@ import { DashboardLayout } from "./pages/Dashboard/DashboardLayout";
 import{ItinerariesLayout} from "../src/pages/Dashboard/ItinerariesLayout";
 import{MyInformationLayout} from "../src/pages/Dashboard/MyInformationLayout";
 import {SettingsLayout} from "../src/pages/Dashboard/SettingsLayout";
-//import TripItinerary from "./pages/view-itinerary/default-view";
+import TripItinerary from "./pages/view-itinerary/default-view";
 
 function App() {
   return ( 
@@ -18,7 +18,7 @@ function App() {
   <Router>
     <Routes>
       
-    {/*  <Route path="/" element={<TripItinerary/>} />*/}
+    <Route path="/itinerary/:id" element={<TripItinerary />} />
    <Route path="/signup" element={<SignUpForm/>} />
     <Route path="/signin" element={<SignInForm/>} />
      

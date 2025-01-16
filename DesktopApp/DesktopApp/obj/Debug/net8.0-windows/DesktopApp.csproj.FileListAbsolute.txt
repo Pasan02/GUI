@@ -31,3 +31,5 @@ C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-win
 C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page6.g.cs
 C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page5.baml
 C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page6.baml
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page7.g.cs
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page7.baml
