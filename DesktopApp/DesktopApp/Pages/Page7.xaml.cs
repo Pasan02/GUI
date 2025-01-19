@@ -23,6 +23,39 @@ namespace DesktopApp.Pages
         public Page7()
         {
             InitializeComponent();
+           
         }
+        
+
+        private void SaveTripButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Trip saved successfully.");
+            // Add logic to save the trip details
+            NavigationService.Navigate(new Page5());
+        }
+
+        private void AddActivitiesButton_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime? startDate = StartDatePicker.SelectedDate;
+            DateTime? endDate = EndDatePicker.SelectedDate;
+
+            if (startDate.HasValue && endDate.HasValue)
+            {
+                if (startDate.Value > endDate.Value)
+                {
+                    MessageBox.Show("End Date must be later than Start Date.");
+                    return;
+                }
+
+                int numberOfDays = (endDate.Value - startDate.Value).Days + 1;
+                NavigationService.Navigate(new Page8(numberOfDays, startDate.Value));
+            }
+            else
+            {
+                MessageBox.Show("Please select both Start and End Dates.");
+            }
+        }
+
     }
+
 }

@@ -29,5 +29,16 @@ namespace DesktopApp.Pages
         {
 
         }
+        private void CreateAnAccount_Click(object sender, RoutedEventArgs e)
+        {
+            string username = UsernameTextBox.Text;
+            string password = PasswordBox.Text;
+            string email = EmailBox.Text;
+
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.AddUser(username, password, email);
+
+            MessageBox.Show("User registered successfully!");
+        }
     }
 }

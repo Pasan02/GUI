@@ -31,22 +31,22 @@
             <TextBox Background="Transparent" BorderThickness="0" Grid.Row="0" Text="Already have an account?" IsReadOnly="True"
                      Padding="20,-20">
             </TextBox>
-            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="1" Text="User name" IsReadOnly="True" Padding="20,20,0,0">
+            <TextBox  Background="Transparent" BorderThickness="0" Grid.Row="1" Text="User name" IsReadOnly="True" Padding="20,20,0,0">
             </TextBox>
             <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                <TextBox Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
+                <TextBox x:Name="UsernameTextBox" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
             </Border>
 
             <TextBox Background="Transparent" BorderThickness="0" Grid.Row="2" Text="Email Address" IsReadOnly="True" Padding="20,20,0,0">
             </TextBox>
             <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                <TextBox Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
+                <TextBox x:Name="EmailBox" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
             </Border>
 
             <TextBox Background="Transparent" BorderThickness="0" Grid.Row="3" Text="Password" IsReadOnly="True" Padding="20,20,0,0">
             </TextBox>
             <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                <TextBox Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
+                <TextBox x:Name="PasswordBox" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
             </Border>
             <TextBox Background="Transparent" BorderThickness="0" Grid.Row="3" FontSize="8" IsReadOnly="True" Text="Use 8 or more characters with a mix of letters, numbers and symbols" Padding="20,0,0,0">
             </TextBox>
@@ -57,7 +57,7 @@
                     
                     Background="Black"
                     Foreground="White"
-                    Content="Create an account" HorizontalAlignment="Left" Width="150" Margin="20,20,0,0"/>
+                    Content="Create an account" Click="CreateAnAccount_Click" HorizontalAlignment="Left" Width="150" Margin="20,20,0,0"/>
             <TextBox Background="Transparent" BorderThickness="0" Grid.Row="4" Text="Already have an account?" IsReadOnly="True"
           Padding="20,5">
             </TextBox>

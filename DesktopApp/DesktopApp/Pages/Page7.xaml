@@ -106,22 +106,18 @@
                 </Grid>
             </StackPanel>
 
-            <Button Grid.Row="2" 
-                    Content="Save Trip"
-                    >
-                <Button.ContentTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Path Data="M17 3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V7L17 3ZM12 19C10.34 19 9 17.66 9 16C9 14.34 10.34 13 12 13C13.66 13 15 14.34 15 16C15 17.66 13.66 19 12 19ZM13 9H7V5H13V9Z"
-                                  Fill="White"
-                                  Width="16"
-                                  Height="16"
-                                  Margin="0,0,8,0"/>
-                            <TextBlock Text="{Binding}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </Button.ContentTemplate>
-            </Button>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="AddActivitiesButton" Click="AddActivitiesButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Add Activities" Margin="5,0,0,0" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="SaveTripButton" Click="SaveTripButton_Click"  Margin="10,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Save Trip" Margin="5,0,0,0" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>
