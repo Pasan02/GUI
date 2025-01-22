@@ -35,7 +35,7 @@
             <TextBox Background="Transparent" BorderThickness="0" Grid.Row="1" Text="User name" IsReadOnly="True" Padding="20,20,0,0">
             </TextBox>
             <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                <TextBox Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
+                <TextBox x:Name="UsernameTextBox" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
             </Border>
 
 
@@ -43,7 +43,7 @@
             <TextBox Background="Transparent" BorderThickness="0" Grid.Row="2" Text="Your Password" IsReadOnly="True" Padding="20,20,0,0">
             </TextBox>
             <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                <TextBox Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="2" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
+                <TextBox x:Name="PasswordBox" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="2" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
             </Border>
             <TextBox Background="Transparent" BorderThickness="0" Grid.Row="2" FontSize="8" Text="Forgot your password?" IsReadOnly="True" HorizontalAlignment="Right" Padding="0,0,20,0">
             </TextBox>

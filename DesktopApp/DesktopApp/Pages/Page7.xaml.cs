@@ -1,38 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DesktopApp.Pages
 {
-    /// <summary>
-    /// Interaction logic for Page7.xaml
-    /// </summary>
     public partial class Page7 : Page
     {
         public Page7()
         {
             InitializeComponent();
-           
         }
-        
 
         private void SaveTripButton_Click(object sender, RoutedEventArgs e)
         {
+            string tripName = TripNameTextBox.Text;
+            DateTime? startDate = StartDatePicker.SelectedDate;
+            DateTime? endDate = EndDatePicker.SelectedDate;
+            decimal cost;
+            if (!decimal.TryParse(CostTextBox.Text, out cost))
+            {
+                MessageBox.Show("Please enter a valid cost.");
+                return;
+            }
+            string currency = (CurrencyComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+            if (string.IsNullOrEmpty(tripName) || !startDate.HasValue || !endDate.HasValue || string.IsNullOrEmpty(currency))
+            {
+                MessageBox.Show("Please fill in all required fields.");
+                return;
+            }
+
+            TripRepository tripRepository = new TripRepository();
+            tripRepository.SaveTrip(tripName, startDate.Value, endDate.Value, cost, currency);
+
+            // Clear in-memory activities for the new itinerary
+            ActivityRepository.ClearInMemoryActivities();
+
             MessageBox.Show("Trip saved successfully.");
-            // Add logic to save the trip details
             NavigationService.Navigate(new Page5());
         }
+
+
+
+
 
         private void AddActivitiesButton_Click(object sender, RoutedEventArgs e)
         {
@@ -48,14 +59,13 @@ namespace DesktopApp.Pages
                 }
 
                 int numberOfDays = (endDate.Value - startDate.Value).Days + 1;
-                NavigationService.Navigate(new Page8(numberOfDays, startDate.Value));
+                int tripId = 1; // Replace with actual trip ID
+                NavigationService.Navigate(new Page8(numberOfDays, startDate.Value, tripId));
             }
             else
             {
                 MessageBox.Show("Please select both Start and End Dates.");
             }
         }
-
     }
-
 }

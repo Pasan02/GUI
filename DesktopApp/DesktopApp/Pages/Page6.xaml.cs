@@ -35,7 +35,7 @@ namespace DesktopApp.Pages
                     switch (selectedText)
                     {
                         case "Dashboard":
-                            NavigationService.Navigate(new Page1());
+                            NavigationService.Navigate(new Page3());
                             break;
                         case "My Information":
                             NavigationService.Navigate(new Page4());

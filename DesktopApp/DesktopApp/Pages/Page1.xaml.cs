@@ -39,6 +39,7 @@ namespace DesktopApp.Pages
             mainWindow.AddUser(username, password, email);
 
             MessageBox.Show("User registered successfully!");
+            NavigationService.Navigate(new Page2());
         }
     }
 }

@@ -201,88 +201,112 @@
                 </ListView>
             </StackPanel>
         </Border>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
 
-        <!-- Main Content -->
-        <Grid Grid.Column="1" Margin="30,15,30,15">
-            <StackPanel>
-                <TextBlock Text="My Information"
+            <!-- Main Content -->
+            <Grid Grid.Column="1" Margin="30,15,30,15">
+                <StackPanel>
+                    <TextBlock Text="My Information"
                           FontSize="20"
                           FontWeight="Bold"
                           Margin="0,0,0,15"/>
 
-                <Border Background="#F8F9FA" 
+                    <Border Background="#F8F9FA" 
                         CornerRadius="8" 
                         Padding="10">
-                    <StackPanel>
-                        <!-- Form Fields -->
-                        <StackPanel Margin="0,0,0,12">
-                            <TextBlock Text="Username:"
+                        <StackPanel>
+                            <!-- Form Fields -->
+                            <StackPanel Margin="0,0,0,12">
+                                <TextBlock Text="Username:"
                                      FontWeight="SemiBold"
                                      Margin="0,0,0,8"/>
-                            <TextBox Height="30"
+                                <TextBox Height="30"
                                      Padding="10,0"
                                      VerticalContentAlignment="Center"
-                                     BorderBrush="#E0E0E0"/>
-                        </StackPanel>
+                                     BorderBrush="#E0E0E0"
+                                          Text="{Binding CurrentUser.Username, Mode=TwoWay}"
+                                IsReadOnly="{Binding IsEditing}"/>
+                            </StackPanel>
 
-                        <StackPanel Margin="0,0,0,12">
-                            <TextBlock Text="Name:"
+                            <StackPanel Margin="0,0,0,12">
+                                <TextBlock Text="Name:"
                                      FontWeight="SemiBold"
                                      Margin="0,0,0,8"/>
-                            <TextBox Text="Enter your Name"
+                                <TextBox 
                                      Height="30"
                                      Padding="10,0"
                                      Foreground="#808080"
                                      VerticalContentAlignment="Center"
-                                     BorderBrush="#E0E0E0"/>
-                        </StackPanel>
+                                     BorderBrush="#E0E0E0"
+                                     Text="{Binding CurrentUser.Name, Mode=TwoWay}"
+                                         IsReadOnly="{Binding IsEditing}"/>
+                            </StackPanel>
 
-                        <StackPanel Margin="0,0,0,12">
-                            <TextBlock Text="Email:"
+                            <StackPanel Margin="0,0,0,12">
+                                <TextBlock Text="Email:"
                                      FontWeight="SemiBold"
                                      Margin="0,0,0,8"/>
-                            <TextBox Height="30"
+                                <TextBox Height="30"
                                      Padding="10,0"
                                      VerticalContentAlignment="Center"
-                                     BorderBrush="#E0E0E0"/>
-                        </StackPanel>
+                                     BorderBrush="#E0E0E0"
+                                         Text="{Binding CurrentUser.Email, Mode=TwoWay}"
+                                         IsReadOnly="{Binding IsEditing}"/>
+                            </StackPanel>
 
-                        <StackPanel Margin="0,0,0,12">
-                            <TextBlock Text="Country:"
+                            <StackPanel Margin="0,0,0,12">
+                                <TextBlock Text="Country:"
                                      FontWeight="SemiBold"
                                      Margin="0,0,0,8"/>
-                            <TextBox Text="Enter your country"
+                                <TextBox 
                                      Height="30"
                                      Padding="10,0"
                                      Foreground="#808080"
                                      VerticalContentAlignment="Center"
-                                     BorderBrush="#E0E0E0"/>
-                        </StackPanel>
+                                     BorderBrush="#E0E0E0"
+                                    Text="{Binding CurrentUser.Country, Mode=TwoWay}"
+                                   
+                                         IsReadOnly="{Binding IsEditing}"/>
+                            </StackPanel>
 
-                        <StackPanel Margin="0,0,0,12">
-                            <TextBlock Text="Phone Number:"
+                            <StackPanel Margin="0,0,0,12">
+                                <TextBlock Text="Phone Number:"
                                      FontWeight="SemiBold"
                                      Margin="0,0,0,8"/>
-                            <TextBox Text="Enter your phone number"
+                                <TextBox 
                                      Height="30"
                                      Padding="10,0"
                                      Foreground="#808080"
                                      VerticalContentAlignment="Center"
-                                     BorderBrush="#E0E0E0"/>
-                        </StackPanel>
+                                     BorderBrush="#E0E0E0"
+                                    Text="{Binding CurrentUser.PhoneNumber, Mode=TwoWay}"
+                                         IsReadOnly="{Binding IsEditing}"/>
+                            </StackPanel>
 
-                        <!-- Edit Button -->
-                        <Button Content="Edit"
-                                Width="80"
-                                Height="35"
-                                HorizontalAlignment="Right"
-                                Background="#2962FF"
-                                Foreground="White"
-                                BorderThickness="0"/>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
-        </Grid>
+                            <!-- Edit Button -->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Content="Edit"
+        Width="80"
+        Height="35"
+        Background="#2962FF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="EditButton_Click"/>
+                                <Button Content="Save"
+        Width="80"
+        Height="35"
+        Background="#2962FF"
+        Foreground="White"
+        BorderThickness="0"
+        Visibility="{Binding SaveButtonVisibility}"
+        Click="SaveButton_Click"
+        Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 
 </Page>

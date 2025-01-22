@@ -24,35 +24,35 @@
         Padding="15" 
         Background="#F8F9FA" 
         Margin="0,0,0,20">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-        <!-- Logo -->
-        <Grid Height="30" Width="30">
-            <Viewbox>
-                <Path Data="M90,50 L75,65 L25,65 L10,50 L25,35 L75,35 L90,50 M30,45 A5,5 0 1 1 30,55 A5,5 0 1 1 30,45 M70,45 A5,5 0 1 1 70,55 A5,5 0 1 1 70,45"
+                        <!-- Logo -->
+                        <Grid Height="30" Width="30">
+                            <Viewbox>
+                                <Path Data="M90,50 L75,65 L25,65 L10,50 L25,35 L75,35 L90,50 M30,45 A5,5 0 1 1 30,55 A5,5 0 1 1 30,45 M70,45 A5,5 0 1 1 70,55 A5,5 0 1 1 70,45"
                       Fill="#1a73e8"/>
-            </Viewbox>
-        </Grid>
-        
-        <!-- Text Section -->
-        <StackPanel Grid.Column="1" 
+                            </Viewbox>
+                        </Grid>
+
+                        <!-- Text Section -->
+                        <StackPanel Grid.Column="1" 
                     Margin="12,0,0,0" 
                     VerticalAlignment="Center">
-            <TextBlock Text="Travel Planner" 
+                            <TextBlock Text="Travel Planner" 
                       FontSize="16"
                       FontWeight="SemiBold"
                       Foreground="#1a73e8"/>
-            <TextBlock Text="Plan your next adventure" 
+                            <TextBlock Text="Plan your next adventure" 
                       FontSize="11"
                       Foreground="#666"
                       Margin="0,2,0,0"/>
-        </StackPanel>
-    </Grid>
-</Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>
                 <!-- Navigation Menu -->
                 <ListView x:Name="NavigationMenu" 
           Background="Transparent" 
@@ -201,7 +201,7 @@
         </Border>
 
         <!-- Main Content -->
-        <Grid Grid.Column="1" Margin="30">
+        <ScrollViewer Grid.Column="1" Margin="30">
             <StackPanel>
                 <TextBlock Text="Your Upcoming Trips" 
                          FontSize="24" 
@@ -209,35 +209,37 @@
                          Margin="0,0,0,20"/>
 
                 <!-- Trips Grid -->
-                <ItemsControl>
+                <ItemsControl x:Name="TripsItemsControl">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
-                    <ItemsControl.Items>
-                        <!-- Trip Card Template -->
-                        <Border Width="200" 
-                                Height="250" 
-                                Background="White" 
-                                CornerRadius="10" 
-                                Margin="0,0,20,20">
-                            <StackPanel>
-                                <Border Height="150" 
-                                        Background="#E0E0E0" 
-                                        CornerRadius="10,10,0,0"/>
-                                <StackPanel Margin="15">
-                                    <TextBlock Text="Trip to Bali" 
-                                             FontWeight="SemiBold"/>
-                                    <TextBlock Text="2025-01-15" 
-                                             Foreground="#666" 
-                                             Margin="0,5,0,0"/>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <!-- Trip Card Template -->
+                            <Border Width="200" 
+                            Height="250" 
+                            Background="White" 
+                            CornerRadius="10" 
+                            Margin="0,0,20,20">
+                                <StackPanel>
+                                    <Border Height="150" 
+                                    Background="#E0E0E0" 
+                                    CornerRadius="10,10,0,0"/>
+                                    <StackPanel Margin="15">
+                                        <TextBlock Text="{Binding TripName}" 
+                                           FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding StartDate, StringFormat='{}{0:yyyy-MM-dd}'}" 
+                                           Foreground="#666" 
+                                           Margin="0,5,0,0"/>
+                                    </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
-                        </Border>
-                    </ItemsControl.Items>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </StackPanel>
-        </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -2,14 +2,18 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Collections.Generic;
 
 namespace DesktopApp.Pages
 {
     public partial class Page8 : Page
     {
-        public Page8(int numberOfDays, DateTime startDate)
+        private int _tripId;
+
+        public Page8(int numberOfDays, DateTime startDate, int tripId)
         {
             InitializeComponent();
+            _tripId = tripId;
             InitializeDayTabs(numberOfDays, startDate);
         }
 
@@ -38,6 +42,15 @@ namespace DesktopApp.Pages
 
                 var activitiesList = new StackPanel { Name = $"ActivitiesList_{i + 1}" };
 
+                // Load activities from the database
+                var activities = ActivityRepository.GetInMemoryActivities(_tripId);
+                foreach (var activity in activities)
+                {
+                    var activityCard = CreateActivityCard(activity.Title, activity.Category, activity.Location, activity.StartTime, activity.EndTime, activitiesList);
+                    activitiesList.Children.Add(activityCard);
+                }
+
+
                 var addActivityButton = new Button
                 {
                     Content = "+ Add Activity",
@@ -58,17 +71,31 @@ namespace DesktopApp.Pages
             }
         }
 
+
         private void AddActivity(StackPanel activitiesList)
         {
             var inputDialog = new InputDialog("Enter activity details:");
             if (inputDialog.ShowDialog() == true)
             {
-                var activityCard = CreateActivityCard(inputDialog.ResponseText, activitiesList);
+                var activity = new Activity
+                {
+                    Title = inputDialog.ActivityTitle,
+                    Category = inputDialog.ActivityCategory,
+                    Location = inputDialog.ActivityLocation,
+                    StartTime = inputDialog.StartTime,
+                    EndTime = inputDialog.EndTime,
+                    TripId = _tripId
+                };
+
+                // Save activity to the database
+                ActivityRepository.AddActivity(activity);
+
+                var activityCard = CreateActivityCard(activity.Title, activity.Category, activity.Location, activity.StartTime, activity.EndTime, activitiesList);
                 activitiesList.Children.Add(activityCard);
             }
         }
 
-        private Border CreateActivityCard(string activityText, StackPanel activitiesList)
+        private Border CreateActivityCard(string activityTitle, string activityCategory, string activityLocation, string startTime, string endTime, StackPanel activitiesList)
         {
             var card = new Border
             {
@@ -84,7 +111,7 @@ namespace DesktopApp.Pages
 
             var activityTextBlock = new TextBlock
             {
-                Text = activityText,
+                Text = $"{activityTitle} - {activityCategory} - {activityLocation} - {startTime} to {endTime}",
                 FontSize = 14,
                 VerticalAlignment = VerticalAlignment.Center
             };
@@ -129,7 +156,7 @@ namespace DesktopApp.Pages
             var inputDialog = new InputDialog("Edit activity details:", activityTextBlock.Text);
             if (inputDialog.ShowDialog() == true)
             {
-                activityTextBlock.Text = inputDialog.ResponseText;
+                activityTextBlock.Text = $"{inputDialog.ActivityTitle} - {inputDialog.ActivityCategory} - {inputDialog.ActivityLocation} - {inputDialog.StartTime} to {inputDialog.EndTime}";
             }
         }
 
@@ -141,29 +168,77 @@ namespace DesktopApp.Pages
         private void SaveActivitiesButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Activities saved successfully.");
-            NavigationService
-                .GoBack();
+            NavigationService.GoBack();
         }
     }
 
+
     public class InputDialog : Window
     {
-        private TextBox _inputTextBox;
-        public string ResponseText => _inputTextBox.Text;
+        private TextBox _titleTextBox;
+        private ComboBox _categoryComboBox;
+        private TextBox _locationTextBox;
+        private TextBox _startTimeTextBox;
+        private ComboBox _startTimeAmPmComboBox;
+        private TextBox _endTimeTextBox;
+        private ComboBox _endTimeAmPmComboBox;
+
+        public string ActivityTitle => _titleTextBox.Text;
+        public string ActivityCategory => _categoryComboBox.SelectedItem.ToString();
+        public string ActivityLocation => _locationTextBox.Text;
+        public string StartTime => $"{_startTimeTextBox.Text} {_startTimeAmPmComboBox.SelectedItem}";
+        public string EndTime => $"{_endTimeTextBox.Text} {_endTimeAmPmComboBox.SelectedItem}";
 
         public InputDialog(string question, string defaultValue = "")
         {
             Title = "Activity Details";
-            Width = 300;
-            Height = 150;
+            Width = 400;
+            Height = 400;
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             var panel = new StackPanel { Margin = new Thickness(10) };
 
             panel.Children.Add(new TextBlock { Text = question, Margin = new Thickness(0, 0, 0, 10) });
 
-            _inputTextBox = new TextBox { Text = defaultValue, Margin = new Thickness(0, 0, 0, 10) };
-            panel.Children.Add(_inputTextBox);
+            _titleTextBox = new TextBox { Text = defaultValue, Margin = new Thickness(0, 0, 0, 10) };
+            panel.Children.Add(new TextBlock { Text = "Title:", Margin = new Thickness(0, 0, 0, 5) });
+            panel.Children.Add(_titleTextBox);
+
+            _categoryComboBox = new ComboBox
+            {
+                ItemsSource = new[] { "Lodging", "Dining", "Transport", "Sightseeing", "Other" },
+                Margin = new Thickness(0, 0, 0, 10)
+            };
+            panel.Children.Add(new TextBlock { Text = "Category:", Margin = new Thickness(0, 0, 0, 5) });
+            panel.Children.Add(_categoryComboBox);
+
+            _locationTextBox = new TextBox { Margin = new Thickness(0, 0, 0, 10) };
+            panel.Children.Add(new TextBlock { Text = "Location:", Margin = new Thickness(0, 0, 0, 5) });
+            panel.Children.Add(_locationTextBox);
+
+            var startTimePanel = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 0, 0, 10) };
+            _startTimeTextBox = new TextBox { Width = 100, Margin = new Thickness(0, 0, 10, 0) };
+            _startTimeAmPmComboBox = new ComboBox
+            {
+                ItemsSource = new[] { "AM", "PM" },
+                Width = 60
+            };
+            startTimePanel.Children.Add(_startTimeTextBox);
+            startTimePanel.Children.Add(_startTimeAmPmComboBox);
+            panel.Children.Add(new TextBlock { Text = "Start Time:", Margin = new Thickness(0, 0, 0, 5) });
+            panel.Children.Add(startTimePanel);
+
+            var endTimePanel = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 0, 0, 10) };
+            _endTimeTextBox = new TextBox { Width = 100, Margin = new Thickness(0, 0, 10, 0) };
+            _endTimeAmPmComboBox = new ComboBox
+            {
+                ItemsSource = new[] { "AM", "PM" },
+                Width = 60
+            };
+            endTimePanel.Children.Add(_endTimeTextBox);
+            endTimePanel.Children.Add(_endTimeAmPmComboBox);
+            panel.Children.Add(new TextBlock { Text = "End Time:", Margin = new Thickness(0, 0, 0, 5) });
+            panel.Children.Add(endTimePanel);
 
             var buttonsPanel = new StackPanel
             {

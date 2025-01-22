@@ -201,8 +201,9 @@
                 </ListView>
             </StackPanel>
         </Border>
-        <Grid Grid.Column="1">
-            <!-- Section Title -->
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <!-- Section Title -->
             <TextBlock Text="My Itineraries" FontSize="24" FontWeight="Bold" Margin="20,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
             <!-- New Itinerary Button -->
@@ -210,36 +211,11 @@
                 Content="+ New Itinerary" Width="150" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,20,0"
                 Background="#007BFF" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand" />
 
-            <!-- Itinerary Cards -->
-            <UniformGrid Columns="3" Margin="20,60,20,90">
-                <!-- First Card -->
-                <Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="8" Margin="10,10,10,10">
-                    <StackPanel Margin="0,0,0,0">
-                        <Rectangle Width="150" Height="150" Fill="#EEE" Margin="10" />
-                        <TextBlock Text="Paris Adventure" FontWeight="Bold" FontSize="16" Margin="10,5,10,0" HorizontalAlignment="Center" />
-                        <TextBlock Text="2024-01-15" FontSize="14" Foreground="#555" Margin="10,0,10,10" HorizontalAlignment="Center" />
-                    </StackPanel>
-                </Border>
-
-                <!-- Second Card -->
-                <Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="8" Margin="10">
-                    <StackPanel>
-                        <Rectangle Width="150" Height="150" Fill="#EEE" Margin="10" />
-                        <TextBlock Text="Tokyo Getaway" FontWeight="Bold" FontSize="16" Margin="10,5,10,0" HorizontalAlignment="Center" />
-                        <TextBlock Text="2024-02-05" FontSize="14" Foreground="#555" Margin="10,0,10,10" HorizontalAlignment="Center" />
-                    </StackPanel>
-                </Border>
-
-                <!-- Third Card -->
-                <Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="8" Margin="10">
-                    <StackPanel>
-                        <Rectangle Width="150" Height="150" Fill="#EEE" Margin="10" />
-                        <TextBlock Text="Maldives Escape" FontWeight="Bold" FontSize="16" Margin="10,5,10,0" HorizontalAlignment="Center" />
-                        <TextBlock Text="2024-03-10" FontSize="14" Foreground="#555" Margin="10,0,10,10" HorizontalAlignment="Center" />
-                    </StackPanel>
-                </Border>
+            <UniformGrid x:Name="ItineraryGrid" Columns="3" Margin="20,60,20,90">
+                <!-- Itinerary cards will be dynamically added here -->
             </UniformGrid>
         </Grid>
+        </ScrollViewer>
     </Grid>
 
 </Page>

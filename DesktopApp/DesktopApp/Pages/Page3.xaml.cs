@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,18 @@ namespace DesktopApp.Pages
     /// </summary>
     public partial class Page3 : Page
     {
+        private ObservableCollection<Trip> _trips;
         public Page3()
         {
             InitializeComponent();
+            LoadTrips();
+        }
+        private void LoadTrips()
+        {
+            TripRepository tripRepository = new TripRepository();
+            var trips = tripRepository.GetTrips();
+            _trips = new ObservableCollection<Trip>(trips);
+            TripsItemsControl.ItemsSource = _trips;
         }
         private void NavigationMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -35,7 +45,7 @@ namespace DesktopApp.Pages
                     switch (selectedText)
                     {
                         case "Dashboard":
-                            NavigationService.Navigate(new Page1());
+                            NavigationService.Navigate(new Page3());
                             break;
                         case "My Information":
                             NavigationService.Navigate(new Page4());
