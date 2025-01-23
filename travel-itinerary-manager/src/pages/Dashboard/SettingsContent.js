@@ -25,16 +25,16 @@ export function SettingsContent() {
       </ContentWrapper>
 
       {isModalOpen && (
-        <Modal>
-          <ModalContent>
-            <h2>Confirm Deletion</h2>
-            <p>Are you sure you want to delete your account? This action cannot be undone.</p>
-            <ModalActions>
-              <CancelButton onClick={() => setIsModalOpen(false)}>Cancel</CancelButton>
-              <ConfirmButton onClick={handleDeleteAccount}>Confirm</ConfirmButton>
-            </ModalActions>
-          </ModalContent>
-        </Modal>
+  <ModalOverlay>
+    <ModalContainer>
+      <h2>Confirm Deletion</h2>
+      <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+      <ModalActions>
+        <CancelButton onClick={() => setIsModalOpen(false)}>Cancel</CancelButton>
+        <ConfirmButton onClick={handleDeleteAccount}>Confirm</ConfirmButton>
+      </ModalActions>
+    </ModalContainer>
+  </ModalOverlay>
       )}
     </Container>
   );
@@ -95,26 +95,28 @@ const Button = styled.button`
     background-color: #c82333;
   }
 `;
-
-const Modal = styled.div`
+const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
 `;
 
-const ModalContent = styled.div`
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  width: 400px;
-  text-align: center;
+const ModalContainer = styled.div`
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
 `;
+
+
 
 const ModalActions = styled.div`
   margin-top: 20px;

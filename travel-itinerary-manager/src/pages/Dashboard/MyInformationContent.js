@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styled from "styled-components";
 import { getUserInfo, updateUserInfo } from "../../api";
 
@@ -16,19 +16,42 @@ export function MyInformationContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        setIsLoading(true);
+        // Assuming you store username in localStorage after login
+        const username = localStorage.getItem('username');
+        const data = await getUserInfo(username);
+        setUserInfo(data);
+      } catch (err) {
+        setError('Failed to load user information');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUserInfo();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserInfo((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSave = () => {
-    // Add API call to save data
-    console.log("Saved user info:", userInfo);
-    setIsEditing(false);
-    alert("Your information has been updated.");
+  const handleSave = async () => {
+    try {
+      const username = localStorage.getItem('username');
+      await updateUserInfo(username, userInfo);
+      setIsEditing(false);
+      alert('Your information has been updated successfully.');
+    } catch (err) {
+      alert('Failed to update information. Please try again.');
+    }
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <ContentContainer>

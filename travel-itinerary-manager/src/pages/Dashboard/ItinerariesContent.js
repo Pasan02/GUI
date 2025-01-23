@@ -56,12 +56,16 @@ const ContentContainer = styled.section`
     flex-direction: row;
   }
 `;
+
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  margin-right: -600px;
+  width: 100%; /* Ensure the header spans the full width */
+  max-width: 1100px; /* Optional: Match grid's width for alignment */
+  padding: 0 10px; /* Optional: Add horizontal padding */
+  margin: 0 auto; /* Center the header container */
 `;
 
 
@@ -82,11 +86,6 @@ const PageTitle = styled.h2`
   margin-bottom: 20px;
 `;
 
-const ActionBar = styled.div`
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: flex-end;
-`;
 
 const NewItineraryButton = styled.button`
   padding: 10px 20px;
@@ -106,9 +105,12 @@ const NewItineraryButton = styled.button`
 
 const ItinerariesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  margin-right: -600px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Dynamically adjust columns */
+  gap: 20px; /* Add spacing between items */
+  margin: 0 auto; /* Center the grid container */
+  width: 100%; /* Ensure grid spans the full width */
+  max-width: 1200px; /* Optional: Limit grid width for better alignment */
+  padding: 10px; /* Optional: Add padding to the grid */
 `;
 
 const ItineraryCard = styled.div`

@@ -69,7 +69,11 @@ app.post('/api/login', (req, res) => {
       user: {
         id: results[0].id,
         username: results[0].username,
-        email: results[0].email
+        email: results[0].email,
+        name: results[0].name,
+      country: results[0].country,
+      phone: results[0].phone
+
       }
     });
   });
@@ -87,6 +91,20 @@ app.get('/api/users/:username', (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
     res.json(results[0]);
+  });
+});
+
+// Add to existing server.js
+app.put('/api/users/:username', (req, res) => {
+  const { username } = req.params;
+  const { name, email, country, phone } = req.body;
+  
+  const query = 'UPDATE users SET name = ?, email = ?, country = ?, phone = ? WHERE username = ?';
+  db.query(query, [name, email, country, phone, username], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: 'Database error' });
+    }
+    res.json({ message: 'User information updated successfully' });
   });
 });
 

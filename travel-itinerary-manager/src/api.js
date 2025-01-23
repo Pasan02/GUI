@@ -31,3 +31,24 @@ export const loginUser = async (credentials) => {
   }
 };
 
+// Add to existing api.js
+export const getUserInfo = async (username) => {
+  try {
+    const response = await axios.get(`${API_URL}/users/${username}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error getting user info:', error);
+    throw error;
+  }
+};
+
+export const updateUserInfo = async (username, userData) => {
+  try {
+    const response = await axios.put(`${API_URL}/users/${username}`, userData);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating user info:', error);
+    throw error;
+  }
+};
+

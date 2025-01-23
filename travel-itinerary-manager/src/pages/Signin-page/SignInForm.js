@@ -48,8 +48,9 @@ export function SignInForm() {
       const response = await axios.post('http://localhost:5000/api/login', formData);
       
       if (response.data.success) {
-        setIsLoggedIn(true);
-        navigate("/dashboard");
+        localStorage.setItem('username', response.data.user.username);
+    setIsLoggedIn(true);
+    navigate("/dashboard");
       } else {
         setError("Invalid credentials");
       }
