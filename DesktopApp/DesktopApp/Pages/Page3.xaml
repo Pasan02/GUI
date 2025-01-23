@@ -201,18 +201,16 @@
         </Border>
 
         <!-- Main Content -->
-        <ScrollViewer Grid.Column="1" Margin="30">
+        <ScrollViewer Grid.Column="1" Margin="30,30,10,30">
             <StackPanel>
                 <TextBlock Text="Your Upcoming Trips" 
-                         FontSize="24" 
-                         FontWeight="SemiBold" 
-                         Margin="0,0,0,20"/>
-
-                <!-- Trips Grid -->
-                <ItemsControl x:Name="TripsItemsControl">
+                   FontSize="24" 
+                   FontWeight="SemiBold" 
+                   Margin="0,0,0,20"/>
+                <ItemsControl x:Name="TripsListBox">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel/>
+                            <UniformGrid Columns="3" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
@@ -222,7 +220,8 @@
                             Height="250" 
                             Background="White" 
                             CornerRadius="10" 
-                            Margin="0,0,20,20">
+                            Margin="0,0,20,20"
+                                MouseLeftButtonUp="TripCard_MouseLeftButtonUp">
                                 <StackPanel>
                                     <Border Height="150" 
                                     Background="#E0E0E0" 
@@ -241,5 +240,6 @@
                 </ItemsControl>
             </StackPanel>
         </ScrollViewer>
+
     </Grid>
 </Page>

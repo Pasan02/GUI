@@ -84,7 +84,7 @@ namespace DesktopApp.Pages
                     Location = inputDialog.ActivityLocation,
                     StartTime = inputDialog.StartTime,
                     EndTime = inputDialog.EndTime,
-                    TripId = _tripId
+                    TripId = -1 // Default TripID
                 };
 
                 // Save activity to the database
@@ -184,10 +184,10 @@ namespace DesktopApp.Pages
         private ComboBox _endTimeAmPmComboBox;
 
         public string ActivityTitle => _titleTextBox.Text;
-        public string ActivityCategory => _categoryComboBox.SelectedItem.ToString();
+        public string ActivityCategory => _categoryComboBox.SelectedItem?.ToString() ?? "Other";
         public string ActivityLocation => _locationTextBox.Text;
-        public string StartTime => $"{_startTimeTextBox.Text} {_startTimeAmPmComboBox.SelectedItem}";
-        public string EndTime => $"{_endTimeTextBox.Text} {_endTimeAmPmComboBox.SelectedItem}";
+        public string StartTime => $"{_startTimeTextBox.Text} {_startTimeAmPmComboBox.SelectedItem ?? "AM"}";
+        public string EndTime => $"{_endTimeTextBox.Text} {_endTimeAmPmComboBox.SelectedItem ?? "AM"}";
 
         public InputDialog(string question, string defaultValue = "")
         {
@@ -270,4 +270,5 @@ namespace DesktopApp.Pages
             Content = panel;
         }
     }
+
 }

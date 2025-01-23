@@ -28,7 +28,7 @@ namespace DesktopApp.Pages
         private void LoadTrips()
         {
             TripRepository tripRepository = new TripRepository();
-            List<Trip> trips = tripRepository.GetTrips();
+            List<Trip> trips = tripRepository.GetTrips(false); // Get all trips regardless of start date
 
             ItineraryGrid.Children.Clear();
 
@@ -76,9 +76,13 @@ namespace DesktopApp.Pages
 
                 border.Child = stackPanel;
 
+                border.MouseLeftButtonUp += (s, e) => NavigationService.Navigate(new TripDetailsPage(trip.TripId));
+
                 ItineraryGrid.Children.Add(border);
             }
         }
+
+
         private void Itinerary_Button_Click(object sender, RoutedEventArgs e)
         {
             // Clear in-memory activities for the new itinerary

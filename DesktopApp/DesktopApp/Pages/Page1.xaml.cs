@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,10 +30,17 @@ namespace DesktopApp.Pages
         {
 
         }
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("Pages/Page2.xaml", UriKind.Relative));
+            e.Handled = true;
+        }
+
+
         private void CreateAnAccount_Click(object sender, RoutedEventArgs e)
         {
             string username = UsernameTextBox.Text;
-            string password = PasswordBox.Text;
+            string password = PasswordBox.Password;
             string email = EmailBox.Text;
 
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;

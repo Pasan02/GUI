@@ -11,9 +11,11 @@ namespace DesktopApp.Pages
     {
         private static readonly string connectionString = "server=127.0.0.2; database=userdatabase; user=root;password=pasan2002;SslMode=none";
         private static List<Activity> inMemoryActivities = new List<Activity>();
+        private const int DefaultTripId = -1; // Default TripID value
 
         public static void AddActivity(Activity activity)
         {
+            activity.TripId = DefaultTripId; // Assign default TripID
             inMemoryActivities.Add(activity);
             using (var connection = new MySqlConnection(connectionString))
             {
@@ -27,6 +29,33 @@ namespace DesktopApp.Pages
                     command.Parameters.AddWithValue("@StartTime", activity.StartTime);
                     command.Parameters.AddWithValue("@EndTime", activity.EndTime);
                     command.Parameters.AddWithValue("@TripId", activity.TripId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public static void UpdateActivitiesWithTripId(int newTripId)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE Activities SET TripId = @NewTripId WHERE TripId = @DefaultTripId";
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@NewTripId", newTripId);
+                    command.Parameters.AddWithValue("@DefaultTripId", DefaultTripId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public static void DeleteActivitiesWithDefaultTripId()
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "DELETE FROM Activities WHERE TripId = @DefaultTripId";
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DefaultTripId", DefaultTripId);
                     command.ExecuteNonQuery();
                 }
             }
@@ -72,7 +101,21 @@ namespace DesktopApp.Pages
         {
             inMemoryActivities.Clear();
         }
+        public static void DeleteActivitiesByTripId(int tripId)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "DELETE FROM Activities WHERE TripId = @TripId";
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@TripId", tripId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
+
 
     public class Activity
     {

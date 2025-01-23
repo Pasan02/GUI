@@ -107,7 +107,12 @@
             </StackPanel>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="AddActivitiesButton" Click="AddActivitiesButton_Click">
+                <Button  x:Name="CancelButton" Click="CancelButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Cancel" Margin="5,0,0,0" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="AddActivitiesButton" Click="AddActivitiesButton_Click" Margin="10,0,0,0">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Add Activities" Margin="5,0,0,0" VerticalAlignment="Center" />
                     </StackPanel>

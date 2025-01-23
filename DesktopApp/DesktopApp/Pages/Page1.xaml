@@ -28,9 +28,12 @@
             <TextBox Background="Transparent" BorderThickness="0" Grid.Row="0" Text="Create An Account" IsReadOnly="True" HorizontalAlignment="Left" FontSize="20"
                  Padding="20,20">
             </TextBox>
-            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="0" Text="Already have an account?" IsReadOnly="True"
-                     Padding="20,-20">
-            </TextBox>
+             <TextBlock Background="Transparent" Grid.Row="0" Margin="22,-15">
+     <Run Text="Already have an account? " />
+     <Hyperlink NavigateUri="Pages/Page2.xaml" RequestNavigate="Hyperlink_RequestNavigate">
+         <Run Text="Log in" />
+     </Hyperlink>
+ </TextBlock>
             <TextBox  Background="Transparent" BorderThickness="0" Grid.Row="1" Text="User name" IsReadOnly="True" Padding="20,20,0,0">
             </TextBox>
             <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
@@ -46,7 +49,7 @@
             <TextBox Background="Transparent" BorderThickness="0" Grid.Row="3" Text="Password" IsReadOnly="True" Padding="20,20,0,0">
             </TextBox>
             <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                <TextBox x:Name="PasswordBox" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
+                <PasswordBox x:Name="PasswordBox" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="2" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
             </Border>
             <TextBox Background="Transparent" BorderThickness="0" Grid.Row="3" FontSize="8" IsReadOnly="True" Text="Use 8 or more characters with a mix of letters, numbers and symbols" Padding="20,0,0,0">
             </TextBox>
@@ -58,9 +61,12 @@
                     Background="Black"
                     Foreground="White"
                     Content="Create an account" Click="CreateAnAccount_Click" HorizontalAlignment="Left" Width="150" Margin="20,20,0,0"/>
-            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="4" Text="Already have an account?" IsReadOnly="True"
-          Padding="20,5">
-            </TextBox>
+            <TextBlock Background="Transparent" Grid.Row="4" Padding="20,5">
+    <Run Text="Already have an account? " />
+    <Hyperlink NavigateUri="Pages/Page2.xaml" RequestNavigate="Hyperlink_RequestNavigate">
+        <Run Text="Log in" />
+    </Hyperlink>
+            </TextBlock>
 
         </StackPanel>
     </Grid>

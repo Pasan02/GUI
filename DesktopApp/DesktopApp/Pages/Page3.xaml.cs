@@ -30,10 +30,20 @@ namespace DesktopApp.Pages
         private void LoadTrips()
         {
             TripRepository tripRepository = new TripRepository();
-            var trips = tripRepository.GetTrips();
+            var trips = tripRepository.GetTrips(); // Default is to get only upcoming trips
             _trips = new ObservableCollection<Trip>(trips);
-            TripsItemsControl.ItemsSource = _trips;
+            TripsListBox.ItemsSource = _trips;
         }
+        private void TripCard_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is Border border && border.DataContext is Trip selectedTrip)
+            {
+                NavigationService.Navigate(new TripDetailsPage(selectedTrip.TripId)); // Use TripId
+            }
+        }
+
+
+
         private void NavigationMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (NavigationMenu.SelectedItem is ListViewItem selectedItem)

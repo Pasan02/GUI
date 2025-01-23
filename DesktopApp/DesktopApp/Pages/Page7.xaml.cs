@@ -7,6 +7,7 @@ namespace DesktopApp.Pages
 {
     public partial class Page7 : Page
     {
+        private int _tripId;
         public Page7()
         {
             InitializeComponent();
@@ -32,17 +33,23 @@ namespace DesktopApp.Pages
             }
 
             TripRepository tripRepository = new TripRepository();
-            tripRepository.SaveTrip(tripName, startDate.Value, endDate.Value, cost, currency);
+            int tripId = tripRepository.SaveTrip(tripName, startDate.Value, endDate.Value, cost, currency);
 
-            // Clear in-memory activities for the new itinerary
-            ActivityRepository.ClearInMemoryActivities();
+            // Update activities with the new trip ID
+            ActivityRepository.UpdateActivitiesWithTripId(tripId);
 
             MessageBox.Show("Trip saved successfully.");
             NavigationService.Navigate(new Page5());
         }
 
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Delete activities with the default trip ID
+            ActivityRepository.DeleteActivitiesWithDefaultTripId();
 
-
+            // Navigate back to Page5
+            NavigationService.Navigate(new Page5());
+        }
 
 
         private void AddActivitiesButton_Click(object sender, RoutedEventArgs e)

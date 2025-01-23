@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
+using System.Diagnostics;
 
 namespace DesktopApp.Pages
 {
@@ -28,7 +29,7 @@ namespace DesktopApp.Pages
         private void Dashboard_Nav_Click(object sender, RoutedEventArgs e)
         {
             string username = UsernameTextBox.Text;
-            string password = PasswordBox.Text;
+            string password = PasswordBox.Password;
 
             if (ValidateUser(username, password))
             {
@@ -39,6 +40,12 @@ namespace DesktopApp.Pages
                 MessageBox.Show("Invalid username or password.");
             }
         }
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("Pages/Page1.xaml", UriKind.Relative));
+            e.Handled = true;
+        }
+
 
         private bool ValidateUser(string username, string password)
         {
