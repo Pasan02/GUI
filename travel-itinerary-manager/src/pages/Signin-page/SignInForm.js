@@ -49,6 +49,7 @@ export function SignInForm() {
       
       if (response.data.success) {
         localStorage.setItem('username', response.data.user.username);
+        localStorage.setItem('userId', response.data.user.id);
     setIsLoggedIn(true);
     navigate("/dashboard");
       } else {

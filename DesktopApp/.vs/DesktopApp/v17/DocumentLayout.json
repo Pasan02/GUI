@@ -114,84 +114,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Page3.xaml",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page3.xaml",
-              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page3.xaml",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page3.xaml",
-              "RelativeToolTip": "DesktopApp\\Pages\\Page3.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-15T12:29:52.016Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Page3.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page3.xaml.cs",
-              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page3.xaml.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page3.xaml.cs",
-              "RelativeToolTip": "DesktopApp\\Pages\\Page3.xaml.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T15:58:01.31Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Page9.xaml",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page9.xaml",
-              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page9.xaml",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page9.xaml",
-              "RelativeToolTip": "DesktopApp\\Pages\\Page9.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-23T04:50:13.142Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Page9.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page9.xaml.cs",
-              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page9.xaml.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page9.xaml.cs",
-              "RelativeToolTip": "DesktopApp\\Pages\\Page9.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T04:50:57.214Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TripRepository.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\TripRepository.cs",
-              "RelativeDocumentMoniker": "DesktopApp\\Pages\\TripRepository.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\TripRepository.cs",
-              "RelativeToolTip": "DesktopApp\\Pages\\TripRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T13:38:05.892Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Page5.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page5.xaml.cs",
-              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page5.xaml.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page5.xaml.cs",
-              "RelativeToolTip": "DesktopApp\\Pages\\Page5.xaml.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAAAE4AAABuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T18:12:45.209Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
@@ -202,8 +126,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\Page7.xaml.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAAAEUAAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T04:47:51.33Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T04:47:51.33Z"
             },
             {
               "$type": "Document",
@@ -215,33 +138,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\ActivityRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T12:41:50.271Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Page8.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page8.xaml.cs",
-              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page8.xaml.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page8.xaml.cs",
-              "RelativeToolTip": "DesktopApp\\Pages\\Page8.xaml.cs",
-              "ViewState": "AgIAAAMBAAAAAAAAAAAqwBIBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T13:46:18.703Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Page5.xaml",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page5.xaml",
-              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page5.xaml",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page5.xaml",
-              "RelativeToolTip": "DesktopApp\\Pages\\Page5.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-15T17:18:56.224Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-22T12:41:50.271Z"
             },
             {
               "$type": "Document",
@@ -257,6 +154,99 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Page5.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page5.xaml.cs",
+              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page5.xaml.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page5.xaml.cs",
+              "RelativeToolTip": "DesktopApp\\Pages\\Page5.xaml.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAAAE4AAABuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T18:12:45.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TripRepository.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\TripRepository.cs",
+              "RelativeDocumentMoniker": "DesktopApp\\Pages\\TripRepository.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\TripRepository.cs",
+              "RelativeToolTip": "DesktopApp\\Pages\\TripRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T13:38:05.892Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Page8.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page8.xaml.cs",
+              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page8.xaml.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page8.xaml.cs",
+              "RelativeToolTip": "DesktopApp\\Pages\\Page8.xaml.cs",
+              "ViewState": "AgIAAAMBAAAAAAAAAAAqwBIBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-19T13:46:18.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Page9.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page9.xaml.cs",
+              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page9.xaml.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page9.xaml.cs",
+              "RelativeToolTip": "DesktopApp\\Pages\\Page9.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T04:50:57.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Page9.xaml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page9.xaml",
+              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page9.xaml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page9.xaml",
+              "RelativeToolTip": "DesktopApp\\Pages\\Page9.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-23T04:50:13.142Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Page3.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page3.xaml.cs",
+              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page3.xaml.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page3.xaml.cs",
+              "RelativeToolTip": "DesktopApp\\Pages\\Page3.xaml.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T15:58:01.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Page3.xaml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page3.xaml",
+              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page3.xaml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page3.xaml",
+              "RelativeToolTip": "DesktopApp\\Pages\\Page3.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-15T12:29:52.016Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Page5.xaml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page5.xaml",
+              "RelativeDocumentMoniker": "DesktopApp\\Pages\\Page5.xaml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page5.xaml",
+              "RelativeToolTip": "DesktopApp\\Pages\\Page5.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-15T17:18:56.224Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 11,
               "Title": "Page6.xaml",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page6.xaml",
@@ -264,8 +254,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page6.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page6.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-15T17:51:17.678Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T17:51:17.678Z"
             },
             {
               "$type": "Document",
@@ -276,8 +265,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page1.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page1.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-13T14:06:31.318Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-13T14:06:31.318Z"
             },
             {
               "$type": "Document",
@@ -289,8 +277,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\Page2.xaml.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAB8AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T04:08:59.807Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T04:08:59.807Z"
             },
             {
               "$type": "Document",
@@ -302,8 +289,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\Page1.xaml.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAAACoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-13T14:25:24.157Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-13T14:25:24.157Z"
             },
             {
               "$type": "Document",
@@ -315,8 +301,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T11:11:51.295Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-22T11:11:51.295Z"
             },
             {
               "$type": "Document",
@@ -327,8 +312,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page2.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page2.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-23T04:22:23.637Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T04:22:23.637Z"
             },
             {
               "$type": "Document",
@@ -410,8 +394,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page8.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page8.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-19T02:23:16.676Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T02:23:16.676Z"
             },
             {
               "$type": "Document",

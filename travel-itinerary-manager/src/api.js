@@ -52,3 +52,93 @@ export const updateUserInfo = async (username, userData) => {
   }
 };
 
+// Add to api.js
+export const saveTrip = async (tripData) => {
+  try {
+    const userId = localStorage.getItem('userId'); // Store userId during login
+    const tripWithUserId = { ...tripData, userId };
+    const response = await axios.post(`${API_URL}/trips`, tripWithUserId);
+    return response.data;
+  } catch (error) {
+    console.error('Error saving trip:', error);
+    throw error;
+  }
+};
+export const getUserTrips = async (userId) => {
+  try {
+    const response = await axios.get(`${API_URL}/trips/user/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching user trips:', error);
+    throw error;
+  }
+};
+
+// Add to api.js
+export const getTripById = async (tripId) => {
+  try {
+    const response = await axios.get(`${API_URL}/trips/${tripId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching trip:', error);
+    throw error;
+  }
+};
+
+export const getTripActivities = async (tripId) => {
+  try {
+    const response = await axios.get(`${API_URL}/trips/${tripId}/activities`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching trip activities:', error);
+    throw error;
+  }
+};
+
+export const updateTrip = async (tripId, tripData) => {
+  try {
+    const response = await axios.put(`${API_URL}/trips/${tripId}`, tripData);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating trip:', error);
+    throw error;
+  }
+};
+
+const PIXABAY_API_KEY = '32258999-ea3fdee2c69c77e6b4accb3ec'; // Replace with your actual API key
+
+export const getLocationImages = async (location) => {
+  try {
+    const response = await axios.get(`https://pixabay.com/api/`, {
+      params: {
+        key: PIXABAY_API_KEY,
+        q: encodeURIComponent(location),
+        image_type: 'photo',
+        category: 'places',
+        per_page: 5,
+        min_width: 1024,
+        min_height: 400,
+        orientation: 'horizontal'
+      }
+    });
+    return response.data.hits.map(hit => ({
+      id: hit.id,
+      url: hit.largeImageURL, // Use larger image instead of webformatURL
+      photographer: hit.user
+    }));
+  } catch (error) {
+    console.error('Error fetching location images:', error);
+    return [];
+  }
+};
+
+export const getTripCoverImage = (location) => {
+  try {
+    // Convert location to lowercase and remove spaces
+    const formattedLocation = location.toLowerCase().replace(/\s+/g, '');
+    return require (`./images/${formattedLocation}.jpg`);
+  } catch (error) {
+    console.error('Error getting cover image:', error);
+    return require ('./images/default.jpg');
+  }
+};

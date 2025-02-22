@@ -4,6 +4,8 @@ import DatePicker from "react-datepicker";
 import { Clock, Trash2, Edit2, Bed, Coffee, Bus, Camera, Utensils } from "lucide-react";
 import "react-datepicker/dist/react-datepicker.css";
 import { Save } from 'react-feather';
+import { saveTrip } from "../../api";
+import { useNavigate } from 'react-router-dom';
 
 const ACTIVITY_CATEGORIES = {
   LODGING: { label: 'Lodging', icon: Bed, color: '#7c3aed' },
@@ -14,6 +16,7 @@ const ACTIVITY_CATEGORIES = {
 };
 
 export function TripForm() {
+  const navigate = useNavigate();
   const [startDate, setStartDate] = React.useState(null);
   const [endDate, setEndDate] = React.useState(null);
   const [isStartDatePickerOpen, setIsStartDatePickerOpen] = React.useState(false);
@@ -25,17 +28,49 @@ export function TripForm() {
   const [tripName, setTripName] = React.useState('');
   const [tripCost, setTripCost] = React.useState('');
 
-  const handleSaveTrip = () => {
-    const tripData = {
-      name: tripName,
-      startDate,
-      endDate,
-      activities,
-      cost: tripCost
-    };
-    console.log('Saving trip:', tripData);
-    // Add actual save logic here
-  };
+  const handleSaveTrip = async () => {
+    try {
+      const userId = localStorage.getItem('userId');
+      if (!userId) {
+        alert('Please log in to save trips');
+        return;
+      }
+      if (!tripName) {
+        alert('Please enter a trip name');
+        return;
+      }
+      if (!startDate || !endDate) {
+        alert('Please select start and end dates');
+        return;
+      }
+
+      const tripData = {
+        name: tripName,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        cost: tripCost ? parseFloat(tripCost) : 0,
+        currency: 'USD', // Add default currency if not set
+        activities: Object.entries(activities).map(([date, dayActivities]) => ({
+          date,
+          activities: dayActivities
+        })),
+        userId: localStorage.getItem('userId')
+      };
+     const response = await saveTrip(tripData);
+    console.log('Response:', response);
+    
+    if (window.confirm('Trip saved successfully! Click OK to return to dashboard.')) {
+      navigate('/dashboard');
+    }
+  } catch (error) {
+    console.error('Full error:', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status
+    });
+    alert(`Failed to save trip: ${error.response?.data?.error || error.message}`);
+  }
+};
 // Add state for currency
 const [currency, setCurrency] = React.useState('USD');
 
@@ -135,6 +170,7 @@ const [currency, setCurrency] = React.useState('USD');
       notes: ''
     });
   };
+  
 
   const handleDeleteActivity = (activityId, dateKey) => {
     setActivities(prev => ({

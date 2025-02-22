@@ -1,49 +1,88 @@
 import * as React from "react";
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
+import { getUserTrips, getTripCoverImage } from "../../api";
+
 
 export function ItinerariesContent() {
   const navigate = useNavigate();
-  const [itineraries, setItineraries] = React.useState([
-    { id: 1, name: "Paris Adventure", date: "2024-01-15" },
-    { id: 2, name: "Tokyo Getaway", date: "2024-02-05" },
-    { id: 3, name: "Maldives Escape", date: "2024-03-10" },
-  ]);
+  const [itineraries, setItineraries] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
+  React.useEffect(() => {
+    const fetchItineraries = async () => {
+      try {
+        const userId = localStorage.getItem('userId');
+        const trips = await getUserTrips(userId);
+        const itinerariesWithImages = trips.map(trip => ({
+          ...trip,
+          coverImage: getTripCoverImage(trip.destination || trip.name)
+        }));
+        setItineraries(itinerariesWithImages);
+      } catch (error) {
+        console.error('Error fetching itineraries:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchItineraries();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  
   const handleNewItinerary = () => {
     navigate('/plan-trip');
   };
+
   const handleItineraryClick = (id) => {
     navigate(`/itinerary/${id}`);
   };
+
 
   return (
     <ContentContainer>
       <Divider />
       <ContentWrapper>
-      <HeaderContainer>
+        <HeaderContainer>
           <PageTitle>My Itineraries</PageTitle>
           <NewItineraryButton onClick={handleNewItinerary}>
             + New Itinerary
           </NewItineraryButton>
         </HeaderContainer>
-        <ItinerariesGrid>
-          {itineraries.map((itinerary) => (
-         <ItineraryCard 
-         key={itinerary.id} 
-         onClick={() => handleItineraryClick(itinerary.id)}
-         style={{ cursor: 'pointer' }}
-       >
-         <ItineraryImage src="https://via.placeholder.com/150" alt={itinerary.name} />
-         <ItineraryTitle>{itinerary.name}</ItineraryTitle>
-         <ItineraryDate>{itinerary.date}</ItineraryDate>
-       </ItineraryCard>
-     ))}
-        </ItinerariesGrid>
+        {itineraries.length === 0 ? (
+          <NoItinerariesMessage>No itineraries created</NoItinerariesMessage>
+        ) : (
+          <ItinerariesGrid>
+            {itineraries.map((itinerary) => (
+              <ItineraryCard 
+                key={itinerary.id} 
+                onClick={() => handleItineraryClick(itinerary.id)}
+              >
+                <ItineraryImage 
+                  src={itinerary.coverImage}
+                  alt={itinerary.name}
+                  onError={(e) => {
+                    e.target.src = '/images/default.jpg';
+                  }}
+                />
+                <ItineraryTitle>{itinerary.name}</ItineraryTitle>
+                <ItineraryDate>{new Date(itinerary.start_date).toLocaleDateString()}</ItineraryDate>
+              </ItineraryCard>
+            ))}
+          </ItinerariesGrid>
+        )}
       </ContentWrapper>
     </ContentContainer>
   );
 }
+
+const NoItinerariesMessage = styled.p`
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  margin-top: 40px;
+`;
 const ContentContainer = styled.section`
   display: flex;
   gap: 40px;
@@ -61,7 +100,7 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   width: 100%; /* Ensure the header spans the full width */
   max-width: 1100px; /* Optional: Match grid's width for alignment */
   padding: 0 10px; /* Optional: Add horizontal padding */
@@ -78,7 +117,8 @@ const Divider = styled.div`
 
 const ContentWrapper = styled.div`
   flex: 1;
-  padding-left: 20px;
+  padding-left: 10px;
+  padding-right:30px;
 `;
 
 const PageTitle = styled.h2`
@@ -89,6 +129,7 @@ const PageTitle = styled.h2`
 
 const NewItineraryButton = styled.button`
   padding: 10px 20px;
+  margin-left: 20px;
   
   background-color: #2563eb;
   color: white;
@@ -102,31 +143,35 @@ const NewItineraryButton = styled.button`
     background-color: #1d4ed8;
   }
 `;
-
 const ItinerariesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Dynamically adjust columns */
-  gap: 20px; /* Add spacing between items */
-  margin: 0 auto; /* Center the grid container */
-  width: 100%; /* Ensure grid spans the full width */
-  max-width: 1200px; /* Optional: Limit grid width for better alignment */
-  padding: 10px; /* Optional: Add padding to the grid */
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: calc(100vw - 100px); // Account for padding/margins
+  margin: 0 auto;
+  overflow-x: hidden;
+  padding: 0 0px;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+  
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+  
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const ItineraryCard = styled.div`
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #f9f9f9;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.2s;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
 `;
 
 const ItineraryImage = styled.img`

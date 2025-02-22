@@ -4,6 +4,7 @@ import { Calendar, Share2, Download, Map, Coffee, Home, Car } from 'lucide-react
 import Header from '../../components/Header1';
 import Footer from '../../components/Footer';
 import { useNavigate } from 'react-router-dom';
+import HeroBanner from '../../images/banner-image.jpg';
 // Layout Components
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -40,8 +41,13 @@ const Section = styled.section`
 `;
 
 const HeroSection = styled(Section)`
-  background: #2563EB;
+  background: linear-gradient(rgba(21, 83, 197, 0.9), rgba(215, 223, 231, 0.9)),
+              url(${HeroBanner}) no-repeat center center;
+  background-size: cover;
   color: white;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
 `;
 
 const HeroContent = styled.div`

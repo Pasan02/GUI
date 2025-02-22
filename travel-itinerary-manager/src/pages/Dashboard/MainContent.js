@@ -1,48 +1,89 @@
-
+import { getUserTrips, getTripCoverImage } from "../../api";
 import * as React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 export function MainContent() {
-  // Sample data for upcoming trips
-  const upcomingTrips = [
-    {
-      id: 1,
-      title: "Trip to Bali",
-      date: "2025-01-15",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      id: 2,
-      title: "Explore Japan",
-      date: "2025-02-10",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      id: 3,
-      title: "Paris Adventure",
-      date: "2025-03-05",
-      image: "https://via.placeholder.com/150",
-    },
-  ];
+  const [upcomingTrips, setUpcomingTrips] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const navigate = useNavigate(); // Add this import from react-router-dom
+
+  React.useEffect(() => {
+    const fetchTrips = async () => {
+      try {
+        const userId = localStorage.getItem('userId');
+        const trips = await getUserTrips(userId);
+        
+        // Filter for upcoming trips only
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const upcomingTrips = trips
+          .filter(trip => {
+            const tripStartDate = new Date(trip.start_date);
+            tripStartDate.setHours(0, 0, 0, 0);
+            return tripStartDate >= today;
+          })
+          .sort((a, b) => new Date(a.start_date) - new Date(b.start_date))
+          .map(trip => ({
+            ...trip,
+            coverImage: getTripCoverImage(trip.destination || trip.name)
+          }));
+
+        setUpcomingTrips(upcomingTrips);
+      } catch (error) {
+        console.error('Error fetching trips:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTrips();
+  }, []);
+
+  const handleTripClick = (tripId) => {
+    navigate(`/itinerary/${tripId}`);
+  };
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <ContentContainer>
       <Divider />
       <ContentWrapper>
         <PageTitle>Your Upcoming Trips</PageTitle>
-        <TripsGrid>
-          {upcomingTrips.map((trip) => (
-            <TripCard key={trip.id}>
-              <TripImage src={trip.image} alt={trip.title} />
-              <TripTitle>{trip.title}</TripTitle>
-              <TripDate>{trip.date}</TripDate>
-            </TripCard>
-          ))}
-        </TripsGrid>
+        {upcomingTrips.length === 0 ? (
+          <NoTripsMessage>No upcoming trips</NoTripsMessage>
+        ) : (
+          <TripsGrid>
+            {upcomingTrips.map((trip) => (
+              <TripCard 
+                key={trip.id} 
+                onClick={() => handleTripClick(trip.id)}
+                style={{ cursor: 'pointer' }}
+              >
+                 <TripImage 
+                  src={trip.coverImage} 
+                  alt={trip.name}
+                  onError={(e) => {
+                    e.target.src = '/images/default.jpg';
+                  }}
+                />
+                <TripTitle>{trip.name}</TripTitle>
+                <TripDate>
+                  {new Date(trip.start_date).toLocaleDateString()} - {new Date(trip.end_date).toLocaleDateString()}
+                </TripDate>
+              </TripCard>
+            ))}
+          </TripsGrid>
+        )}
       </ContentWrapper>
     </ContentContainer>
   );
 }
+
+// Add hover effect to TripCard styled component
+
 
 const ContentContainer = styled.section`
   display: flex;
@@ -56,6 +97,12 @@ const ContentContainer = styled.section`
     font-size: 40px;
     flex-direction: row;
   }
+`;
+const NoTripsMessage = styled.p`
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  margin-top: 40px;
 `;
 
 const Divider = styled.div`
@@ -76,7 +123,7 @@ const PageTitle = styled.h2`
 
 const TripsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   margin-right: -600px;
 `;

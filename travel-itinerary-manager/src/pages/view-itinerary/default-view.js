@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import { Share2, Download, ChevronLeft, ChevronRight, Bed, Utensils, Bus, Camera, Activity, MapPin } from 'lucide-react';
+import { getLocationImages } from '../../api';
 
 const Container = styled.div`
   max-width: 1024px;
@@ -176,6 +178,31 @@ const ActivityNote = styled.div`
   font-size: 0.875rem;
   color: #666;
 `;
+const ImageCredits = styled.div`
+position: absolute;
+bottom: 0;
+right: 0;
+background: rgba(0, 0, 0, 0.5);
+color: white;
+padding: 4px 8px;
+font-size: 12px;
+`;
+
+const EditButton = styled(ActionButton)`
+  background: #2563eb;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  &:hover {
+    background: #1d4ed8;
+    color: white;
+  }
+`;
+
 
 const CategoryIcon = styled.div`
   display: flex;
@@ -185,65 +212,106 @@ const CategoryIcon = styled.div`
 `;
 
 const TripItinerary = () => {
+  const { id } = useParams(); // Get trip ID from URL
   const [currentImage, setCurrentImage] = useState(0);
   const [activeTab, setActiveTab] = useState('1');
+  const [locationImages, setLocationImages] = useState([]);
+  const [allImages, setAllImages] = useState([]); // Add this state
+  const fallbackImage = "https://picsum.photos/800/400";
+  const [tripData, setTripData] = useState({
+    name: "",
+    duration: 0,
+    totalCost: 0,
+    images: [
+      "https://picsum.photos/800/400",
+      "https://picsum.photos/800/401",
+      "https://picsum.photos/800/402"
+    ],
+    days: []
+  });
 
   const categoryConfig = {
-    lodging: { icon: Bed, color: '#8b5cf6' },
-    dining: { icon: Utensils, color: '#ef4444' },
-    transport: { icon: Bus, color: '#3b82f6' },
-    sightseeing: { icon: Camera, color: '#10b981' },
-    other: { icon: Activity, color: '#f59e0b' }
+    LODGING: { icon: Bed, color: '#8b5cf6' },
+    DINING: { icon: Utensils, color: '#ef4444' },
+    TRANSPORT: { icon: Bus, color: '#3b82f6' },
+    SIGHTSEEING: { icon: Camera, color: '#10b981' },
+    OTHER: { icon: Activity, color: '#f59e0b' }
   };
 
-  // Sample data
-  const tripData = {
-    name: "European Adventure",
-    duration: 5,
-    totalCost: 3500,
-    images: [
-      "https://picsum.photos/800/400", // Use placeholder images that work
-    "https://picsum.photos/800/401",
-    "https://picsum.photos/800/402"
-    ],
-    days: [
-      {
-        day: 1,
-        activities: [
-          {
-            time: "09:00 AM",
-            title: "City Walking Tour",
-            description: "Explore the historic city center",
-            location: "Old Town Square",
-            category: "sightseeing",
-            notes: "Wear comfortable walking shoes"
-          },
-          {
-            time: "02:00 PM",
-            title: "Hotel Check-in",
-            description: "Check in to Grand Hotel",
-            location: "123 Main Street",
-            category: "lodging",
-            notes: "Early check-in requested"
+  // In the useEffect where you format the trip data:
+  const formattedData = {
+    ...tripData,
+    images: allImages.length > 0 
+      ? allImages.map(img => img.url)
+      : [fallbackImage]
+  };
+
+  React.useEffect(() => {
+    const fetchTripData = async () => {
+      try {
+        const tripResponse = await axios.get(`http://localhost:5000/api/trips/${id}`);
+    const activitiesResponse = await axios.get(`http://localhost:5000/api/trips/${id}/activities`);
+
+    const startDate = new Date(tripResponse.data.start_date);
+    const endDate = new Date(tripResponse.data.end_date);
+    const duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
+        // Fetch images for each location
+        const locations = new Set(activitiesResponse.data.map(activity => activity.location).filter(Boolean));
+    
+    // Fetch images for each location
+    const imagesPromises = Array.from(locations).map(location => getLocationImages(location));
+    const imagesResults = await Promise.all(imagesPromises);
+    
+    // Flatten and deduplicate images
+    const allImages = imagesResults.flat().slice(0, 5);
+    setLocationImages(allImages);
+
+        const daysArray = Array.from({ length: duration }, (_, index) => ({
+          day: index + 1,  // Start from day 1
+          activities: []
+        }));
+
+        // Format trip data
+        const formattedData = {
+          name: tripResponse.data.name,
+          duration: duration,
+          totalCost: tripResponse.data.cost,
+          images: allImages.length > 0 ? allImages.map(img => img.url) : [fallbackImage],
+          days: daysArray
+        };
+  
+        setTripData(formattedData);
+        setActiveTab('1');
+        activitiesResponse.data.forEach(activity => {
+          const activityDate = new Date(activity.date);
+          const dayIndex = Math.floor((activityDate - startDate) / (1000 * 60 * 60 * 24));
+          const formatTime = (time) => {
+            return time ? time.substring(0, 5) : ''; // Takes only HH:mm part
+          };
+
+          if (dayIndex >= 0 && dayIndex < duration) {
+            daysArray[dayIndex].activities.push({
+              time: `${formatTime(activity.start_time)} - ${formatTime(activity.end_time)}`,
+              title: activity.title,
+              description: activity.description || '',
+              location: activity.location,
+              category: activity.category,
+              notes: activity.notes
+            });
           }
-        ]
-      },
-      {
-        day: 2,
-        activities: [
-          {
-            time: "10:00 AM",
-            title: "Local Market",
-            description: "Experience local culture and food",
-            location: "Central Market Hall",
-            category: "dining",
-            notes: "Bring cash for purchases"
-          }
-        ]
+        });
+
+      } catch (error) {
+        console.error('Error fetching trip data:', error);
       }
-    ]
-  };
+    };
+  
+    if (id) {
+      fetchTripData();
+    }
+  }, [id]);
 
+  // Keep existing image navigation functions
   const nextImage = () => {
     setCurrentImage((prev) => (prev + 1) % tripData.images.length);
   };
@@ -256,6 +324,7 @@ const TripItinerary = () => {
     <Container>
       <ImageSliderContainer>
         <SliderActions>
+          
           <ActionButton>
             <Share2 size={16} />
             Share
@@ -268,8 +337,13 @@ const TripItinerary = () => {
         
         <SliderImage
           src={tripData.images[currentImage]}
-          alt={`Trip image ${currentImage + 1}`}
+          alt={`Trip location`}
         />
+         {locationImages[currentImage] && (
+          <ImageCredits>
+            Photo by {locationImages[currentImage].photographer} on Pixabay
+          </ImageCredits>
+        )}
         
         <SliderButton className="left" onClick={prevImage}>
           <ChevronLeft size={24} />
