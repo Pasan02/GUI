@@ -5,7 +5,8 @@ import Header from '../../components/Header1';
 import Footer from '../../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import HeroBanner from '../../images/banner-image.jpg';
-// Layout Components
+import ItineraryPreview from '../../images/itinerary-preview.jpg';
+
 const PageWrapper = styled.div`
   min-height: 100vh;
   display: flex;
@@ -34,7 +35,6 @@ const Main = styled.main`
 
 
 
-// Section Components
 const Section = styled.section`
   padding: 4rem 0;
   background: ${props => props.background || 'transparent'};
@@ -112,7 +112,7 @@ const CardText = styled.p`
   color: #4B5563;
 `;
 
-// Preview Section Components
+
 const PreviewContainer = styled.div`
   background: white;
   border-radius: 0.5rem;
@@ -131,8 +131,15 @@ const PreviewPlaceholder = styled.div`
   justify-content: center;
   color: #6B7280;
 `;
+const PreviewImage = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  display: block;
+`;
 
-// Button Components
+
+
 const Button = styled.button`
   background: ${props => props.variant === 'primary' ? '#2563EB' : 'white'};
   color: ${props => props.variant === 'primary' ? 'white' : '#2563EB'};
@@ -148,7 +155,6 @@ const Button = styled.button`
   }
 `;
 
-// Footer Components
 
 
 
@@ -211,9 +217,7 @@ const HomePage = () => {
           <Container>
             <Title>Your Travel Command Center</Title>
             <PreviewContainer>
-              <PreviewPlaceholder>
-                <span>Itinerary View Screenshot Placeholder</span>
-              </PreviewPlaceholder>
+            <PreviewImage src={ItineraryPreview} alt="Itinerary View Preview" />
             </PreviewContainer>
           </Container>
         </Section>

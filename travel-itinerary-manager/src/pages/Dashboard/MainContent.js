@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export function MainContent() {
   const [upcomingTrips, setUpcomingTrips] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-  const navigate = useNavigate(); // Add this import from react-router-dom
+  const navigate = useNavigate(); 
 
   React.useEffect(() => {
     const fetchTrips = async () => {
@@ -14,7 +14,7 @@ export function MainContent() {
         const userId = localStorage.getItem('userId');
         const trips = await getUserTrips(userId);
         
-        // Filter for upcoming trips only
+       
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         
@@ -82,7 +82,6 @@ export function MainContent() {
   );
 }
 
-// Add hover effect to TripCard styled component
 
 
 const ContentContainer = styled.section`
@@ -93,7 +92,7 @@ const ContentContainer = styled.section`
  
   color: #000;
   font-weight: 700;
-  @media (max-width: 991px) {
+  @media (max-width: 800px) {
     font-size: 40px;
     flex-direction: row;
   }
@@ -123,9 +122,10 @@ const PageTitle = styled.h2`
 
 const TripsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
   gap: 20px;
-  margin-right: -600px;
+  margin-right: 20px;
+  max-width: 800px;
 `;
 
 const TripCard = styled.div`

@@ -5,9 +5,9 @@ export function SettingsContent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleDeleteAccount = () => {
-    // Make an API call to delete the account
+    
     console.log("Account deleted");
-    // Redirect the user to the login or goodbye page
+    
   };
 
   return (

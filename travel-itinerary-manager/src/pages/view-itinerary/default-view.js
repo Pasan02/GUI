@@ -4,6 +4,9 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Share2, Download, ChevronLeft, ChevronRight, Bed, Utensils, Bus, Camera, Activity, MapPin } from 'lucide-react';
 import { getLocationImages } from '../../api';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import PDFDocument from '../../pages/view-itinerary/PDFDocument';
+
 
 const Container = styled.div`
   max-width: 1024px;
@@ -212,11 +215,11 @@ const CategoryIcon = styled.div`
 `;
 
 const TripItinerary = () => {
-  const { id } = useParams(); // Get trip ID from URL
+  const { id } = useParams(); 
   const [currentImage, setCurrentImage] = useState(0);
   const [activeTab, setActiveTab] = useState('1');
   const [locationImages, setLocationImages] = useState([]);
-  const [allImages, setAllImages] = useState([]); // Add this state
+  const [allImages, setAllImages] = useState([]); 
   const fallbackImage = "https://picsum.photos/800/400";
   const [tripData, setTripData] = useState({
     name: "",
@@ -238,7 +241,7 @@ const TripItinerary = () => {
     OTHER: { icon: Activity, color: '#f59e0b' }
   };
 
-  // In the useEffect where you format the trip data:
+  
   const formattedData = {
     ...tripData,
     images: allImages.length > 0 
@@ -255,23 +258,22 @@ const TripItinerary = () => {
     const startDate = new Date(tripResponse.data.start_date);
     const endDate = new Date(tripResponse.data.end_date);
     const duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
-        // Fetch images for each location
+        
         const locations = new Set(activitiesResponse.data.map(activity => activity.location).filter(Boolean));
     
-    // Fetch images for each location
+    
     const imagesPromises = Array.from(locations).map(location => getLocationImages(location));
     const imagesResults = await Promise.all(imagesPromises);
     
-    // Flatten and deduplicate images
+    
     const allImages = imagesResults.flat().slice(0, 5);
     setLocationImages(allImages);
 
         const daysArray = Array.from({ length: duration }, (_, index) => ({
-          day: index + 1,  // Start from day 1
+          day: index + 1,  
           activities: []
         }));
 
-        // Format trip data
         const formattedData = {
           name: tripResponse.data.name,
           duration: duration,
@@ -286,7 +288,7 @@ const TripItinerary = () => {
           const activityDate = new Date(activity.date);
           const dayIndex = Math.floor((activityDate - startDate) / (1000 * 60 * 60 * 24));
           const formatTime = (time) => {
-            return time ? time.substring(0, 5) : ''; // Takes only HH:mm part
+            return time ? time.substring(0, 5) : ''; 
           };
 
           if (dayIndex >= 0 && dayIndex < duration) {
@@ -311,7 +313,7 @@ const TripItinerary = () => {
     }
   }, [id]);
 
-  // Keep existing image navigation functions
+  
   const nextImage = () => {
     setCurrentImage((prev) => (prev + 1) % tripData.images.length);
   };
@@ -329,10 +331,17 @@ const TripItinerary = () => {
             <Share2 size={16} />
             Share
           </ActionButton>
-          <ActionButton>
-            <Download size={16} />
-            Download PDF
-          </ActionButton>
+          <PDFDownloadLink
+  document={<PDFDocument tripData={tripData} />}
+  fileName={`${tripData.name}-itinerary.pdf`}
+>
+  {({ loading }) => (
+    <ActionButton disabled={loading}>
+      <Download size={16} />
+      {loading ? 'Generating PDF...' : 'Download PDF'}
+    </ActionButton>
+  )}
+</PDFDownloadLink>
         </SliderActions>
         
         <SliderImage

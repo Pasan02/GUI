@@ -1,16 +1,16 @@
 const express = require('express');
-const db = require('./db'); // Import the database connection
+const db = require('./db'); 
 const cors = require('cors');
 
 const app = express();
 app.use(cors());
-app.use(express.json()); // To parse JSON request bodies
+app.use(express.json()); 
 
-// Create a new user (POST)
+
 app.post('/api/users', (req, res) => {
   const { username, email, password } = req.body;
 
-  // Check if user already exists
+  
   const checkQuery = 'SELECT * FROM users WHERE email = ? OR username = ?';
   db.query(checkQuery, [email, username], (err, results) => {
     if (err) {

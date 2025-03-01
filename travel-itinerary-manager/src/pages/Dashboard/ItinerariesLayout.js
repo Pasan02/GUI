@@ -34,7 +34,7 @@ const ContentWrapper = styled.div`
   display: flex;
   flex: 1;
   gap: 24px;
-  width: 100%;
-  padding: 44px 80px 76px 31px;
+  
+  padding: 44px 0px 76px 31px;
   overflow-y: auto;
 `;

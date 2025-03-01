@@ -85,7 +85,7 @@ export function SignInForm() {
               value={formData.password}
               onChange={(e) => handlePasswordChange(e.target.value)}
             />
-            <ForgotPassword>Forget your password</ForgotPassword>
+            <ForgotPassword>Forgot your password</ForgotPassword>
           </PasswordSection>
 
           {error && <ErrorMessage>{error}</ErrorMessage>}
@@ -166,14 +166,7 @@ const Button = styled.button`
     background-color: #333;
   }
 `;
-const InputGroup = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  font-size: 16px;
-  color: #666;
-  justify-content: start;
-`;
+
 const ErrorMessage = styled.div`
   color: #dc2626;
   font-size: 14px;

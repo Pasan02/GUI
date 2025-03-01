@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api'; // The URL of your backend server
+const API_URL = 'http://localhost:5000/api'; 
 
 export const addUser = async (userData) => {
   try {
@@ -31,7 +31,7 @@ export const loginUser = async (credentials) => {
   }
 };
 
-// Add to existing api.js
+
 export const getUserInfo = async (username) => {
   try {
     const response = await axios.get(`${API_URL}/users/${username}`);
@@ -52,10 +52,10 @@ export const updateUserInfo = async (username, userData) => {
   }
 };
 
-// Add to api.js
+
 export const saveTrip = async (tripData) => {
   try {
-    const userId = localStorage.getItem('userId'); // Store userId during login
+    const userId = localStorage.getItem('userId'); 
     const tripWithUserId = { ...tripData, userId };
     const response = await axios.post(`${API_URL}/trips`, tripWithUserId);
     return response.data;
@@ -74,7 +74,7 @@ export const getUserTrips = async (userId) => {
   }
 };
 
-// Add to api.js
+
 export const getTripById = async (tripId) => {
   try {
     const response = await axios.get(`${API_URL}/trips/${tripId}`);
@@ -105,7 +105,7 @@ export const updateTrip = async (tripId, tripData) => {
   }
 };
 
-const PIXABAY_API_KEY = '32258999-ea3fdee2c69c77e6b4accb3ec'; // Replace with your actual API key
+const PIXABAY_API_KEY = '32258999-ea3fdee2c69c77e6b4accb3ec'; 
 
 export const getLocationImages = async (location) => {
   try {
@@ -123,7 +123,7 @@ export const getLocationImages = async (location) => {
     });
     return response.data.hits.map(hit => ({
       id: hit.id,
-      url: hit.largeImageURL, // Use larger image instead of webformatURL
+      url: hit.largeImageURL, 
       photographer: hit.user
     }));
   } catch (error) {
@@ -134,7 +134,7 @@ export const getLocationImages = async (location) => {
 
 export const getTripCoverImage = (location) => {
   try {
-    // Convert location to lowercase and remove spaces
+    
     const formattedLocation = location.toLowerCase().replace(/\s+/g, '');
     return require (`./images/${formattedLocation}.jpg`);
   } catch (error) {

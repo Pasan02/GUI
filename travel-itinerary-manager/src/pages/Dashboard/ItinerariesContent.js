@@ -176,6 +176,8 @@ const ItineraryCard = styled.div`
 
 const ItineraryImage = styled.img`
   width: 100%;
+  max-width: 270px;
+  max-height: 180px;
   height: auto;
   border-radius: 5px;
   margin-bottom: 15px;

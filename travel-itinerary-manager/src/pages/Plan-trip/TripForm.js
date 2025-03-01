@@ -71,10 +71,10 @@ export function TripForm() {
     alert(`Failed to save trip: ${error.response?.data?.error || error.message}`);
   }
 };
-// Add state for currency
+
 const [currency, setCurrency] = React.useState('USD');
 
-  // Activity form state
+ 
   const [newActivity, setNewActivity] = React.useState({
     title: '',
     category: 'OTHER',
@@ -446,28 +446,9 @@ const FormContainer = styled.div`
   }
 `;
 
-const InputWrapper = styled.div`
-  border-radius: 4px;
-  background-color: #fff;
-  display: flex;
-  width: 327px;
-  max-width: 100%;
-  flex-direction: column;
-  align-items: start;
-  padding: 13px 47px 6px 16px;
-  border: 1px solid #d5d8de;
-  @media (max-width: 991px) {
-    padding-right: 20px;
-  }
-`;
 
-const InputField = styled.input`
-  width: 100%;
-  border: none;
-  outline: none;
-  padding: 8px 0;
- font-family: Poppins, sans-serif;
-`;
+
+
 const Label = styled.label`
   font-size: 14px;
   font-weight: 500;
@@ -511,14 +492,6 @@ const DatePickerButton = styled.button`
   cursor: pointer;
 `;
 
-const CalendarIcon = styled.img`
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 24px;
-  align-self: stretch;
-  margin: auto 0;
-`;
 
 const DatePickerOverlay = styled.div`
   position: absolute;

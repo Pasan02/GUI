@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { getUserInfo, updateUserInfo } from "../../api";
 
 export function MyInformationContent() {
-  // Sample initial data (to be replaced with actual data from API or user context)
   const [userInfo, setUserInfo] = useState({
     username: "",
     name: "",
@@ -20,7 +19,6 @@ export function MyInformationContent() {
     const fetchUserInfo = async () => {
       try {
         setIsLoading(true);
-        // Assuming you store username in localStorage after login
         const username = localStorage.getItem('username');
         const data = await getUserInfo(username);
         setUserInfo(data);

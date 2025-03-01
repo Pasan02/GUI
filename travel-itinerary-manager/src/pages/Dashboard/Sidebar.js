@@ -23,7 +23,7 @@ export function Sidebar() {
         const storedUsername = localStorage.getItem('username');
         if (storedUsername) {
           const userInfo = await getUserInfo(storedUsername);
-          setUsername(userInfo.name || userInfo.username); // Use name if available, otherwise username
+          setUsername(userInfo.name || userInfo.username); 
         }
       } catch (error) {
         console.error('Error fetching user info:', error);

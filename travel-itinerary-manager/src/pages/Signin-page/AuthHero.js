@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import SignInImage from "./images/hero-image.jpg";
+import SignInImage from "./images/1.jpg";
 
 export function AuthHero() {
   return (

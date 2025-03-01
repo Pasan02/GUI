@@ -41,7 +41,7 @@ export function SignUpForm() {
     e.preventDefault();
     setError("");
 
-    // Basic validation
+    
     if (!formData.username || !formData.email || !formData.password) {
       setError("All fields are required");
       return;
@@ -49,7 +49,7 @@ export function SignUpForm() {
 
     try {
       await addUser(formData);
-      // Redirect to signin page after successful registration
+      
       navigate("/signin");
     } catch (err) {
       setError(err.response?.data?.message || err.message || "Error creating account");
