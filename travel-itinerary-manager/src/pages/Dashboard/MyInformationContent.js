@@ -2,6 +2,43 @@ import React, { useState,useEffect } from "react";
 import styled from "styled-components";
 import { getUserInfo, updateUserInfo } from "../../api";
 
+
+const FORM_FIELDS = [
+  { name: 'username', label: 'Username:', type: 'text' },
+  { name: 'name', label: 'Name:', type: 'text', placeholder: 'Enter your Name' },
+  { name: 'email', label: 'Email:', type: 'email' },
+  { name: 'country', label: 'Country:', type: 'text', placeholder: 'Enter your country' },
+  { name: 'phone', label: 'Phone Number:', type: 'tel', placeholder: 'Enter your phone number' }
+];
+
+// Separate form component for better organization
+const UserInfoForm = ({ userInfo, isEditing, handleChange, handleSave, setIsEditing }) => (
+  <Form>
+    {FORM_FIELDS.map(field => (
+      <FormField key={field.name}>
+        <Label>{field.label}</Label>
+        <Input
+          type={field.type}
+          name={field.name}
+          value={userInfo[field.name]}
+          onChange={handleChange}
+          placeholder={field.placeholder}
+          disabled={!isEditing}
+        />
+      </FormField>
+    ))}
+    <ButtonContainer>
+      <ActionButton onClick={isEditing ? handleSave : () => setIsEditing(true)}>
+        {isEditing ? 'Save Changes' : 'Edit'}
+      </ActionButton>
+    </ButtonContainer>
+  </Form>
+);
+
+
+const LoadingState = () => <LoadingWrapper>Loading...</LoadingWrapper>;
+const ErrorState = ({ message }) => <ErrorWrapper>{message}</ErrorWrapper>;
+
 export function MyInformationContent() {
   const [userInfo, setUserInfo] = useState({
     username: "",
@@ -10,7 +47,6 @@ export function MyInformationContent() {
     country: "",
     phone: ""
   });
-
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,7 +70,7 @@ export function MyInformationContent() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserInfo((prev) => ({ ...prev, [name]: value }));
+    setUserInfo(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSave = async () => {
@@ -48,8 +84,9 @@ export function MyInformationContent() {
     }
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (isLoading) return <LoadingState />;
+  if (error) return <ErrorState message={error} />;
+
 
   return (
     <ContentContainer>
@@ -58,66 +95,13 @@ export function MyInformationContent() {
         <PageTitle>My Information</PageTitle>
         <InfoGrid>
           <InfoCard>
-            <Form>
-              <FormField>
-              <Label>Username:</Label>
-              <Input
-                type="text"
-                name="username"
-                value={userInfo.username}
-                onChange={handleChange}
-                disabled={!isEditing}
-              />
-                <Label>Name:</Label>
-                <Input
-                  type="text"
-                  name="name"
-                  value={userInfo.name}
-                  onChange={handleChange}
-                  placeholder="Enter your Name"
-                  disabled={!isEditing}
-                />
-              </FormField>
-              <FormField>
-                <Label>Email:</Label>
-                <Input
-                  type="email"
-                  name="email"
-                  value={userInfo.email}
-                  onChange={handleChange}
-                  disabled={!isEditing}
-                />
-              </FormField>
-              <FormField>
-                <Label>Country:</Label>
-                <Input
-                  type="text"
-                  name="country"
-                  value={userInfo.country}
-                  onChange={handleChange}
-                  placeholder="Enter your country"
-                  disabled={!isEditing}
-                />
-              </FormField>
-              <FormField>
-                <Label>Phone Number:</Label>
-                <Input
-                  type="tel"
-                  name="phone"
-                  value={userInfo.phone}
-                  onChange={handleChange}
-                  placeholder="Enter your phone number"
-                  disabled={!isEditing}
-                />
-              </FormField>
-              <ButtonContainer>
-                {isEditing ? (
-                  <ActionButton onClick={handleSave}>Save Changes</ActionButton>
-                ) : (
-                  <ActionButton onClick={() => setIsEditing(true)}>Edit</ActionButton>
-                )}
-              </ButtonContainer>
-            </Form>
+            <UserInfoForm
+              userInfo={userInfo}
+              isEditing={isEditing}
+              handleChange={handleChange}
+              handleSave={handleSave}
+              setIsEditing={setIsEditing}
+            />
           </InfoCard>
         </InfoGrid>
       </ContentWrapper>
@@ -125,6 +109,20 @@ export function MyInformationContent() {
   );
 }
 
+// Styled components remain the same but with additional components
+const LoadingWrapper = styled.div`
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #666;
+`;
+
+const ErrorWrapper = styled.div`
+  text-align: center;
+  padding: 2rem;
+  color: #ef4444;
+  font-size: 1.2rem;
+`;
 
 const ContentContainer = styled.section`
   display: flex;
@@ -165,10 +163,10 @@ const InfoGrid = styled.div`
 const InfoCard = styled.div`
   display: flex;
   flex-direction: column;
-  background: #f9f9f9;
+  background:rgb(249, 249, 249);
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgb(255, 255, 255);
   max-width: 600px; // Add max-width to control form width
   width: 100%;
 `;

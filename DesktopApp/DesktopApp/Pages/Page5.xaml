@@ -209,7 +209,7 @@
             <!-- New Itinerary Button -->
             <Button Click="Itinerary_Button_Click"
                 Content="+ New Itinerary" Width="150" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,20,0"
-                Background="#007BFF" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand" />
+                    Background="#007BFF" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand" />
 
             <UniformGrid x:Name="ItineraryGrid" Columns="3" Margin="20,60,20,90">
                 <!-- Itinerary cards will be dynamically added here -->

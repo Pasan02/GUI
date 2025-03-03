@@ -132,13 +132,19 @@ export const getLocationImages = async (location) => {
   }
 };
 
-export const getTripCoverImage = (location) => {
+export const getTripCoverImage = (title) => {
   try {
-    
-    const formattedLocation = location.toLowerCase().replace(/\s+/g, '');
-    return require (`./images/${formattedLocation}.jpg`);
+    // Extract location from title like "Trip to London" -> "london"
+    const locationMatch = title.toLowerCase().match(/(?:trip to|in|at|visit(?:ing)?)\s+([a-z\s]+)$/i);
+    const location = locationMatch ? 
+      locationMatch[1].trim().replace(/\s+/g, '') : 
+      title.toLowerCase().replace(/\s+/g, '');
+
+    console.log('Extracted location:', location); // For debugging
+
+    return require(`./images/${location}.jpg`);
   } catch (error) {
     console.error('Error getting cover image:', error);
-    return require ('./images/default.jpg');
+    return require('./images/default.jpg');
   }
 };

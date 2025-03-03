@@ -7,8 +7,8 @@
         mc:Ignorable="d"
        
        Title="MainWindow" Height="450" Width="800">
-  
-    
+
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*" />
@@ -23,13 +23,17 @@
                 Source="Images/hero-image.jpg" Stretch="Fill"/>
         <TextBlock Grid.Column="1" Grid.Row="0" Text="Welcome to Travel Planner"
             
-                 FontSize="20" FontWeight="Normal" Margin="10" HorizontalAlignment="Center"/>
+                
+            FontSize="20" FontWeight="Normal" Margin="0,45,0,10" HorizontalAlignment="Center"/>
+        <TextBlock  TextAlignment="Center"
+    Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Your personal travel companion for seamless journey planning." VerticalAlignment="Center" Width="205"  Height="65"/>
+
         <StackPanel Grid.Column="1" Grid.RowSpan="2" Grid.Row="1" Orientation="Vertical" Margin="10">
             <Button Content="Sign up" Width="100" Margin="10" Click="SignUpButton_Click"/>
             <Button Content="Sign in" Width="100" Margin="10" Click="SignInButton_Click"/>
         </StackPanel>
         <Frame NavigationUIVisibility="Hidden"
             x:Name="MainFrame" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
-        
+
     </Grid>
 </Window>

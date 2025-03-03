@@ -5,7 +5,7 @@ import Header from '../../components/Header1';
 import Footer from '../../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import HeroBanner from '../../images/banner-image.jpg';
-import ItineraryPreview from '../../images/itinerary-preview.jpg';
+import ItineraryPreview from '../../images/preview.jpg';
 
 const PageWrapper = styled.div`
   min-height: 100vh;

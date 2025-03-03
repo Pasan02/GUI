@@ -139,7 +139,7 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   gap: 10px;
   align-items: center;
-  color: #c4c4c4;
+  color:rgb(196, 196, 196);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
