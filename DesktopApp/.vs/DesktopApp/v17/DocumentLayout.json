@@ -123,8 +123,7 @@
               "ViewState": "AgIAAD8AAAAAAAAAAIBJwA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-16T04:47:51.33Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -149,8 +148,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T11:11:51.295Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-22T11:11:51.295Z"
             },
             {
               "$type": "Document",
@@ -158,12 +156,11 @@
               "Title": "ActivityRepository.cs",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\ActivityRepository.cs",
               "RelativeDocumentMoniker": "DesktopApp\\Pages\\ActivityRepository.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\ActivityRepository.cs*",
-              "RelativeToolTip": "DesktopApp\\Pages\\ActivityRepository.cs*",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\ActivityRepository.cs",
+              "RelativeToolTip": "DesktopApp\\Pages\\ActivityRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T12:41:50.271Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-22T12:41:50.271Z"
             },
             {
               "$type": "Document",
@@ -175,8 +172,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\TripRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGwAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T13:38:05.892Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-22T13:38:05.892Z"
             },
             {
               "$type": "Document",
@@ -188,8 +184,7 @@
               "RelativeToolTip": "DesktopApp\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T04:09:11.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T04:09:11.037Z"
             },
             {
               "$type": "Document",
@@ -200,8 +195,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\MainWindow.xaml",
               "RelativeToolTip": "DesktopApp\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-16T04:02:38.511Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T04:02:38.511Z"
             },
             {
               "$type": "Document",
@@ -212,8 +206,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page1.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page1.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-13T14:06:31.318Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-13T14:06:31.318Z"
             },
             {
               "$type": "Document",
@@ -224,8 +217,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page5.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page5.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-15T17:18:56.224Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T17:18:56.224Z"
             },
             {
               "$type": "Document",
@@ -236,8 +228,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page3.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page3.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-15T12:29:52.016Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T12:29:52.016Z"
             },
             {
               "$type": "Document",
@@ -249,8 +240,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\Page2.xaml.cs",
               "ViewState": "AgIAABMAAAAAAAAAAIBJwB8AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T04:08:59.807Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T04:08:59.807Z"
             },
             {
               "$type": "Document",
@@ -262,8 +252,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\Page1.xaml.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAYwCoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-13T14:25:24.157Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-13T14:25:24.157Z"
             },
             {
               "$type": "Document",
@@ -275,8 +264,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\Page6.xaml.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAYwDUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T18:12:52.009Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T18:12:52.009Z"
             },
             {
               "$type": "Document",
@@ -287,8 +275,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page2.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page2.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-23T04:22:23.637Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T04:22:23.637Z"
             },
             {
               "$type": "Document",
@@ -299,8 +286,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page4.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page4.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-15T13:47:24.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T13:47:24.84Z"
             },
             {
               "$type": "Document",
@@ -311,8 +297,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page6.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page6.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-15T17:51:17.678Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T17:51:17.678Z"
             },
             {
               "$type": "Document",
@@ -324,8 +309,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\Page3.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T15:58:01.31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T15:58:01.31Z"
             },
             {
               "$type": "Document",
@@ -337,8 +321,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\Page5.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T18:12:45.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T18:12:45.209Z"
             },
             {
               "$type": "Document",
@@ -349,8 +332,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page8.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page8.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-19T02:23:16.676Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T02:23:16.676Z"
             },
             {
               "$type": "Document",
@@ -362,8 +344,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\Page4.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAG0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T15:57:55.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T15:57:55.925Z"
             },
             {
               "$type": "Document",
@@ -375,8 +356,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\Page8.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T13:46:18.703Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T13:46:18.703Z"
             },
             {
               "$type": "Document",
@@ -388,8 +368,7 @@
               "RelativeToolTip": "DesktopApp\\Pages\\Page9.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T04:50:57.214Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T04:50:57.214Z"
             },
             {
               "$type": "Document",
@@ -400,8 +379,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page7.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page7.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-16T04:44:37.191Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T04:44:37.191Z"
             },
             {
               "$type": "Document",
@@ -412,8 +390,7 @@
               "ToolTip": "C:\\Users\\USER\\Desktop\\GUI Project\\GUI\\DesktopApp\\DesktopApp\\Pages\\Page9.xaml",
               "RelativeToolTip": "DesktopApp\\Pages\\Page9.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-23T04:50:13.142Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T04:50:13.142Z"
             },
             {
               "$type": "Document",
@@ -425,8 +402,7 @@
               "RelativeToolTip": "DesktopApp\\DesktopApp.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAIBJwBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-13T13:22:27.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-13T13:22:27.21Z"
             }
           ]
         }
