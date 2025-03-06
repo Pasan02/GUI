@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DesktopApp.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Page1">
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="Sign Up">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -14,60 +14,153 @@
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Image Grid.Column="0" Grid.RowSpan="5"
-        Source="../Images/hero-image.jpg" Stretch="Fill"/>
+        <!-- Left side with hero image -->
+        <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                CornerRadius="0,12,12,0" 
+                Margin="0,0,0,0" 
+                ClipToBounds="True">
+            <Grid>
+                <Image Source="../Images/hero-image.jpg" 
+                       Stretch="UniformToFill"/>
+                <Border Background="#4D000000" />
+                <!-- Semi-transparent overlay -->
+                <StackPanel VerticalAlignment="Bottom" Margin="30,0,0,40">
+                    <TextBlock Text="JOIN OUR COMMUNITY" 
+                               Foreground="White" 
+                               FontSize="18" 
+                               FontWeight="Light"/>
+                    <TextBlock Text="Create Account" 
+                               Foreground="White" 
+                               FontSize="42" 
+                               FontWeight="Bold" 
+                               Margin="0,8,0,8"/>
+                    <TextBlock Text="Start planning your adventures" 
+                               Foreground="White" 
+                               FontSize="16" 
+                               FontWeight="Light"/>
+                </StackPanel>
+            </Grid>
+        </Border>
 
-        <StackPanel Background="White" Grid.Column="1" Grid.RowSpan="5">
-            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="0" Text="Create An Account" IsReadOnly="True" HorizontalAlignment="Left" FontSize="20"
-                 Padding="20,20">
-            </TextBox>
-             <TextBlock Background="Transparent" Grid.Row="0" Margin="22,-15">
-     <Run Text="Already have an account? " />
-     <Hyperlink NavigateUri="Pages/Page2.xaml" RequestNavigate="Hyperlink_RequestNavigate">
-         <Run Text="Log in" />
-     </Hyperlink>
- </TextBlock>
-            <TextBox  Background="Transparent" BorderThickness="0" Grid.Row="1" Text="User name" IsReadOnly="True" Padding="20,20,0,0">
-            </TextBox>
-            <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                <TextBox x:Name="UsernameTextBox" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
-            </Border>
+        <!-- Empty top bar -->
+        <Border Grid.Column="1" Grid.Row="0" 
+                Background="White"
+                Padding="20,20,20,0">
+        </Border>
 
-            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="2" Text="Email Address" IsReadOnly="True" Padding="20,20,0,0">
-            </TextBox>
-            <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                <TextBox x:Name="EmailBox" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="1" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
-            </Border>
+        <!-- Right side with sign up form -->
+        <Border Grid.Column="1" Grid.Row="1" 
+                Background="White" 
+                Padding="40,10,40,10">
+            <StackPanel VerticalAlignment="Center">
+                <!-- Header -->
+                <TextBlock Text="Create an Account"
+                           FontSize="24" 
+                           FontWeight="SemiBold" 
+                           Margin="0,0,0,5"/>
 
-            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="3" Text="Password" IsReadOnly="True" Padding="20,20,0,0">
-            </TextBox>
-            <Border Width="300" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                <PasswordBox x:Name="PasswordBox" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="2" FontSize="20" Width="280" Height="30" BorderBrush="White" Margin="10,0,0,0" />
-            </Border>
-            <TextBox Background="Transparent" BorderThickness="0" Grid.Row="3" FontSize="8" IsReadOnly="True" Text="Use 8 or more characters with a mix of letters, numbers and symbols" Padding="20,0,0,0">
-            </TextBox>
+                <TextBlock 
+                           Margin="0,0,0,25">
+                    <TextBlock.Inlines>
+                        <Run Text="Already have an account? "/>
+                        <Hyperlink NavigateUri="Pages/Page2.xaml" RequestNavigate="Hyperlink_RequestNavigate">
+                            <Run Text="Log in"/>
+                        </Hyperlink>
+                    </TextBlock.Inlines>
+                </TextBlock>
 
-            <Button Grid.Row="4" 
-                    Height="30"
-                    Padding="5,0,5,0"
-                    
-                    Background="Black"
-                    Foreground="White"
-                    Content="Create an account" Click="CreateAnAccount_Click" HorizontalAlignment="Left" Width="150" Margin="20,20,0,0"/>
-            <TextBlock Background="Transparent" Grid.Row="4" Padding="20,5">
-    <Run Text="Already have an account? " />
-    <Hyperlink NavigateUri="Pages/Page2.xaml" RequestNavigate="Hyperlink_RequestNavigate">
-        <Run Text="Log in" />
-    </Hyperlink>
-            </TextBlock>
+                <!-- Username -->
+                <TextBlock Text="Username" 
+                           Foreground="#444444" 
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,8"/>
 
-        </StackPanel>
+                <Border BorderBrush="#E0E0E0" 
+                        BorderThickness="1" 
+                        CornerRadius="8" 
+                        Margin="0,0,0,15">
+                    <TextBox x:Name="UsernameTextBox" 
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Padding="12,10" 
+                             FontSize="14"/>
+                </Border>
+
+                <!-- Email -->
+                <TextBlock Text="Email Address" 
+                           Foreground="#444444" 
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,8"/>
+
+                <Border BorderBrush="#E0E0E0" 
+                        BorderThickness="1" 
+                        CornerRadius="8" 
+                        Margin="0,0,0,15">
+                    <TextBox x:Name="EmailBox" 
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Padding="12,10" 
+                             FontSize="14"/>
+                </Border>
+
+                <!-- Password -->
+                <TextBlock Text="Password" 
+                           Foreground="#444444" 
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,8"/>
+
+                <Border BorderBrush="#E0E0E0" 
+                        BorderThickness="1" 
+                        CornerRadius="8" 
+                        Margin="0,0,0,5">
+                    <PasswordBox x:Name="PasswordBox" 
+                                Background="Transparent" 
+                                BorderThickness="0" 
+                                Padding="12,10" 
+                                FontSize="14"/>
+                </Border>
+
+                <TextBlock Text="Use 4 or more characters" 
+                           Foreground="#666666" 
+                           FontSize="12" 
+                           Margin="0,0,0,25"/>
+
+                <!-- Create Account Button -->
+                <Button Content="Create Account" 
+                        Background="#1a73e8" 
+                        Foreground="White" 
+                        Height="46" 
+                        FontSize="14" 
+                        FontWeight="SemiBold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="CreateAnAccount_Click"
+                        Margin="0,0,0,20">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="23"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!-- Footer -->
+        <Border Grid.Column="1" Grid.Row="2" 
+                Background="White"
+                Padding="20,15,20,15">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="© 2025 Travel Planner App" 
+                           Foreground="#666666" 
+                           FontSize="12" 
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>
+

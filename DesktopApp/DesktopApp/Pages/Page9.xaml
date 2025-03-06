@@ -5,63 +5,236 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DesktopApp.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="TripDetailsPage">
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Unloaded="Page_Unloaded"
+      Title="Trip Details">
 
     <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <!-- Back Button -->
-        <Button Content="← Back" 
-                Click="BackButton_Click" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top" 
-                Margin="10" 
-                Background="Transparent" 
-                BorderThickness="0" 
-                Foreground="#007BFF" 
-                FontWeight="Bold" 
-                Cursor="Hand"/>
+        <!-- Left Sidebar - Using consistent design from Page3 -->
+        <Border Background="#F8F9FA" 
+                BorderBrush="#E0E0E0" 
+                BorderThickness="0,0,1,0"
+                CornerRadius="0,12,12,0">
+            <Grid Margin="25">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-        <!-- Trip Details with ScrollViewer -->
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <StackPanel Margin="20">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <!-- Profile Section -->
+                <Border CornerRadius="12" 
+                        Padding="20" 
+                        Background="#F0F4FF" 
+                        Margin="0,0,0,30">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Trip Title:" FontWeight="Bold" FontSize="16" Grid.Row="0" Grid.Column="0"/>
-                    <TextBlock x:Name="TripNameTextBlock" FontSize="16" Margin="10,0,0,10" Grid.Row="0" Grid.Column="1"/>
+                        <!-- Logo -->
+                        <Grid Height="38" Width="38">
+                            <Viewbox>
+                                <Path Data="M90,50 L75,65 L25,65 L10,50 L25,35 L75,35 L90,50 M30,45 A5,5 0 1 1 30,55 A5,5 0 1 1 30,45 M70,45 A5,5 0 1 1 70,55 A5,5 0 1 1 70,45"
+                                      Fill="#1a73e8"/>
+                            </Viewbox>
+                        </Grid>
 
-                    <TextBlock Text="Trip Duration:" FontWeight="Bold" FontSize="16" Grid.Row="1" Grid.Column="0"/>
-                    <TextBlock x:Name="DateRangeTextBlock" FontSize="16" Margin="10,0,0,10" Grid.Row="1" Grid.Column="1"/>
+                        <!-- Text Section -->
+                        <StackPanel Grid.Column="1" 
+                                    Margin="15,0,0,0" 
+                                    VerticalAlignment="Center">
+                            <TextBlock Text="Travel Planner" 
+                                       FontSize="18"
+                                       FontWeight="SemiBold"
+                                       Foreground="#1a73e8"/>
+                            <TextBlock Text="Plan your next adventure" 
+                                       FontSize="12"
+                                       Foreground="#666666"
+                                       Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
 
-                    <TextBlock Text="Trip Cost:" FontWeight="Bold" FontSize="16" Grid.Row="2" Grid.Column="0"/>
-                    <TextBlock x:Name="CostTextBlock" FontSize="16" Margin="10,0,0,10" Grid.Row="2" Grid.Column="1"/>
-                </Grid>
+                <!-- Back Button -->
+                <Button Grid.Row="1"
+                        Content="← Back to Itineraries" 
+                        Click="BackButton_Click" 
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top" 
+                        Height="46"
+                        FontSize="14"
+                        FontWeight="SemiBold"
+                        Background="#1a73e8" 
+                        Foreground="White" 
+                        BorderThickness="0" 
+                        Cursor="Hand"
+                        Margin="0,0,0,20">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="23"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
 
-                <!-- Activities DataGrid -->
-                <DataGrid x:Name="ActivitiesDataGrid" AutoGenerateColumns="False" Margin="0,20,0,0">
+                <!-- Trip Info Card -->
+                <Border Grid.Row="1"
+                        VerticalAlignment="Top"
+                        Margin="0,80,0,0"
+                        Background="White"
+                        CornerRadius="12"
+                        Padding="20"
+                        BorderThickness="1"
+                        BorderBrush="#E0E0E0">
+                    <StackPanel>
+                        <TextBlock Text="Trip Information" 
+                                   FontSize="18" 
+                                   FontWeight="SemiBold" 
+                                   Margin="0,0,0,15" 
+                                   Foreground="#1a73e8"/>
+
+                        <Grid Margin="0,0,0,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Trip Title:" 
+                                       FontWeight="SemiBold" 
+                                       Grid.Row="0" 
+                                       Grid.Column="0"
+                                       Margin="0,0,0,10"/>
+                            <TextBlock x:Name="TripNameTextBlock" 
+                                       Grid.Row="0" 
+                                       Grid.Column="1" 
+                                       Margin="5,0,0,10"/>
+
+                            <TextBlock Text="Dates:" 
+                                       FontWeight="SemiBold" 
+                                       Grid.Row="1" 
+                                       Grid.Column="0"
+                                       Margin="0,0,0,10"/>
+                            <TextBlock x:Name="DateRangeTextBlock" 
+                                       Grid.Row="1" 
+                                       Grid.Column="1" 
+                                       Margin="5,0,0,10"/>
+
+                            <TextBlock Text="Budget:" 
+                                       FontWeight="SemiBold" 
+                                       Grid.Row="2" 
+                                       Grid.Column="0"/>
+                            <TextBlock x:Name="CostTextBlock" 
+                                       Grid.Row="2" 
+                                       Grid.Column="1" 
+                                       Margin="5,0,0,0"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Right side with trip activities -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header Section -->
+            <Border Background="White" Padding="30,30,30,15">
+                <TextBlock Text="Trip Activities" 
+                          FontSize="24" 
+                          FontWeight="SemiBold" 
+                          Foreground="#1a73e8"/>
+            </Border>
+
+            <!-- Activities DataGrid with modern styling -->
+            <Border Grid.Row="1" 
+                    Background="White" 
+                    Margin="30,0,30,30"
+                    CornerRadius="12"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="1">
+
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="1" 
+                                     Direction="270" 
+                                     Color="#E0E0E0" 
+                                     Opacity="0.3" 
+                                     BlurRadius="10"/>
+                </Border.Effect>
+
+                <DataGrid x:Name="ActivitiesDataGrid" 
+          AutoGenerateColumns="False"
+          CanUserAddRows="False"
+          CanUserDeleteRows="False"
+          IsReadOnly="True"
+          HeadersVisibility="Column"
+          BorderThickness="0"
+          Background="Transparent"
+          RowBackground="White"
+          AlternatingRowBackground="#F8F9FA"
+          GridLinesVisibility="None"
+          VerticalScrollBarVisibility="Auto"
+          HorizontalScrollBarVisibility="Auto"
+          MouseDoubleClick="ActivitiesDataGrid_MouseDoubleClick"
+          Margin="10">
+
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="Foreground" Value="#444444"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="Padding" Value="10,15"/>
+                            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+                        </Style>
+
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Padding" Value="10,8"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridCell">
+                                        <Border Padding="{TemplateBinding Padding}" 
+                                                Background="{TemplateBinding Background}">
+                                            <ContentPresenter />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Margin" Value="0,2"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#F0F4FF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.Resources>
+
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*"/>
-                        <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="*"/>
+                        <DataGridTextColumn Header="Activity" Binding="{Binding Title}" Width="*"/>
+                        <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="0.8*"/>
                         <DataGridTextColumn Header="Location" Binding="{Binding Location}" Width="*"/>
-                        <DataGridTextColumn Header="Start Time" Binding="{Binding StartTime}" Width="*"/>
-                        <DataGridTextColumn Header="End Time" Binding="{Binding EndTime}" Width="*"/>
+                        <DataGridTextColumn Header="Start Time" Binding="{Binding StartTime}" Width="0.8*"/>
+                        <DataGridTextColumn Header="End Time" Binding="{Binding EndTime}" Width="0.8*"/>
                     </DataGrid.Columns>
                 </DataGrid>
-            </StackPanel>
-        </ScrollViewer>
+            </Border>
+        </Grid>
     </Grid>
 </Page>
-

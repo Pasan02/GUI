@@ -11,16 +11,30 @@ namespace DesktopApp.Pages
     {
         private static readonly string connectionString = "server=127.0.0.2; database=userdatabase; user=root;password=pasan2002;SslMode=none";
         private static List<Activity> inMemoryActivities = new List<Activity>();
-        private const int DefaultTripId = -1; // Default TripID value
+        public const int DefaultTripId = -1; // Default TripID value
 
         public static void AddActivity(Activity activity)
         {
-            activity.TripId = DefaultTripId; // Assign default TripID
+            // Get current user ID
+            int currentUserId = Page4.SessionManager.CurrentUserId;
+            activity.UserID = currentUserId;
+
+            // Only add to memory initially
             inMemoryActivities.Add(activity);
+
+            // Only save to database if it's not a temporary trip ID
+            if (activity.TripId != DefaultTripId)
+            {
+                SaveActivityToDatabase(activity);
+            }
+        }
+
+        private static void SaveActivityToDatabase(Activity activity)
+        {
             using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "INSERT INTO Activities (Title, Category, Location, StartTime, EndTime, TripId) VALUES (@Title, @Category, @Location, @StartTime, @EndTime, @TripId)";
+                string query = "INSERT INTO Activities (Title, Category, Location, StartTime, EndTime, TripId, UserID) VALUES (@Title, @Category, @Location, @StartTime, @EndTime, @TripId, @UserID)";
                 using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Title", activity.Title);
@@ -29,33 +43,41 @@ namespace DesktopApp.Pages
                     command.Parameters.AddWithValue("@StartTime", activity.StartTime);
                     command.Parameters.AddWithValue("@EndTime", activity.EndTime);
                     command.Parameters.AddWithValue("@TripId", activity.TripId);
+                    command.Parameters.AddWithValue("@UserID", activity.UserID);
                     command.ExecuteNonQuery();
                 }
             }
         }
+
+
         public static void UpdateActivitiesWithTripId(int newTripId)
         {
-            using (var connection = new MySqlConnection(connectionString))
+            int currentUserId = Page4.SessionManager.CurrentUserId;
+
+            // First, save in-memory activities with the new trip ID
+            foreach (var activity in inMemoryActivities.Where(a => a.TripId == DefaultTripId && a.UserID == currentUserId).ToList())
             {
-                connection.Open();
-                string query = "UPDATE Activities SET TripId = @NewTripId WHERE TripId = @DefaultTripId";
-                using (var command = new MySqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@NewTripId", newTripId);
-                    command.Parameters.AddWithValue("@DefaultTripId", DefaultTripId);
-                    command.ExecuteNonQuery();
-                }
+                activity.TripId = newTripId;
+                SaveActivityToDatabase(activity);
             }
+
+            // Clear temporary activities from memory
+            inMemoryActivities.RemoveAll(a => a.TripId == newTripId && a.UserID == currentUserId);
         }
+
+
         public static void DeleteActivitiesWithDefaultTripId()
         {
+            int currentUserId = Page4.SessionManager.CurrentUserId;
+
             using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "DELETE FROM Activities WHERE TripId = @DefaultTripId";
+                string query = "DELETE FROM Activities WHERE TripId = @DefaultTripId AND UserID = @UserID";
                 using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@DefaultTripId", DefaultTripId);
+                    command.Parameters.AddWithValue("@UserID", currentUserId);
                     command.ExecuteNonQuery();
                 }
             }
@@ -64,13 +86,16 @@ namespace DesktopApp.Pages
         public static List<Activity> GetActivities(int tripId)
         {
             var activities = new List<Activity>();
+            int currentUserId = Page4.SessionManager.CurrentUserId;
+
             using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM Activities WHERE TripId = @TripId";
+                string query = "SELECT * FROM Activities WHERE TripId = @TripId AND UserID = @UserID";
                 using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@TripId", tripId);
+                    command.Parameters.AddWithValue("@UserID", currentUserId);
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -83,7 +108,8 @@ namespace DesktopApp.Pages
                                 Location = reader.GetString("Location"),
                                 StartTime = reader.GetString("StartTime"),
                                 EndTime = reader.GetString("EndTime"),
-                                TripId = reader.GetInt32("TripId")
+                                TripId = reader.GetInt32("TripId"),
+                                UserID = reader.GetInt32("UserID")
                             });
                         }
                     }
@@ -94,28 +120,32 @@ namespace DesktopApp.Pages
 
         public static List<Activity> GetInMemoryActivities(int tripId)
         {
-            return inMemoryActivities.Where(a => a.TripId == tripId).ToList();
+            int currentUserId = Page4.SessionManager.CurrentUserId;
+            return inMemoryActivities.Where(a => a.TripId == tripId && a.UserID == currentUserId).ToList();
         }
 
         public static void ClearInMemoryActivities()
         {
             inMemoryActivities.Clear();
         }
+
         public static void DeleteActivitiesByTripId(int tripId)
         {
+            int currentUserId = Page4.SessionManager.CurrentUserId;
+
             using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "DELETE FROM Activities WHERE TripId = @TripId";
+                string query = "DELETE FROM Activities WHERE TripId = @TripId AND UserID = @UserID";
                 using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@TripId", tripId);
+                    command.Parameters.AddWithValue("@UserID", currentUserId);
                     command.ExecuteNonQuery();
                 }
             }
         }
     }
-
 
     public class Activity
     {
@@ -126,5 +156,6 @@ namespace DesktopApp.Pages
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public int TripId { get; set; }
+        public int UserID { get; set; }  // Added foreign key to User
     }
 }

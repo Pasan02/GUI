@@ -78,3 +78,5 @@ C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\bin\Debug\net8.0-win
 C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\bin\Debug\net8.0-windows\DesktopApp.dll.config
 C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page9.baml
 C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\Page9.g.cs
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\EditActivityPage.g.cs
+C:\Users\USER\Desktop\GUI Project\GUI\DesktopApp\DesktopApp\obj\Debug\net8.0-windows\Pages\EditActivityPage.baml

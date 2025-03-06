@@ -19,6 +19,7 @@
             <Setter Property="MaxWidth" Value="350"/>
         </Style>
 
+
         <Style TargetType="DatePicker">
             <Setter Property="Padding" Value="10,8"/>
             <Setter Property="Margin" Value="0,5,0,15"/>
@@ -35,6 +36,7 @@
             <Setter Property="BorderBrush" Value="#E5E5E5"/>
             <Setter Property="Height" Value="40"/>
         </Style>
+
 
         <Style TargetType="Button">
             <Setter Property="Padding" Value="20,10"/>
@@ -66,9 +68,10 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Plan a New Trip" 
-                     FontSize="24" 
-                     FontWeight="Bold"
-                     Margin="0,0,0,20"
+            FontSize="24" 
+            FontWeight="SemiBold"
+            Foreground="#1a73e8"
+            Margin="0,0,0,20"
                      HorizontalAlignment="Center"/>
 
             <StackPanel Grid.Row="1">
@@ -107,7 +110,7 @@
             </StackPanel>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button  x:Name="CancelButton" Click="CancelButton_Click">
+                <Button x:Name="CancelButton" Click="CancelButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Cancel" Margin="5,0,0,0" VerticalAlignment="Center" />
                     </StackPanel>
@@ -117,7 +120,7 @@
                         <TextBlock Text="Add Activities" Margin="5,0,0,0" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-                <Button x:Name="SaveTripButton" Click="SaveTripButton_Click"  Margin="10,0,0,0">
+                <Button x:Name="SaveTripButton" Click="SaveTripButton_Click" Margin="10,0,0,0">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Save Trip" Margin="5,0,0,0" VerticalAlignment="Center" />
                     </StackPanel>

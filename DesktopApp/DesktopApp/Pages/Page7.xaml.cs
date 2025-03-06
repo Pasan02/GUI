@@ -66,7 +66,8 @@ namespace DesktopApp.Pages
                 }
 
                 int numberOfDays = (endDate.Value - startDate.Value).Days + 1;
-                int tripId = 1; // Replace with actual trip ID
+                // Use the DefaultTripId constant from ActivityRepository
+                int tripId = ActivityRepository.DefaultTripId;
                 NavigationService.Navigate(new Page8(numberOfDays, startDate.Value, tripId));
             }
             else
@@ -74,5 +75,6 @@ namespace DesktopApp.Pages
                 MessageBox.Show("Please select both Start and End Dates.");
             }
         }
+
     }
 }

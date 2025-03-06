@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopApp"
         mc:Ignorable="d"
-       
-       Title="MainWindow" Height="450" Width="800">
-
+        Title="Travel Planner" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#F8F9FA">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -15,25 +15,120 @@
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
-                Source="Images/hero-image.jpg" Stretch="Fill"/>
-        <TextBlock Grid.Column="1" Grid.Row="0" Text="Welcome to Travel Planner"
-            
-                
-            FontSize="20" FontWeight="Normal" Margin="0,45,0,10" HorizontalAlignment="Center"/>
-        <TextBlock  TextAlignment="Center"
-    Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Your personal travel companion for seamless journey planning." VerticalAlignment="Center" Width="205"  Height="65"/>
 
-        <StackPanel Grid.Column="1" Grid.RowSpan="2" Grid.Row="1" Orientation="Vertical" Margin="10">
-            <Button Content="Sign up" Width="100" Margin="10" Click="SignUpButton_Click"/>
-            <Button Content="Sign in" Width="100" Margin="10" Click="SignInButton_Click"/>
-        </StackPanel>
+        <!-- Left side with hero image -->
+        <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                CornerRadius="0,12,12,0" 
+                Margin="0,0,0,0" 
+                ClipToBounds="True">
+            <Grid>
+                <Image Source="Images/hero-image.jpg" 
+                       Stretch="UniformToFill"/>
+                <Border Background="#4D000000" />
+                <!-- Semi-transparent overlay -->
+                <StackPanel VerticalAlignment="Bottom" Margin="30,0,0,40">
+                    <TextBlock Text="EXPLORE THE WORLD" 
+                               Foreground="White" 
+                               FontSize="18" 
+                               FontWeight="Light"/>
+                    <TextBlock Text="Travel Planner" 
+                               Foreground="White" 
+                               FontSize="42" 
+                               FontWeight="Bold" 
+                               Margin="0,8,0,8"/>
+                    <TextBlock Text="Your personal travel companion" 
+                               Foreground="White" 
+                               FontSize="16" 
+                               FontWeight="Light"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Empty top bar (Need Help section removed) -->
+        <Border Grid.Column="1" Grid.Row="0" 
+                Background="White"
+                Padding="20,20,20,0">
+        </Border>
+
+        <!-- Right side with login info (Logo removed) -->
+        <Border Grid.Column="1" Grid.Row="1" 
+                Background="White" 
+                Padding="40,20,40,20">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <!-- Welcome Text -->
+                <TextBlock Text="Welcome to Travel Planner"
+                           FontSize="24" 
+                           FontWeight="SemiBold" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,0,0,10"/>
+
+                <TextBlock TextAlignment="Center"
+                           Text="Your personal travel companion for seamless journey planning."
+                           FontSize="14"
+                           TextWrapping="Wrap" 
+                           Foreground="#666666" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,0,0,40"
+                           Width="250"/>
+
+                <!-- Buttons -->
+                <Button Content="Sign In" 
+                        Background="#1a73e8" 
+                        Foreground="White" 
+                        Height="46" 
+                        FontSize="14" 
+                        FontWeight="SemiBold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Margin="0,0,0,15"
+                        Click="SignInButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="23"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <Button Content="Create an Account" 
+                        Background="Transparent" 
+                        Foreground="#1a73e8" 
+                        Height="46" 
+                        FontSize="14" 
+                        FontWeight="SemiBold"
+                        BorderThickness="1"
+                        BorderBrush="#1a73e8"
+                        Cursor="Hand"
+                        Click="SignUpButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="23"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!-- Footer -->
+        <Border Grid.Column="1" Grid.Row="2" 
+                Background="White"
+                Padding="20,15,20,15">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="© 2025 Travel Planner App" 
+                           Foreground="#666666" 
+                           FontSize="12" 
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Navigation frame that will be used for page navigation -->
         <Frame NavigationUIVisibility="Hidden"
-            x:Name="MainFrame" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
-
+               x:Name="MainFrame" 
+               Grid.ColumnSpan="2" 
+               Grid.RowSpan="3"/>
     </Grid>
 </Window>
+

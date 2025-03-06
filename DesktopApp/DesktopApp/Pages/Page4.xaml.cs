@@ -65,12 +65,38 @@ namespace DesktopApp.Pages
         }
         private void LoadUserData()
         {
-            using (var context = new UserDbContext())
+            try
             {
-                // Assuming the user ID is 1 for demonstration purposes
-                CurrentUser = context.Users.FirstOrDefault(u => u.UserID == 1);
+                using (var context = new UserDbContext())
+                {
+                    // Retrieve the current user's ID from the session manager
+                    int currentUserId = SessionManager.CurrentUserId;
+
+                    // Use GetUserById method for safer retrieval
+                    CurrentUser = context.GetUserById(currentUserId);
+
+                    if (CurrentUser == null)
+                    {
+                        MessageBox.Show("Could not load user data. Please log in again.");
+                        // Navigate back to login page
+                        NavigationService.Navigate(new Page2());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading user data: {ex.Message}");
             }
         }
+
+
+        public static class SessionManager
+        {
+            // This property should be set when the user logs in
+            public static int CurrentUserId { get; set; }
+        }
+
+
 
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -83,7 +109,8 @@ namespace DesktopApp.Pages
         {
             IsEditing = true;
             SaveButtonVisibility = Visibility.Collapsed;
-            // Add save logic here
+            // Call SaveUserData to save the changes
+            SaveUserData();
         }
         private void SaveUserData()
         {
@@ -91,15 +118,19 @@ namespace DesktopApp.Pages
             {
                 using (var context = new UserDbContext())
                 {
-                    var user = context.Users.FirstOrDefault(u => u.UserID == CurrentUser.UserID);
-                    if (user != null)
+                    // Create a clone of the current user to avoid entity tracking issues
+                    User updatedUser = CurrentUser.Clone();
+
+                    // Use the new UpdateUser method instead of direct property updates
+                    bool result = context.UpdateUser(updatedUser);
+
+                    if (result)
                     {
-                        user.Username = CurrentUser.Username;
-                        user.Email = CurrentUser.Email;
-                        user.Name = CurrentUser.Name;
-                        user.Country = CurrentUser.Country;
-                        user.PhoneNumber = CurrentUser.PhoneNumber;
-                        context.SaveChanges();
+                        MessageBox.Show("Information saved successfully.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("User not found or could not be updated.");
                     }
                 }
             }
@@ -108,6 +139,9 @@ namespace DesktopApp.Pages
                 MessageBox.Show($"An error occurred while saving the data: {ex.Message}");
             }
         }
+
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -136,7 +170,7 @@ namespace DesktopApp.Pages
                         case "Settings":
                             NavigationService.Navigate(new Page6());
                             break;
-                        case "Itinerary":
+                        case "Itineraries":
                             NavigationService.Navigate(new Page5());
                             break;
                         default:
@@ -144,6 +178,17 @@ namespace DesktopApp.Pages
                     }
                 }
             }
+        }
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Clear session data or perform any necessary cleanup
+            SessionManager.CurrentUserId = 0;
+
+            // Navigate to MainWindow
+            var mainWindow = new MainWindow();
+            Application.Current.MainWindow = mainWindow;
+            mainWindow.Show();
+            Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w != mainWindow)?.Close();
         }
     }
 }

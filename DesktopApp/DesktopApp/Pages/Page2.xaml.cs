@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
 using System.Diagnostics;
+using static DesktopApp.Pages.Page4;
 
 namespace DesktopApp.Pages
 {
@@ -46,28 +47,43 @@ namespace DesktopApp.Pages
             e.Handled = true;
         }
 
-
         private bool ValidateUser(string username, string password)
         {
-            using (var context = new UserDbContext())
+            try
             {
-                var user = context.Users
-                    .FirstOrDefault(u => u.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
-
-                if (user == null)
+                using (var context = new UserDbContext())
                 {
-                    MessageBox.Show($"Username '{username}' not found.");
-                    return false;
-                }
+                    // Use direct SQL query to bypass EF materialization issues
+                    var sql = "SELECT * FROM users WHERE Username = @p0";
+                    var userList = context.Database.SqlQuery<User>(sql, username).ToList();
 
-                if (user.Password != password)
-                {
-                    MessageBox.Show("Password does not match.");
-                    return false;
-                }
+                    if (userList.Count == 0)
+                    {
+                        MessageBox.Show($"Username '{username}' not found.");
+                        return false;
+                    }
 
-                return true;
+                    var user = userList[0];
+
+                    if (user.Password != password)
+                    {
+                        MessageBox.Show("Password does not match.");
+                        return false;
+                    }
+
+                    // Set the current user ID in the session manager
+                    SessionManager.CurrentUserId = user.UserID;
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Login error: {ex.Message}\nInner exception: {ex.InnerException?.Message}");
+                return false;
             }
         }
+
+
     }
 }

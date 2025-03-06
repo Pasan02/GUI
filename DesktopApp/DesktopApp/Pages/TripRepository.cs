@@ -14,11 +14,14 @@ public class TripRepository
 
     public int SaveTrip(string tripName, DateTime startDate, DateTime endDate, decimal cost, string currency)
     {
+        // Get the current user ID from SessionManager
+        int currentUserId = DesktopApp.Pages.Page4.SessionManager.CurrentUserId;
+
         int tripId;
         using (MySqlConnection connection = new MySqlConnection(_connectionString))
         {
             connection.Open();
-            string query = "INSERT INTO Trips (TripName, StartDate, EndDate, Cost, Currency) VALUES (@TripName, @StartDate, @EndDate, @Cost, @Currency)";
+            string query = "INSERT INTO Trips (TripName, StartDate, EndDate, Cost, Currency, UserID) VALUES (@TripName, @StartDate, @EndDate, @Cost, @Currency, @UserID)";
             using (MySqlCommand command = new MySqlCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@TripName", tripName);
@@ -26,12 +29,14 @@ public class TripRepository
                 command.Parameters.AddWithValue("@EndDate", endDate);
                 command.Parameters.AddWithValue("@Cost", cost);
                 command.Parameters.AddWithValue("@Currency", currency);
+                command.Parameters.AddWithValue("@UserID", currentUserId);
                 command.ExecuteNonQuery();
                 tripId = (int)command.LastInsertedId;
             }
         }
         return tripId;
     }
+
     public Trip GetTripById(int tripId)
     {
         Trip trip = null;
@@ -39,7 +44,7 @@ public class TripRepository
         using (MySqlConnection connection = new MySqlConnection(_connectionString))
         {
             connection.Open();
-            string query = "SELECT TripId, TripName, StartDate, EndDate, Cost, Currency FROM Trips WHERE TripId = @TripId";
+            string query = "SELECT TripId, TripName, StartDate, EndDate, Cost, Currency, UserID FROM Trips WHERE TripId = @TripId";
             using (MySqlCommand command = new MySqlCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@TripId", tripId);
@@ -54,7 +59,8 @@ public class TripRepository
                             StartDate = reader.GetDateTime("StartDate"),
                             EndDate = reader.GetDateTime("EndDate"),
                             Cost = reader.GetDecimal("Cost"),
-                            Currency = reader.GetString("Currency")
+                            Currency = reader.GetString("Currency"),
+                            UserID = reader.GetInt32("UserID")
                         };
                     }
                 }
@@ -63,23 +69,27 @@ public class TripRepository
 
         return trip;
     }
+
     public List<Trip> GetTrips(bool onlyUpcoming = true)
     {
         List<Trip> trips = new List<Trip>();
+        int currentUserId = DesktopApp.Pages.Page4.SessionManager.CurrentUserId;
 
         using (MySqlConnection connection = new MySqlConnection(_connectionString))
         {
             connection.Open();
             string query = onlyUpcoming
-              
-            ? "SELECT TripId, TripName, StartDate, EndDate FROM Trips WHERE StartDate >= @Today" // Add Id to the SELECT statement
-            : "SELECT TripId, TripName, StartDate, EndDate FROM Trips";
+                ? "SELECT TripId, TripName, StartDate, EndDate FROM Trips WHERE StartDate >= @Today AND UserID = @UserID"
+                : "SELECT TripId, TripName, StartDate, EndDate FROM Trips WHERE UserID = @UserID";
+
             using (MySqlCommand command = new MySqlCommand(query, connection))
             {
                 if (onlyUpcoming)
                 {
                     command.Parameters.AddWithValue("@Today", DateTime.Today);
                 }
+                command.Parameters.AddWithValue("@UserID", currentUserId);
+
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -89,7 +99,8 @@ public class TripRepository
                             TripId = reader.GetInt32("TripId"),
                             TripName = reader.GetString("TripName"),
                             StartDate = reader.GetDateTime("StartDate"),
-                            EndDate = reader.GetDateTime("EndDate")
+                            EndDate = reader.GetDateTime("EndDate"),
+                            UserID = currentUserId
                         });
                     }
                 }
@@ -99,6 +110,7 @@ public class TripRepository
         return trips;
     }
 }
+
 public class Trip
 {
     public string TripName { get; set; }
@@ -107,4 +119,5 @@ public class Trip
     public decimal Cost { get; set; }
     public string Currency { get; set; }
     public int TripId { get; set; }
+    public int UserID { get; set; }  // Added foreign key to User
 }
