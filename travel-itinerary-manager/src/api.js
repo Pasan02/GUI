@@ -97,7 +97,28 @@ export const getTripActivities = async (tripId) => {
 
 export const updateTrip = async (tripId, tripData) => {
   try {
-    const response = await axios.put(`${API_URL}/trips/${tripId}`, tripData);
+    // Format the data properly before sending to the server
+    const formattedData = {
+      name: tripData.name,
+      startDate: tripData.startDate,
+      endDate: tripData.endDate,
+      cost: parseFloat(tripData.cost) || 0,
+      currency: tripData.currency || 'USD',
+      activities: tripData.activities.map(day => ({
+        date: day.date,
+        activities: day.activities.map(activity => ({
+          id: activity.id,
+          title: activity.title,
+          category: activity.category,
+          location: activity.location || '',
+          startTime: activity.startTime,
+          endTime: activity.endTime,
+          notes: activity.notes || ''
+        }))
+      }))
+    };
+
+    const response = await axios.put(`${API_URL}/trips/${tripId}`, formattedData);
     return response.data;
   } catch (error) {
     console.error('Error updating trip:', error);

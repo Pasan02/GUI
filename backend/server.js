@@ -210,54 +210,154 @@ app.get('/api/trips/:id/activities', (req, res) => {
   });
 });
 
+// ...existing code...
+
+// Add these new endpoints
+
+// Update individual activity
+app.put('/api/activities/:id', (req, res) => {
+  const { id } = req.params;
+  const { title, category, location, startTime, endTime, notes, date } = req.body;
+  
+  const formattedStartTime = startTime ? startTime : null;
+  const formattedEndTime = endTime ? endTime : null;
+  const formattedDate = new Date(date).toISOString().slice(0, 10);
+
+  const query = `
+    UPDATE activities 
+    SET title = ?, category = ?, location = ?, 
+        start_time = ?, end_time = ?, date = ?, notes = ?
+    WHERE id = ?
+  `;
+  
+  db.query(
+    query, 
+    [title, category, location, formattedStartTime, formattedEndTime, formattedDate, notes, id], 
+    (err, result) => {
+      if (err) {
+        console.error('Database error:', err);
+        return res.status(500).json({ error: 'Error updating activity' });
+      }
+      res.json({ message: 'Activity updated successfully' });
+    }
+  );
+});
+
+// Add new activity
+app.post('/api/activities', (req, res) => {
+  const { trip_id, title, category, location, startTime, endTime, date, notes } = req.body;
+  
+  const formattedStartTime = startTime ? startTime : null;
+  const formattedEndTime = endTime ? endTime : null;
+  const formattedDate = new Date(date).toISOString().slice(0, 10);
+
+  const query = `
+    INSERT INTO activities 
+    (trip_id, title, category, location, start_time, end_time, date, notes)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+  
+  db.query(
+    query, 
+    [trip_id, title, category, location, formattedStartTime, formattedEndTime, formattedDate, notes], 
+    (err, result) => {
+      if (err) {
+        console.error('Database error:', err);
+        return res.status(500).json({ error: 'Error creating activity' });
+      }
+      res.status(201).json({ 
+        message: 'Activity added successfully',
+        activityId: result.insertId
+      });
+    }
+  );
+});
+
+// Delete activity
+app.delete('/api/activities/:id', (req, res) => {
+  const { id } = req.params;
+  
+  const query = 'DELETE FROM activities WHERE id = ?';
+  
+  db.query(query, [id], (err, result) => {
+    if (err) {
+      console.error('Database error:', err);
+      return res.status(500).json({ error: 'Error deleting activity' });
+    }
+    res.json({ message: 'Activity deleted successfully' });
+  });
+});
+
 app.put('/api/trips/:id', (req, res) => {
   const { id } = req.params;
   const { name, startDate, endDate, cost, currency, activities } = req.body;
   
-  const formattedStartDate = new Date(startDate).toISOString().slice(0, 19).replace('T', ' ');
-  const formattedEndDate = new Date(endDate).toISOString().slice(0, 19).replace('T', ' ');
+  // Format dates properly for MySQL
+  const formattedStartDate = new Date(startDate).toISOString().slice(0, 10);
+  const formattedEndDate = new Date(endDate).toISOString().slice(0, 10);
 
-  // Update trip details
+  console.log('Updating trip with ID:', id);
+  console.log('Trip data:', { name, startDate, endDate, cost, currency });
+  
+  // First update the trip details
   const tripQuery = 'UPDATE trips SET name = ?, start_date = ?, end_date = ?, cost = ?, currency = ? WHERE id = ?';
   
   db.query(tripQuery, [name, formattedStartDate, formattedEndDate, cost, currency, id], (err, result) => {
     if (err) {
-      console.error('Database error:', err);
+      console.error('Database error updating trip:', err);
       return res.status(500).json({ error: 'Error updating trip' });
     }
 
-    // Delete existing activities
+    // If no activities to update, return success
+    if (!activities || activities.length === 0) {
+      return res.json({ message: 'Trip updated successfully' });
+    }
+
+    // Delete all existing activities for this trip
     db.query('DELETE FROM activities WHERE trip_id = ?', [id], (deleteErr) => {
       if (deleteErr) {
-        console.error('Delete error:', deleteErr);
-        return res.status(500).json({ error: 'Error deleting activities' });
+        console.error('Error deleting activities:', deleteErr);
+        return res.status(500).json({ error: 'Error updating activities' });
       }
 
-      if (!activities || activities.length === 0) {
+      // Prepare activities for insertion
+      const activityValues = [];
+      
+      activities.forEach(day => {
+        const dayDate = new Date(day.date).toISOString().slice(0, 10);
+        
+        day.activities.forEach(activity => {
+          // Format times properly
+          const startTime = activity.startTime || null;
+          const endTime = activity.endTime || null;
+          
+          activityValues.push([
+            id, // trip_id
+            activity.title,
+            activity.category,
+            activity.location || null,
+            startTime,
+            endTime,
+            dayDate,
+            activity.notes || null
+          ]);
+        });
+      });
+
+      // If no activities to add, return success
+      if (activityValues.length === 0) {
         return res.json({ message: 'Trip updated successfully' });
       }
 
       // Insert new activities
-      const activityValues = activities.flatMap(day => 
-        day.activities.map(activity => [
-          id,
-          activity.title,
-          activity.category,
-          activity.location || null,
-          activity.startTime ? new Date(activity.startTime).toTimeString().split(' ')[0] : null,
-          activity.endTime ? new Date(activity.endTime).toTimeString().split(' ')[0] : null,
-          day.date,
-          activity.notes || null
-        ])
-      );
-
       const activityQuery = 'INSERT INTO activities (trip_id, title, category, location, start_time, end_time, date, notes) VALUES ?';
       
       db.query(activityQuery, [activityValues], (actErr) => {
         if (actErr) {
-          console.error('Activity insert error:', actErr);
-          return res.status(500).json({ error: 'Error updating activities' });
+          console.error('Error inserting activities:', actErr);
+          return res.status(500).json({ error: 'Error updating activities', details: actErr.message });
         }
+        
         res.json({ message: 'Trip and activities updated successfully' });
       });
     });

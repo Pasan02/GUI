@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Share2, Download, ChevronLeft, ChevronRight, Bed, Utensils, Bus, Camera, Activity, MapPin } from 'lucide-react';
+import { Share2, Download, ChevronLeft, ChevronRight, Bed, Utensils, Bus, Camera, Activity, MapPin, Edit } from 'lucide-react';
 import { getLocationImages } from '../../api';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import PDFDocument from '../../pages/view-itinerary/PDFDocument';
@@ -172,7 +172,25 @@ const ActivityLocation = styled.div`
   font-size: 0.875rem;
   margin-top: 0.5rem;
 `;
-
+const BackButton = styled.button`
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  z-index: 10;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 1);
+  }
+`;
 const ActivityNote = styled.div`
   background: #f9fafb;
   padding: 0.75rem;
@@ -220,6 +238,7 @@ const TripItinerary = () => {
   const [activeTab, setActiveTab] = useState('1');
   const [locationImages, setLocationImages] = useState([]);
   const [allImages, setAllImages] = useState([]); 
+  const navigate = useNavigate();
   const fallbackImage = "https://picsum.photos/800/400";
   const [tripData, setTripData] = useState({
     name: "",
@@ -325,8 +344,16 @@ const TripItinerary = () => {
   return (
     <Container>
       <ImageSliderContainer>
+
+      <BackButton onClick={() => navigate('/itinerary')}>
+        <ChevronLeft size={16} />
+        Back
+      </BackButton>
         <SliderActions>
-          
+        <ActionButton onClick={() => navigate(`/itinerary/${id}/edit`)}>
+            <Edit size={16} />
+            Edit Trip
+          </ActionButton>
           <ActionButton>
             <Share2 size={16} />
             Share

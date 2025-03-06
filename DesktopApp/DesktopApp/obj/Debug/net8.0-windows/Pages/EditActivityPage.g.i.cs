@@ -117,7 +117,7 @@ namespace DesktopApp.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DesktopApp;V1.0.0.0;component/pages/editactivitypage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DesktopApp;component/pages/editactivitypage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\EditActivityPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

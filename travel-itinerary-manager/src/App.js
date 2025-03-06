@@ -11,6 +11,7 @@ import{ItinerariesLayout} from "../src/pages/Dashboard/ItinerariesLayout";
 import{MyInformationLayout} from "../src/pages/Dashboard/MyInformationLayout";
 import {SettingsLayout} from "../src/pages/Dashboard/SettingsLayout";
 import TripItinerary from "./pages/view-itinerary/default-view";
+import EditTripPage from "./pages/Edit Trip/edit_trip";
 
 function App() {
   return ( 
@@ -24,7 +25,7 @@ function App() {
      
     <Route path="/" element={<HomePage/>} />
     <Route path="/plan-trip" element={<TripPlannerLayout/>} />
-
+    <Route path="/itinerary/:id/edit" element={<EditTripPage />} />
        
        <Route path="/dashboard" element={<DashboardLayout/>} />
           <Route path="/my-information" element={<MyInformationLayout/>} />

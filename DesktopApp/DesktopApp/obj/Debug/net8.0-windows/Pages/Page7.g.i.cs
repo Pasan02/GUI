@@ -117,7 +117,7 @@ namespace DesktopApp.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DesktopApp;V1.0.0.0;component/pages/page7.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DesktopApp;component/pages/page7.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\Page7.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
