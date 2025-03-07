@@ -13,12 +13,7 @@ export function AuthHero() {
         />
         <HeroContent>
           <LogoWrapper />
-          <HeroTitle>Design with us</HeroTitle>
-          <HeroDescription>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-            lobortis maximus nunc, ac rhoncus odio congue quis. Sed ac
-            semper orci, eu porttitor lacus.
-          </HeroDescription>
+          
         </HeroContent>
       </HeroWrapper>
     </HeroColumn>
@@ -75,25 +70,4 @@ const LogoWrapper = styled.div`
   display: flex;
   min-height: 48px;
   width: 48px;
-`;
-
-const HeroTitle = styled.h1`
-  font-size: 56px;
-  font-weight: 600;
-  line-height: 1;
-  text-align: center;
-  margin-top: 16px;
-  @media (max-width: 991px) {
-    font-size: 40px;
-  }
-`;
-
-const HeroDescription = styled.p`
-  font-size: 24px;
-  font-weight: 400;
-  align-self: stretch;
-  margin-top: 16px;
-  @media (max-width: 991px) {
-    max-width: 100%;
-  }
 `;

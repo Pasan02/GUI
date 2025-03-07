@@ -13,9 +13,7 @@ using System.Windows.Media.Animation;
 using MySql.Data.MySqlClient;
 namespace DesktopApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+   
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -43,7 +41,7 @@ namespace DesktopApp
                     string query = "INSERT INTO Users (Username, Password, Email) VALUES (@Username, @Password, @Email)";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Password", password); // Consider hashing the password before storing
+                    cmd.Parameters.AddWithValue("@Password", password); 
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.ExecuteNonQuery();
                 }

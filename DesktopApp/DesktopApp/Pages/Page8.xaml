@@ -13,7 +13,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Left Sidebar - Using consistent design from Page3 -->
+        
         <Border Background="#F8F9FA" 
                 BorderBrush="#E0E0E0" 
                 BorderThickness="0,0,1,0"
@@ -26,7 +26,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Profile Section -->
+                
                 <Border CornerRadius="12" 
                         Padding="20" 
                         Background="#F0F4FF" 
@@ -37,7 +37,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <!-- Logo -->
+                        
                         <Grid Height="38" Width="38">
                             <Viewbox>
                                 <Path Data="M90,50 L75,65 L25,65 L10,50 L25,35 L75,35 L90,50 M30,45 A5,5 0 1 1 30,55 A5,5 0 1 1 30,45 M70,45 A5,5 0 1 1 70,55 A5,5 0 1 1 70,45"
@@ -45,7 +45,7 @@
                             </Viewbox>
                         </Grid>
 
-                        <!-- Text Section -->
+                       
                         <StackPanel Grid.Column="1" 
                                     Margin="15,0,0,0" 
                                     VerticalAlignment="Center">
@@ -61,7 +61,7 @@
                     </Grid>
                 </Border>
 
-                <!-- Trip Info Box -->
+               
                 <Border Grid.Row="1"
                         VerticalAlignment="Top"
                         Background="White"
@@ -107,7 +107,7 @@
                     </StackPanel>
                 </Border>
 
-                <!-- Back Button -->
+               
                 <Button Grid.Row="2"
         x:Name="BackButton"
         Content="← Back" 
@@ -130,7 +130,7 @@
                 </Button>
 
 
-                <!-- Save Button -->
+                
                 <Button Grid.Row="3"
                         x:Name="SaveActivitiesButton"
                         Content="Save Activities" 
@@ -152,14 +152,14 @@
             </Grid>
         </Border>
 
-        <!-- Main Content Area -->
+       
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!-- Header Section -->
+            
             <Border Background="White" Padding="30,30,30,15">
                 <TextBlock Text="Day-wise Activities Planner" 
                           FontSize="24" 
@@ -167,7 +167,7 @@
                           Foreground="#1a73e8"/>
             </Border>
 
-            <!-- Tab Control with Modern Styling -->
+            
             <Border Grid.Row="1" 
                     Background="White" 
                     Margin="30,0,30,30"
@@ -182,7 +182,7 @@
                             Background="Transparent"
                             Padding="10">
                     <TabControl.Resources>
-                        <!-- Tab Styling -->
+                        
                         <Style TargetType="TabItem">
                             <Setter Property="Template">
                                 <Setter.Value>
@@ -214,7 +214,7 @@
                             </Setter>
                         </Style>
 
-                        <!-- Button Style for + Add Activity -->
+                        
                         <Style x:Key="AddActivityButtonStyle" TargetType="Button">
                             <Setter Property="Background" Value="#1a73e8"/>
                             <Setter Property="Foreground" Value="White"/>
@@ -241,7 +241,7 @@
                             </Setter>
                         </Style>
 
-                        <!-- Activity Card Style -->
+                        
                         <Style x:Key="ActivityCardStyle" TargetType="Border">
                             <Setter Property="Background" Value="White"/>
                             <Setter Property="BorderBrush" Value="#E0E0E0"/>
@@ -256,7 +256,7 @@
                             </Style.Triggers>
                         </Style>
                     </TabControl.Resources>
-                    <!-- Tabs dynamically populated in code-behind -->
+                  
                 </TabControl>
             </Border>
         </Grid>

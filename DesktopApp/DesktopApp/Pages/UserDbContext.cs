@@ -15,20 +15,20 @@ namespace DesktopApp.Pages
     {
         public UserDbContext() : base("name=UserDbContext")
         {
-            // Configure EF to not proxy objects for better control
+            
             this.Configuration.ProxyCreationEnabled = false;
             this.Configuration.LazyLoadingEnabled = false;
 
-            // Add error handler to help diagnose issues
+            
             ((IObjectContextAdapter)this).ObjectContext.ObjectMaterialized += (sender, e) =>
             {
                 if (e.Entity is User)
                 {
-                    // Handle potential null values that might cause conversion problems
+                   
                     User user = e.Entity as User;
                     if (user != null && user.PhoneNumber == null)
                     {
-                        // Default value if phone number is null
+                        
                         Console.WriteLine($"User {user.UserID}: Phone number is null");
                     }
                 }
@@ -41,12 +41,12 @@ namespace DesktopApp.Pages
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure User entity
+            
             modelBuilder.Entity<User>()
                 .ToTable("users")
                 .HasKey(u => u.UserID);
 
-            // Configure property mappings
+            
             modelBuilder.Entity<User>()
                 .Property(u => u.UserID)
                 .HasColumnName("UserID");
@@ -92,7 +92,7 @@ namespace DesktopApp.Pages
             }
             else
             {
-                // Log the user ID that was not found
+                
                 Console.WriteLine($"User with ID {userId} not found.");
                 throw new Exception("User not found.");
             }
@@ -105,14 +105,14 @@ namespace DesktopApp.Pages
                 var user = Users.Find(updatedUser.UserID);
                 if (user != null)
                 {
-                    // Update individual properties to avoid type conversion issues
+                    
                     user.Username = updatedUser.Username;
                     user.Email = updatedUser.Email;
                     user.Name = updatedUser.Name;
                     user.Country = updatedUser.Country;
                     user.PhoneNumber = updatedUser.PhoneNumber;
 
-                    // Keep the password if it's not being updated
+                    
                     if (!string.IsNullOrEmpty(updatedUser.Password))
                     {
                         user.Password = updatedUser.Password;

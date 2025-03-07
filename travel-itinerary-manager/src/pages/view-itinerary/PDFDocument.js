@@ -1,15 +1,7 @@
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet, Image, Font } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 import { pdf } from '@react-pdf/renderer';
 
-// Register a font for icons (you'll need to provide font files)
-// This is optional but would help with rendering icons
-// Font.register({
-//   family: 'Lucide',
-//   src: '/path-to-your-lucide-font.ttf',
-// });
-
-// Define styles
 const styles = StyleSheet.create({
   page: {
     padding: 30,
@@ -143,7 +135,7 @@ const styles = StyleSheet.create({
   },
 });
 
-// Helper function to determine color based on category
+
 const getCategoryColor = (category) => {
   const categoryColors = {
     LODGING: '#8b5cf6',
@@ -156,12 +148,12 @@ const getCategoryColor = (category) => {
   return categoryColors[category] || '#f59e0b';
 };
 
-// Helper function to format category name for display
+
 const formatCategory = (category) => {
   return category.charAt(0) + category.slice(1).toLowerCase();
 };
 
-// Main PDFDocument component
+
 const PDFDocument = ({ tripData }) => {
   return (
     <Document>
@@ -175,7 +167,7 @@ const PDFDocument = ({ tripData }) => {
           )}
         </View>
         
-        {/* Trip Info Card */}
+        
         <View style={styles.tripCard}>
           <View style={styles.tripHeader}>
             <View>
@@ -189,7 +181,7 @@ const PDFDocument = ({ tripData }) => {
           </View>
         </View>
         
-        {/* Trip Days and Activities */}
+        
         {tripData.days.map((day) => (
           <View key={`day-${day.day}`} wrap={false}>
             <Text style={styles.dayHeader}>Day {day.day}</Text>
@@ -230,7 +222,7 @@ const PDFDocument = ({ tripData }) => {
           </View>
         ))}
         
-        {/* Page Number */}
+       
         <Text 
           style={styles.pageNumber} 
           render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`} 

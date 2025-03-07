@@ -377,7 +377,7 @@ const TripItinerary = () => {
         />
          {locationImages[currentImage] && (
           <ImageCredits>
-            Photo by {locationImages[currentImage].photographer} on Pixabay
+            Photo by {locationImages[currentImage].photographer} on Unsplash
           </ImageCredits>
         )}
         

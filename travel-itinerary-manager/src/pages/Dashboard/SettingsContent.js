@@ -1,13 +1,42 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { deleteUserAccount } from "../../api";
+import { useNavigate } from "react-router-dom";
+
 
 export function SettingsContent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleDeleteAccount = () => {
-    
-    console.log("Account deleted");
-    
+  const handleDeleteAccount = async () => {
+    try {
+      setIsDeleting(true);
+      setError("");
+      
+      const userId = localStorage.getItem('userId');
+      
+      if (!userId) {
+        throw new Error("User ID not found");
+      }
+      
+      await deleteUserAccount(userId);
+      
+      
+      localStorage.removeItem('userId');
+      localStorage.removeItem('username');
+      localStorage.removeItem('token');
+      
+     
+      navigate('/');
+      
+    } catch (err) {
+      console.error("Error deleting account:", err);
+      setError("Failed to delete account. Please try again.");
+    } finally {
+      setIsDeleting(false);
+    }
   };
 
   return (
@@ -25,16 +54,21 @@ export function SettingsContent() {
       </ContentWrapper>
 
       {isModalOpen && (
-  <ModalOverlay>
-    <ModalContainer>
-      <h2>Confirm Deletion</h2>
-      <p>Are you sure you want to delete your account? This action cannot be undone.</p>
-      <ModalActions>
-        <CancelButton onClick={() => setIsModalOpen(false)}>Cancel</CancelButton>
-        <ConfirmButton onClick={handleDeleteAccount}>Confirm</ConfirmButton>
-      </ModalActions>
-    </ModalContainer>
-  </ModalOverlay>
+        <ModalOverlay>
+          <ModalContainer>
+            <h2>Confirm Deletion</h2>
+            <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+            {error && <ErrorMessage>{error}</ErrorMessage>}
+            <ModalActions>
+              <CancelButton onClick={() => setIsModalOpen(false)} disabled={isDeleting}>
+                Cancel
+              </CancelButton>
+              <ConfirmButton onClick={handleDeleteAccount} disabled={isDeleting}>
+                {isDeleting ? "Deleting..." : "Confirm"}
+              </ConfirmButton>
+            </ModalActions>
+          </ModalContainer>
+        </ModalOverlay>
       )}
     </Container>
   );
@@ -150,4 +184,9 @@ const ConfirmButton = styled.button`
   &:hover {
     background-color: #c82333;
   }
+`;
+const ErrorMessage = styled.p`
+  color: #dc3545;
+  margin-top: 10px;
+  font-size: 14px;
 `;

@@ -19,7 +19,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- Left side with hero image -->
+       
         <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
                 CornerRadius="0,12,12,0" 
                 Margin="0,0,0,0" 
@@ -28,7 +28,7 @@
                 <Image Source="../Images/hero-image.jpg" 
                        Stretch="UniformToFill"/>
                 <Border Background="#4D000000" />
-                <!-- Semi-transparent overlay -->
+                
                 <StackPanel VerticalAlignment="Bottom" Margin="30,0,0,40">
                     <TextBlock Text="JOIN OUR COMMUNITY" 
                                Foreground="White" 
@@ -47,18 +47,18 @@
             </Grid>
         </Border>
 
-        <!-- Empty top bar -->
+        
         <Border Grid.Column="1" Grid.Row="0" 
                 Background="White"
                 Padding="20,20,20,0">
         </Border>
 
-        <!-- Right side with sign up form -->
+        
         <Border Grid.Column="1" Grid.Row="1" 
                 Background="White" 
                 Padding="40,10,40,10">
             <StackPanel VerticalAlignment="Center">
-                <!-- Header -->
+                
                 <TextBlock Text="Create an Account"
                            FontSize="24" 
                            FontWeight="SemiBold" 
@@ -74,7 +74,7 @@
                     </TextBlock.Inlines>
                 </TextBlock>
 
-                <!-- Username -->
+                
                 <TextBlock Text="Username" 
                            Foreground="#444444" 
                            FontWeight="SemiBold"
@@ -91,7 +91,7 @@
                              FontSize="14"/>
                 </Border>
 
-                <!-- Email -->
+                
                 <TextBlock Text="Email Address" 
                            Foreground="#444444" 
                            FontWeight="SemiBold"
@@ -108,7 +108,7 @@
                              FontSize="14"/>
                 </Border>
 
-                <!-- Password -->
+                
                 <TextBlock Text="Password" 
                            Foreground="#444444" 
                            FontWeight="SemiBold"
@@ -130,7 +130,7 @@
                            FontSize="12" 
                            Margin="0,0,0,25"/>
 
-                <!-- Create Account Button -->
+                
                 <Button Content="Create Account" 
                         Background="#1a73e8" 
                         Foreground="White" 
@@ -150,7 +150,7 @@
             </StackPanel>
         </Border>
 
-        <!-- Footer -->
+        
         <Border Grid.Column="1" Grid.Row="2" 
                 Background="White"
                 Padding="20,15,20,15">

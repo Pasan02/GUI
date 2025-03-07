@@ -26,16 +26,10 @@ const LayoutContainer = styled.div`
   padding: 0;
 `;
 
-
-
-
-
 const ContentWrapper = styled.div`
   flex: 1;
   display: flex;
 
-
-  
   gap: 24px;
   padding: 44px 0px 76px 31px;
   overflow-y: auto;

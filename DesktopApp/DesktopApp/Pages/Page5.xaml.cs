@@ -37,13 +37,13 @@ namespace DesktopApp.Pages
         private void LoadTrips()
         {
             TripRepository tripRepository = new TripRepository();
-            List<Trip> trips = tripRepository.GetTrips(false); // Get all trips regardless of start date
+            List<Trip> trips = tripRepository.GetTrips(false); 
 
             ItineraryGrid.Children.Clear();
 
             foreach (var trip in trips)
             {
-                // Create main border with shadow effect
+                
                 Border outerBorder = new Border
                 {
                     Margin = new Thickness(8,0,8,12),
@@ -56,18 +56,18 @@ namespace DesktopApp.Pages
                 };
 
                 Grid cardGrid = new Grid();
-                // We only need two row definitions, and ensure the content area is set to Auto
-                cardGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(180) }); // Image area
-                cardGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto }); // Content area
+                
+                cardGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(180) }); 
+                cardGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto }); 
 
-                // Image container with rounded top corners
+                
                 Border imageContainer = new Border
                 {
                     CornerRadius = new CornerRadius(10, 10, 0, 0),
                     ClipToBounds = true
                 };
 
-                // Trip Image
+               
                 Image tripImage = new Image
                 {
                     Height = 180,
@@ -97,19 +97,18 @@ namespace DesktopApp.Pages
                 Grid.SetRow(imageContainer, 0);
                 cardGrid.Children.Add(imageContainer);
 
-                // Content area with details - critical change: zero bottom padding
+                
                 Border contentBorder = new Border
                 {
                     Background = Brushes.White,
-                    Padding = new Thickness(16, 10, 16, 0), // No bottom padding
+                    Padding = new Thickness(16, 10, 16, 0), 
                     CornerRadius = new CornerRadius(0, 0, 10, 10)
                 };
 
-                // Use DockPanel instead of StackPanel to have more control over spacing
+                
                 DockPanel contentPanel = new DockPanel();
                 contentPanel.LastChildFill = true;
 
-                // Trip name with proper styling
                 TextBlock tripNameTextBlock = new TextBlock
                 {
                     Text = trip.TripName,
@@ -119,25 +118,25 @@ namespace DesktopApp.Pages
                     TextTrimming = TextTrimming.CharacterEllipsis,
                     MaxHeight = 20,
                     Foreground = new SolidColorBrush(Color.FromRgb(51, 51, 51)),
-                    Margin = new Thickness(0, 0, 0, 8) // Add margin here instead of relying on the divider's margin
+                    Margin = new Thickness(0, 0, 0, 8) 
                 };
                 DockPanel.SetDock(tripNameTextBlock, Dock.Top);
                 contentPanel.Children.Add(tripNameTextBlock);
 
-                // Divider - with minimal margins
+               
                 Border divider = new Border
                 {
                     Height = 1,
                     Background = new SolidColorBrush(Color.FromRgb(240, 240, 240)),
-                    Margin = new Thickness(0, 0, 0, 8) // Only bottom margin needed
+                    Margin = new Thickness(0, 0, 0, 8) 
                 };
                 DockPanel.SetDock(divider, Dock.Top);
                 contentPanel.Children.Add(divider);
 
-                // Trip dates container - using StackPanel with controlled margin
-                StackPanel datesContainer = new StackPanel { Margin = new Thickness(0, 0, 0, 10) }; // Single bottom margin controls space after dates
+                
+                StackPanel datesContainer = new StackPanel { Margin = new Thickness(0, 0, 0, 10) }; 
 
-                // Start date with icon
+                
                 Grid dateStartGrid = new Grid();
                 dateStartGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(20) });
                 dateStartGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
@@ -168,11 +167,11 @@ namespace DesktopApp.Pages
                 dateStartGrid.Children.Add(startDateTextBlock);
                 datesContainer.Children.Add(dateStartGrid);
 
-                // End date with minimal spacing
+                
                 Grid dateEndGrid = new Grid();
                 dateEndGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(20) });
                 dateEndGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-                dateEndGrid.Margin = new Thickness(0, 4, 0, 0); // Minimal top margin
+                dateEndGrid.Margin = new Thickness(0, 4, 0, 0); 
 
                 Path calendarEndIcon = new Path
                 {
@@ -200,7 +199,7 @@ namespace DesktopApp.Pages
                 dateEndGrid.Children.Add(endDateTextBlock);
                 datesContainer.Children.Add(dateEndGrid);
 
-                // Add dates container to the content panel
+                
                 contentPanel.Children.Add(datesContainer);
 
                 contentBorder.Child = contentPanel;
@@ -223,11 +222,11 @@ namespace DesktopApp.Pages
             if (string.IsNullOrWhiteSpace(tripName))
                 return null;
 
-            // Normalize the trip name (lowercase and remove punctuation)
+            
             string normalizedName = tripName.ToLower();
             normalizedName = Regex.Replace(normalizedName, @"[^\w\s]", "");
 
-            // Check for known destinations in the trip name
+            
             foreach (var destination in KnownDestinations)
             {
                 if (normalizedName.Contains(destination.ToLower()))
@@ -236,11 +235,11 @@ namespace DesktopApp.Pages
                 }
             }
 
-            // Try matching destination with custom rules
+            
             if (normalizedName.Contains("getaway") || normalizedName.Contains("vacation") ||
                 normalizedName.Contains("trip to") || normalizedName.Contains("visit"))
             {
-                // Try to extract destination after "trip to", "visit", etc.
+                
                 string[] patterns = { "trip to", "visit to", "travel to", "vacation in", "getaway to" };
                 foreach (var pattern in patterns)
                 {
@@ -250,7 +249,7 @@ namespace DesktopApp.Pages
                         string possibleDestination = normalizedName.Substring(index + pattern.Length).Trim();
                         string firstWord = possibleDestination.Split(' ').FirstOrDefault();
 
-                        // If first word is a known destination, return it
+                        
                         if (!string.IsNullOrEmpty(firstWord) &&
                             KnownDestinations.Any(d => d.ToLower() == firstWord))
                         {
@@ -267,7 +266,7 @@ namespace DesktopApp.Pages
 
         private void Itinerary_Button_Click(object sender, RoutedEventArgs e)
         {
-            // Clear in-memory activities for the new itinerary
+            
             ActivityRepository.ClearInMemoryActivities();
 
             NavigationService.Navigate(new Page7());
@@ -303,10 +302,10 @@ namespace DesktopApp.Pages
         }
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            // Clear session data or perform any necessary cleanup
+           
             SessionManager.CurrentUserId = 0;
 
-            // Navigate to MainWindow
+            
             var mainWindow = new MainWindow();
             Application.Current.MainWindow = mainWindow;
             mainWindow.Show();

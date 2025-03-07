@@ -32,10 +32,10 @@ namespace DesktopApp.Pages
         {
             try
             {
-                // Retrieve the current user's ID
+                
                 int userId = GetCurrentUserId();
 
-                // Log the user ID
+                
                 Console.WriteLine($"Attempting to delete user with ID {userId}");
 
                 using (var context = new UserDbContext())
@@ -43,20 +43,20 @@ namespace DesktopApp.Pages
                     context.DeleteUser(userId);
                 }
 
-                // Show a confirmation message and navigate to the signup page
+                
                 MessageBox.Show("Account deleted successfully. You will be redirected to the Signup Page.");
                 NavigationService.Navigate(new Page1());
             }
             catch (Exception ex)
             {
-                // Log the exception and show an error message
+                
                 MessageBox.Show($"An error occurred while deleting the account: {ex.Message}");
             }
         }
 
         private int GetCurrentUserId()
         {
-            // Retrieve the current user's ID from the session manager
+           
             return SessionManager.CurrentUserId;
         }
 
@@ -93,10 +93,10 @@ namespace DesktopApp.Pages
             }
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            // Clear session data or perform any necessary cleanup
+            
             SessionManager.CurrentUserId = 0;
 
-            // Navigate to MainWindow
+            
             var mainWindow = new MainWindow();
             Application.Current.MainWindow = mainWindow;
             mainWindow.Show();

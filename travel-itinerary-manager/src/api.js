@@ -31,6 +31,16 @@ export const loginUser = async (credentials) => {
   }
 };
 
+export const deleteUserAccount = async (userId) => {
+  try {
+    const response = await axios.delete(`${API_URL}/users/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting user account:', error);
+    throw error;
+  }
+};
+
 
 export const getUserInfo = async (username) => {
   try {
@@ -97,7 +107,7 @@ export const getTripActivities = async (tripId) => {
 
 export const updateTrip = async (tripId, tripData) => {
   try {
-    // Format the data properly before sending to the server
+    
     const formattedData = {
       name: tripData.name,
       startDate: tripData.startDate,
@@ -126,26 +136,32 @@ export const updateTrip = async (tripId, tripData) => {
   }
 };
 
-const PIXABAY_API_KEY = '32258999-ea3fdee2c69c77e6b4accb3ec'; 
+const UNSPLASH_ACCESS_KEY = '2PpANlCw-mkc5qlmvKZ6BeBAU_QMrYd6EMb27b-QT8Q'; 
 
 export const getLocationImages = async (location) => {
   try {
-    const response = await axios.get(`https://pixabay.com/api/`, {
+    const response = await axios.get(`https://api.unsplash.com/search/photos`, {
       params: {
-        key: PIXABAY_API_KEY,
-        q: encodeURIComponent(location),
-        image_type: 'photo',
-        category: 'places',
+        client_id: UNSPLASH_ACCESS_KEY,
+        query: location,
+        orientation: 'landscape',
         per_page: 5,
-        min_width: 1024,
-        min_height: 400,
-        orientation: 'horizontal'
+        w: 1024,              
+        h: 400,               
+        fit: 'crop',          
+        crop: 'entropy',      
+        q: 80      
+      },
+      headers: {
+        'Accept-Version': 'v1'
       }
     });
-    return response.data.hits.map(hit => ({
-      id: hit.id,
-      url: hit.largeImageURL, 
-      photographer: hit.user
+    
+    return response.data.results.map(photo => ({
+      id: photo.id,
+      url: photo.urls.regular, 
+      photographer: photo.user.name,
+      location: photo.location?.name || location
     }));
   } catch (error) {
     console.error('Error fetching location images:', error);
@@ -155,13 +171,13 @@ export const getLocationImages = async (location) => {
 
 export const getTripCoverImage = (title) => {
   try {
-    // Extract location from title like "Trip to London" -> "london"
+    
     const locationMatch = title.toLowerCase().match(/(?:trip to|in|at|visit(?:ing)?)\s+([a-z\s]+)$/i);
     const location = locationMatch ? 
       locationMatch[1].trim().replace(/\s+/g, '') : 
       title.toLowerCase().replace(/\s+/g, '');
 
-    console.log('Extracted location:', location); // For debugging
+    console.log('Extracted location:', location); 
 
     return require(`./images/${location}.jpg`);
   } catch (error) {

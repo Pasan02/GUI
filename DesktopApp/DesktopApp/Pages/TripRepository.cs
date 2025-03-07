@@ -14,7 +14,7 @@ public class TripRepository
 
     public int SaveTrip(string tripName, DateTime startDate, DateTime endDate, decimal cost, string currency)
     {
-        // Get the current user ID from SessionManager
+        
         int currentUserId = DesktopApp.Pages.Page4.SessionManager.CurrentUserId;
 
         int tripId;
@@ -119,5 +119,5 @@ public class Trip
     public decimal Cost { get; set; }
     public string Currency { get; set; }
     public int TripId { get; set; }
-    public int UserID { get; set; }  // Added foreign key to User
+    public int UserID { get; set; }  
 }

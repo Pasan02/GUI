@@ -11,15 +11,14 @@ namespace DesktopApp.Pages
     {
         private static readonly string connectionString = "server=127.0.0.2; database=userdatabase; user=root;password=pasan2002;SslMode=none";
         private static List<Activity> inMemoryActivities = new List<Activity>();
-        public const int DefaultTripId = -1; // Default TripID value
-
+        public const int DefaultTripId = -1; 
         public static void AddActivity(Activity activity)
         {
             // Get current user ID
             int currentUserId = Page4.SessionManager.CurrentUserId;
             activity.UserID = currentUserId;
 
-            // Only add to memory initially
+            // Only add to memory initially. Activities are saaved in memory until the user saves the whole trip
             inMemoryActivities.Add(activity);
 
             // Only save to database if it's not a temporary trip ID
@@ -61,7 +60,7 @@ namespace DesktopApp.Pages
                 SaveActivityToDatabase(activity);
             }
 
-            // Clear temporary activities from memory
+            // Temorory activities are removed from memory
             inMemoryActivities.RemoveAll(a => a.TripId == newTripId && a.UserID == currentUserId);
         }
 
@@ -156,6 +155,6 @@ namespace DesktopApp.Pages
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public int TripId { get; set; }
-        public int UserID { get; set; }  // Added foreign key to User
+        public int UserID { get; set; }  
     }
 }

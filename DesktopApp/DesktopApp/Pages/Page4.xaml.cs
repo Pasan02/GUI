@@ -69,16 +69,16 @@ namespace DesktopApp.Pages
             {
                 using (var context = new UserDbContext())
                 {
-                    // Retrieve the current user's ID from the session manager
+                    
                     int currentUserId = SessionManager.CurrentUserId;
 
-                    // Use GetUserById method for safer retrieval
+                    
                     CurrentUser = context.GetUserById(currentUserId);
 
                     if (CurrentUser == null)
                     {
                         MessageBox.Show("Could not load user data. Please log in again.");
-                        // Navigate back to login page
+                        
                         NavigationService.Navigate(new Page2());
                     }
                 }
@@ -92,7 +92,7 @@ namespace DesktopApp.Pages
 
         public static class SessionManager
         {
-            // This property should be set when the user logs in
+            
             public static int CurrentUserId { get; set; }
         }
 
@@ -109,7 +109,7 @@ namespace DesktopApp.Pages
         {
             IsEditing = true;
             SaveButtonVisibility = Visibility.Collapsed;
-            // Call SaveUserData to save the changes
+            
             SaveUserData();
         }
         private void SaveUserData()
@@ -118,10 +118,10 @@ namespace DesktopApp.Pages
             {
                 using (var context = new UserDbContext())
                 {
-                    // Create a clone of the current user to avoid entity tracking issues
+                    
                     User updatedUser = CurrentUser.Clone();
 
-                    // Use the new UpdateUser method instead of direct property updates
+                   
                     bool result = context.UpdateUser(updatedUser);
 
                     if (result)
@@ -181,10 +181,10 @@ namespace DesktopApp.Pages
         }
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            // Clear session data or perform any necessary cleanup
+            
             SessionManager.CurrentUserId = 0;
 
-            // Navigate to MainWindow
+            
             var mainWindow = new MainWindow();
             Application.Current.MainWindow = mainWindow;
             mainWindow.Show();

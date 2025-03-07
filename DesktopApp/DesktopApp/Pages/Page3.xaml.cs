@@ -25,7 +25,7 @@ namespace DesktopApp.Pages
     {
         private ObservableCollection<Trip> _trips;
 
-        // Add KnownDestinations array - same as in Page5
+        
         private static readonly string[] KnownDestinations = new[]
         {
             "Paris", "London", "New York", "Tokyo", "Rome", "Barcelona", "Amsterdam",
@@ -42,16 +42,16 @@ namespace DesktopApp.Pages
         private void LoadTrips()
         {
             TripRepository tripRepository = new TripRepository();
-            var trips = tripRepository.GetTrips(); // Default is to get only upcoming trips
+            var trips = tripRepository.GetTrips(); 
             _trips = new ObservableCollection<Trip>(trips);
 
-            // Clear existing items
+          
             TripsListBox.Children.Clear();
 
-            // Create trip cards manually with modern styling
+            
             foreach (var trip in _trips)
             {
-                // Create main border with shadow effect
+                
                 Border outerBorder = new Border
                 {
                     Margin = new Thickness(8, 0, 8, 12),
@@ -63,18 +63,18 @@ namespace DesktopApp.Pages
                 };
 
                 Grid cardGrid = new Grid();
-                // We only need two row definitions, and ensure the content area is set to Auto
-                cardGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(180) }); // Image area
-                cardGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto }); // Content area
+                
+                cardGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(180) }); 
+                cardGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto }); 
 
-                // Image container with rounded top corners
+                
                 Border imageContainer = new Border
                 {
                     CornerRadius = new CornerRadius(10, 10, 0, 0),
                     ClipToBounds = true
                 };
 
-                // Trip Image
+                
                 Image tripImage = new Image
                 {
                     Height = 180,
@@ -104,7 +104,7 @@ namespace DesktopApp.Pages
                 Grid.SetRow(imageContainer, 0);
                 cardGrid.Children.Add(imageContainer);
 
-                // Content area with details
+                
                 Border contentBorder = new Border
                 {
                     Background = Brushes.White,
@@ -112,11 +112,11 @@ namespace DesktopApp.Pages
                     CornerRadius = new CornerRadius(0, 0, 10, 10)
                 };
 
-                // Use DockPanel instead of StackPanel to have more control over spacing
+                
                 DockPanel contentPanel = new DockPanel();
                 contentPanel.LastChildFill = true;
 
-                // Trip name with proper styling
+                
                 TextBlock tripNameTextBlock = new TextBlock
                 {
                     Text = trip.TripName,
@@ -131,7 +131,7 @@ namespace DesktopApp.Pages
                 DockPanel.SetDock(tripNameTextBlock, Dock.Top);
                 contentPanel.Children.Add(tripNameTextBlock);
 
-                // Divider
+                
                 Border divider = new Border
                 {
                     Height = 1,
@@ -141,7 +141,7 @@ namespace DesktopApp.Pages
                 DockPanel.SetDock(divider, Dock.Top);
                 contentPanel.Children.Add(divider);
 
-                // Start date with icon - unique for dashboard view
+                
                 Grid dateStartGrid = new Grid();
                 dateStartGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(20) });
                 dateStartGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
@@ -190,11 +190,11 @@ namespace DesktopApp.Pages
             if (string.IsNullOrWhiteSpace(tripName))
                 return null;
 
-            // Normalize the trip name (lowercase and remove punctuation)
+            
             string normalizedName = tripName.ToLower();
             normalizedName = Regex.Replace(normalizedName, @"[^\w\s]", "");
 
-            // Check for known destinations in the trip name
+           
             foreach (var destination in KnownDestinations)
             {
                 if (normalizedName.Contains(destination.ToLower()))
@@ -203,11 +203,11 @@ namespace DesktopApp.Pages
                 }
             }
 
-            // Try matching destination with custom rules
+            
             if (normalizedName.Contains("getaway") || normalizedName.Contains("vacation") ||
                 normalizedName.Contains("trip to") || normalizedName.Contains("visit"))
             {
-                // Try to extract destination after "trip to", "visit", etc.
+                
                 string[] patterns = { "trip to", "visit to", "travel to", "vacation in", "getaway to" };
                 foreach (var pattern in patterns)
                 {
@@ -217,7 +217,7 @@ namespace DesktopApp.Pages
                         string possibleDestination = normalizedName.Substring(index + pattern.Length).Trim();
                         string firstWord = possibleDestination.Split(' ').FirstOrDefault();
 
-                        // If first word is a known destination, return it
+                        
                         if (!string.IsNullOrEmpty(firstWord) &&
                             KnownDestinations.Any(d => d.ToLower() == firstWord))
                         {
@@ -269,10 +269,10 @@ namespace DesktopApp.Pages
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            // Clear session data or perform any necessary cleanup
+            
             SessionManager.CurrentUserId = 0;
 
-            // Navigate to MainWindow
+            
             var mainWindow = new MainWindow();
             Application.Current.MainWindow = mainWindow;
             mainWindow.Show();

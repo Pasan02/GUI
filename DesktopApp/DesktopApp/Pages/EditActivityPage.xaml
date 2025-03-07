@@ -14,7 +14,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Left Sidebar -->
         <Border Background="#F8F9FA" 
                 BorderBrush="#E0E0E0" 
                 BorderThickness="0,0,1,0"
@@ -27,7 +26,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Profile Section -->
+               
                 <Border CornerRadius="12" 
                         Padding="20" 
                         Background="#F0F4FF" 
@@ -38,7 +37,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <!-- Logo -->
+                        
                         <Grid Height="38" Width="38">
                             <Viewbox>
                                 <Path Data="M90,50 L75,65 L25,65 L10,50 L25,35 L75,35 L90,50 M30,45 A5,5 0 1 1 30,55 A5,5 0 1 1 30,45 M70,45 A5,5 0 1 1 70,55 A5,5 0 1 1 70,45"
@@ -46,7 +45,7 @@
                             </Viewbox>
                         </Grid>
 
-                        <!-- Text Section -->
+                        
                         <StackPanel Grid.Column="1" 
                                     Margin="15,0,0,0" 
                                     VerticalAlignment="Center">
@@ -62,7 +61,7 @@
                     </Grid>
                 </Border>
 
-                <!-- Info Box -->
+               
                 <Border Grid.Row="1"
                         VerticalAlignment="Top"
                         Background="White"
@@ -85,7 +84,7 @@
                     </StackPanel>
                 </Border>
 
-                <!-- Back Button -->
+                
                 <Button Grid.Row="2"
                         x:Name="CancelButton"
                         Content="← Cancel" 
@@ -107,7 +106,6 @@
                     </Button.Resources>
                 </Button>
 
-                <!-- Delete Button -->
                 <Button Grid.Row="3"
                         x:Name="DeleteActivityButton"
                         Content="Delete Activity" 
@@ -129,7 +127,7 @@
             </Grid>
         </Border>
 
-        <!-- Main Content Area -->
+        
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -137,7 +135,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <!-- Header Section -->
+            
             <Border Background="White" Padding="30,30,30,15">
                 <TextBlock Text="Activity Details" 
                           FontSize="24" 
@@ -145,7 +143,7 @@
                           Foreground="#1a73e8"/>
             </Border>
 
-            <!-- Main Form -->
+           
             <Border Grid.Row="1" 
                     Background="White" 
                     Margin="30,0,30,30"
@@ -167,7 +165,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- Activity Title -->
+                    
                     <TextBlock Text="Title:" 
                                Grid.Row="0" 
                                Grid.Column="0" 
@@ -182,7 +180,7 @@
                              BorderThickness="1"
                              BorderBrush="#E0E0E0"/>
 
-                    <!-- Category -->
+                    
                     <TextBlock Text="Category:" 
                                Grid.Row="1" 
                                Grid.Column="0" 
@@ -203,7 +201,7 @@
                         <ComboBoxItem Content="Other"/>
                     </ComboBox>
 
-                    <!-- Location -->
+                    
                     <TextBlock Text="Location:" 
                                Grid.Row="2" 
                                Grid.Column="0" 
@@ -218,7 +216,7 @@
                              BorderThickness="1"
                              BorderBrush="#E0E0E0"/>
 
-                    <!-- Start Time -->
+                    
                     <TextBlock Text="Start Time:" 
                                Grid.Row="3" 
                                Grid.Column="0" 
@@ -233,7 +231,7 @@
                              BorderThickness="1"
                              BorderBrush="#E0E0E0"/>
 
-                    <!-- End Time -->
+                    
                     <TextBlock Text="End Time:" 
                                Grid.Row="4" 
                                Grid.Column="0" 
@@ -250,7 +248,7 @@
                 </Grid>
             </Border>
 
-            <!-- Update Button -->
+            
             <Button Grid.Row="2"
                     x:Name="UpdateActivityButton"
                     Content="Update Activity" 

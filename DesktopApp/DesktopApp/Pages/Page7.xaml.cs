@@ -35,7 +35,7 @@ namespace DesktopApp.Pages
             TripRepository tripRepository = new TripRepository();
             int tripId = tripRepository.SaveTrip(tripName, startDate.Value, endDate.Value, cost, currency);
 
-            // Update activities with the new trip ID
+           
             ActivityRepository.UpdateActivitiesWithTripId(tripId);
 
             MessageBox.Show("Trip saved successfully.");
@@ -44,10 +44,9 @@ namespace DesktopApp.Pages
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            // Delete activities with the default trip ID
+            
             ActivityRepository.DeleteActivitiesWithDefaultTripId();
 
-            // Navigate back to Page5
             NavigationService.Navigate(new Page5());
         }
 
@@ -66,7 +65,7 @@ namespace DesktopApp.Pages
                 }
 
                 int numberOfDays = (endDate.Value - startDate.Value).Days + 1;
-                // Use the DefaultTripId constant from ActivityRepository
+                
                 int tripId = ActivityRepository.DefaultTripId;
                 NavigationService.Navigate(new Page8(numberOfDays, startDate.Value, tripId));
             }

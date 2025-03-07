@@ -15,8 +15,9 @@ const Container = styled.div`
 
 const FooterGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1.5fr 1fr 1fr;
   gap: 2rem;
+  margin-bottom: 2rem;
 `;
 
 const FooterColumn = styled.div``;
@@ -24,18 +25,27 @@ const FooterColumn = styled.div``;
 const FooterTitle = styled.h4`
   color: white;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
 `;
 
 const FooterText = styled.p`
   color: #D1D5DB;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 400px;
+`;
+
+const FooterLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 `;
 
 const FooterLink = styled.a`
   color: #D1D5DB;
   text-decoration: none;
-  display: block;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
   &:hover {
     color: white;
   }
@@ -43,8 +53,7 @@ const FooterLink = styled.a`
 
 const FooterDivider = styled.div`
   border-top: 1px solid #374151;
-  margin-top: 2rem;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   text-align: center;
   font-size: 0.875rem;
 `;
@@ -56,27 +65,23 @@ const Footer = () => {
         <FooterGrid>
           <FooterColumn>
             <FooterTitle>TravelPlanner</FooterTitle>
-            <FooterText>Making travel planning simple, collaborative, and enjoyable.</FooterText>
-          </FooterColumn>
-          <FooterColumn>
-            <FooterTitle>Product</FooterTitle>
-            <FooterLink href="#">Features</FooterLink>
-            <FooterLink href="#">Pricing</FooterLink>
-            <FooterLink href="#">Premium</FooterLink>
-            <FooterLink href="#">Updates</FooterLink>
+            <FooterText>Making travel planning simple, collaborative, and enjoyable. Our platform helps you create memorable trips by organizing your itineraries in one place.</FooterText>
           </FooterColumn>
           <FooterColumn>
             <FooterTitle>Company</FooterTitle>
-            <FooterLink href="#">About</FooterLink>
-            <FooterLink href="#">Blog</FooterLink>
-            <FooterLink href="#">Careers</FooterLink>
-            <FooterLink href="#">Contact</FooterLink>
+            <FooterLinks>
+              <FooterLink href="#">About Us</FooterLink>
+              <FooterLink href="#">Features</FooterLink>
+              <FooterLink href="#">Contact</FooterLink>
+            </FooterLinks>
           </FooterColumn>
           <FooterColumn>
-            <FooterTitle>Legal</FooterTitle>
-            <FooterLink href="#">Privacy Policy</FooterLink>
-            <FooterLink href="#">Terms of Service</FooterLink>
-            <FooterLink href="#">Cookie Policy</FooterLink>
+            <FooterTitle>Resources</FooterTitle>
+            <FooterLinks>
+              <FooterLink href="#">Help Center</FooterLink>
+              <FooterLink href="#">Privacy Policy</FooterLink>
+              <FooterLink href="#">Terms of Service</FooterLink>
+            </FooterLinks>
           </FooterColumn>
         </FooterGrid>
         <FooterDivider>

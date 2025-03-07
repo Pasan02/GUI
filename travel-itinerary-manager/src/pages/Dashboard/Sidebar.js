@@ -72,8 +72,6 @@ const SidebarContainer = styled.aside`
   
 `;
 
-
-
 const UserProfile = styled.div`
   border-radius: 43px;
   display: flex;

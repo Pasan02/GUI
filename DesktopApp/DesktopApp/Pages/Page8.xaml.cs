@@ -49,7 +49,7 @@ namespace DesktopApp.Pages
 
                 var activitiesList = new StackPanel { Name = $"ActivitiesList_{i + 1}" };
 
-                // Load activities from the database
+                
                 var activities = ActivityRepository.GetInMemoryActivities(_tripId);
                 foreach (var activity in activities)
                 {
@@ -97,7 +97,7 @@ namespace DesktopApp.Pages
             try
             {
                 var inputDialog = new InputDialog("Enter activity details:");
-                inputDialog.Owner = Window.GetWindow(this); // Set the owner window
+                inputDialog.Owner = Window.GetWindow(this); 
                 if (inputDialog.ShowDialog() == true)
                 {
                     var activity = new Activity
@@ -110,7 +110,7 @@ namespace DesktopApp.Pages
                         TripId = _tripId
                     };
 
-                    // Save activity to the database
+                    
                     ActivityRepository.AddActivity(activity);
 
                     var activityCard = CreateActivityCard(activity.Title, activity.Category, activity.Location, activity.StartTime, activity.EndTime, activitiesList);
@@ -126,7 +126,7 @@ namespace DesktopApp.Pages
 
         private Border CreateActivityCard(string activityTitle, string activityCategory, string activityLocation, string startTime, string endTime, StackPanel activitiesList)
         {
-            // Create the card without relying on the XAML-defined style
+            
             var card = new Border
             {
                 Background = new SolidColorBrush(Colors.White),
@@ -137,7 +137,7 @@ namespace DesktopApp.Pages
                 Margin = new Thickness(0)
             };
 
-            // Add hover effect
+            
             card.MouseEnter += (s, e) =>
             {
                 card.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F8F9FA"));
@@ -148,12 +148,12 @@ namespace DesktopApp.Pages
                 card.Background = new SolidColorBrush(Colors.White);
             };
 
-            // Rest of the method remains the same
+            
             var grid = new Grid();
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
 
-            // Create a more structured activity display
+            
             var contentPanel = new StackPanel();
 
             var titleBlock = new TextBlock
@@ -199,7 +199,7 @@ namespace DesktopApp.Pages
             };
             contentPanel.Children.Add(timeBlock);
 
-            // Actions panel with edit and delete buttons
+           
             var actionsPanel = new StackPanel
             {
                 Orientation = Orientation.Horizontal,
@@ -229,7 +229,7 @@ namespace DesktopApp.Pages
                 Cursor = Cursors.Hand
             };
 
-            // Store the activity information for editing
+            
             var activityInfo = $"{activityTitle}|{activityCategory}|{activityLocation}|{startTime}|{endTime}";
             editButton.Tag = activityInfo;
 
@@ -265,13 +265,12 @@ namespace DesktopApp.Pages
 
             if (inputDialog.ShowDialog() == true)
             {
-                // Find and update title text block
+                
                 if (contentPanel.Children[0] is TextBlock titleBlock)
                 {
                     titleBlock.Text = inputDialog.ActivityTitle;
                 }
 
-                // Find and update category and location
                 if (contentPanel.Children[1] is StackPanel detailsPanel &&
                     detailsPanel.Children.Count >= 2 &&
                     detailsPanel.Children[0] is TextBlock categoryBlock &&
@@ -281,13 +280,13 @@ namespace DesktopApp.Pages
                     locationBlock.Text = $"📍 {inputDialog.ActivityLocation}";
                 }
 
-                // Find and update time block
+               
                 if (contentPanel.Children[2] is TextBlock timeBlock)
                 {
                     timeBlock.Text = $"⏱ {inputDialog.StartTime} to {inputDialog.EndTime}";
                 }
 
-                // Update the tag with new activity info
+                
                 if (card.Child is Grid grid &&
                     grid.Children.Count > 1 &&
                     grid.Children[1] is StackPanel actionPanel &&
@@ -391,7 +390,7 @@ namespace DesktopApp.Pages
             Title = "Activity Details";
             Width = 400;
             Height = 500;
-            WindowStartupLocation = WindowStartupLocation.CenterOwner; // Change from CenterScreen to CenterOwner
+            WindowStartupLocation = WindowStartupLocation.CenterOwner; 
             Background = new SolidColorBrush(Colors.White);
             ResizeMode = ResizeMode.NoResize;
 
@@ -411,7 +410,7 @@ namespace DesktopApp.Pages
             };
             panel.Children.Add(headerText);
 
-            // Title field
+            
             panel.Children.Add(new TextBlock
             {
                 Text = "Title:",
@@ -428,7 +427,6 @@ namespace DesktopApp.Pages
             };
             panel.Children.Add(_titleTextBox);
 
-            // Category field
             panel.Children.Add(new TextBlock
             {
                 Text = "Category:",
@@ -445,7 +443,7 @@ namespace DesktopApp.Pages
             };
             panel.Children.Add(_categoryComboBox);
 
-            // Location field
+            
             panel.Children.Add(new TextBlock
             {
                 Text = "Location:",
@@ -461,7 +459,7 @@ namespace DesktopApp.Pages
             };
             panel.Children.Add(_locationTextBox);
 
-            // Start Time field with AM/PM selector
+            
             panel.Children.Add(new TextBlock
             {
                 Text = "Start Time:",
@@ -497,7 +495,7 @@ namespace DesktopApp.Pages
             startTimePanel.Children.Add(_startTimeAmPmComboBox);
             panel.Children.Add(startTimePanel);
 
-            // End Time field with AM/PM selector
+            
             panel.Children.Add(new TextBlock
             {
                 Text = "End Time:",
@@ -534,7 +532,7 @@ namespace DesktopApp.Pages
             endTimePanel.Children.Add(_endTimeAmPmComboBox);
             panel.Children.Add(endTimePanel);
 
-            // Buttons panel
+            
             var buttonsPanel = new StackPanel
             {
                 Orientation = Orientation.Horizontal,
@@ -570,7 +568,7 @@ namespace DesktopApp.Pages
 
             cancelButton.Click += (s, e) => DialogResult = false;
 
-            // Add rounded corners to buttons (fixes the Clone() error)
+            
             okButton.Resources = new ResourceDictionary();
             okButton.Resources.Add(typeof(Border), new Style(typeof(Border))
             {

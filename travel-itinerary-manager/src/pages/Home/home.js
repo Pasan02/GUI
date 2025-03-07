@@ -24,17 +24,6 @@ const Main = styled.main`
   flex-grow: 1;
 `;
 
-
-
-
-
-
-
-
-
-
-
-
 const Section = styled.section`
   padding: 4rem 0;
   background: ${props => props.background || 'transparent'};
@@ -45,7 +34,7 @@ const HeroSection = styled(Section)`
               url(${HeroBanner}) no-repeat center center;
   background-size: cover;
   color: white;
-  min-height: 360px;
+  min-height: 400px;
   display: flex;
   align-items: center;
 `;
@@ -122,23 +111,13 @@ const PreviewContainer = styled.div`
   margin: 0 auto;
 `;
 
-const PreviewPlaceholder = styled.div`
-  background: #E5E7EB;
-  height: 24rem;
-  border-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6B7280;
-`;
+
 const PreviewImage = styled.img`
   width: 100%;
   height: auto;
   border-radius: 0.5rem;
   display: block;
 `;
-
-
 
 const Button = styled.button`
   background: ${props => props.variant === 'primary' ? '#2563EB' : 'white'};
@@ -154,10 +133,6 @@ const Button = styled.button`
     background: ${props => props.variant === 'primary' ? '#1D4ED8' : '#F9FAFB'};
   }
 `;
-
-
-
-
 
 
 const HomePage = () => {

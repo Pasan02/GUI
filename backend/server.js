@@ -210,9 +210,7 @@ app.get('/api/trips/:id/activities', (req, res) => {
   });
 });
 
-// ...existing code...
 
-// Add these new endpoints
 
 // Update individual activity
 app.put('/api/activities/:id', (req, res) => {
@@ -359,6 +357,70 @@ app.put('/api/trips/:id', (req, res) => {
         }
         
         res.json({ message: 'Trip and activities updated successfully' });
+      });
+    });
+  });
+});
+
+app.delete('/api/users/:id', (req, res) => {
+  const { id } = req.params;
+  
+  
+  db.beginTransaction(err => {
+    if (err) {
+      console.error('Transaction error:', err);
+      return res.status(500).json({ error: 'Database error' });
+    }
+    
+    // First delete all activities associated with user's trips
+    const deleteActivitiesQuery = `
+      DELETE activities FROM activities 
+      JOIN trips ON activities.trip_id = trips.id 
+      WHERE trips.user_id = ?
+    `;
+    
+    db.query(deleteActivitiesQuery, [id], (err) => {
+      if (err) {
+        return db.rollback(() => {
+          console.error('Error deleting activities:', err);
+          res.status(500).json({ error: 'Error deleting user data' });
+        });
+      }
+      
+      // Then delete all trips
+      const deleteTripsQuery = 'DELETE FROM trips WHERE user_id = ?';
+      
+      db.query(deleteTripsQuery, [id], (err) => {
+        if (err) {
+          return db.rollback(() => {
+            console.error('Error deleting trips:', err);
+            res.status(500).json({ error: 'Error deleting user data' });
+          });
+        }
+        
+        // Finally delete the user
+        const deleteUserQuery = 'DELETE FROM users WHERE id = ?';
+        
+        db.query(deleteUserQuery, [id], (err) => {
+          if (err) {
+            return db.rollback(() => {
+              console.error('Error deleting user:', err);
+              res.status(500).json({ error: 'Error deleting user account' });
+            });
+          }
+          
+          // Commit the transaction
+          db.commit(err => {
+            if (err) {
+              return db.rollback(() => {
+                console.error('Error committing transaction:', err);
+                res.status(500).json({ error: 'Error deleting user account' });
+              });
+            }
+            
+            res.json({ message: 'Account deleted successfully' });
+          });
+        });
       });
     });
   });

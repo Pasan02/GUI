@@ -11,7 +11,7 @@ const FORM_FIELDS = [
   { name: 'phone', label: 'Phone Number:', type: 'tel', placeholder: 'Enter your phone number' }
 ];
 
-// Separate form component for better organization
+
 const UserInfoForm = ({ userInfo, isEditing, handleChange, handleSave, setIsEditing }) => (
   <Form>
     {FORM_FIELDS.map(field => (
@@ -109,7 +109,7 @@ export function MyInformationContent() {
   );
 }
 
-// Styled components remain the same but with additional components
+
 const LoadingWrapper = styled.div`
   text-align: center;
   padding: 2rem;
@@ -182,7 +182,7 @@ const FormField = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  max-width: 400px; // Add max-width to control input field width
+  max-width: 400px; 
   width: 100%;
 `;
 
@@ -199,7 +199,7 @@ const Input = styled.input`
   border-radius: 5px;
   background-color: ${props => props.disabled ? '#f5f5f5' : 'white'};
   color: ${props => props.disabled ? '#666' : '#333'};
-  width: 100%; // Make sure input takes full width of FormField
+  width: 100%; 
   
   &:focus {
     outline: none;

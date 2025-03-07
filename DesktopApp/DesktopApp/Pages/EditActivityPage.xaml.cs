@@ -6,9 +6,7 @@ using MySql.Data.MySqlClient;
 
 namespace DesktopApp.Pages
 {
-    /// <summary>
-    /// Interaction logic for EditActivityPage.xaml
-    /// </summary>
+    
     public partial class EditActivityPage : Page
     {
         private Activity _activity;
@@ -23,7 +21,7 @@ namespace DesktopApp.Pages
             LoadActivityDetails();
         }
 
-        // Constructor overload for default constructor required by XAML designer
+        
         public EditActivityPage()
         {
             InitializeComponent();
@@ -31,13 +29,13 @@ namespace DesktopApp.Pages
 
         private void LoadActivityDetails()
         {
-            // Populate UI controls with activity data
+            
             TitleTextBox.Text = _activity.Title;
             LocationTextBox.Text = _activity.Location;
             StartTimeTextBox.Text = _activity.StartTime;
             EndTimeTextBox.Text = _activity.EndTime;
 
-            // Set the category in the ComboBox
+            
             foreach (ComboBoxItem item in CategoryComboBox.Items)
             {
                 if (item.Content.ToString() == _activity.Category)
@@ -47,10 +45,10 @@ namespace DesktopApp.Pages
                 }
             }
 
-            // If no category matches, select the "Other" category
+            
             if (CategoryComboBox.SelectedIndex == -1)
             {
-                CategoryComboBox.SelectedIndex = CategoryComboBox.Items.Count - 1; // "Other" is the last item
+                CategoryComboBox.SelectedIndex = CategoryComboBox.Items.Count - 1; 
             }
         }
 
@@ -58,26 +56,26 @@ namespace DesktopApp.Pages
         {
             try
             {
-                // Validate inputs
+                
                 if (string.IsNullOrWhiteSpace(TitleTextBox.Text))
                 {
                     MessageBox.Show("Activity title cannot be empty.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                // Update activity object with new values
+               
                 _activity.Title = TitleTextBox.Text;
                 _activity.Location = LocationTextBox.Text;
                 _activity.StartTime = StartTimeTextBox.Text;
                 _activity.EndTime = EndTimeTextBox.Text;
                 _activity.Category = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "Other";
 
-                // Update activity in database
+                
                 UpdateActivity(_activity);
 
                 MessageBox.Show("Activity updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                // Navigate back to the trip details page
+                
                 NavigationService.GoBack();
             }
             catch (Exception ex)
@@ -90,7 +88,7 @@ namespace DesktopApp.Pages
         {
             try
             {
-                // Show confirmation dialog
+                
                 MessageBoxResult result = MessageBox.Show(
                     $"Are you sure you want to delete the activity '{_activity.Title}'?",
                     "Confirm Delete",
@@ -99,12 +97,12 @@ namespace DesktopApp.Pages
 
                 if (result == MessageBoxResult.Yes)
                 {
-                    // Delete the activity from database
+                    
                     DeleteActivity(_activity.Id);
 
                     MessageBox.Show("Activity deleted successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    // Navigate back to the trip details page
+                    
                     NavigationService.GoBack();
                 }
             }
@@ -116,11 +114,11 @@ namespace DesktopApp.Pages
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            // Navigate back without saving changes
+            
             NavigationService.GoBack();
         }
 
-        // Method to update activity in database
+        
         private void UpdateActivity(Activity activity)
         {
             using (var connection = new MySqlConnection(connectionString))
@@ -142,7 +140,7 @@ namespace DesktopApp.Pages
             }
         }
 
-        // Method to delete activity from database
+        
         private void DeleteActivity(int activityId)
         {
             using (var connection = new MySqlConnection(connectionString))

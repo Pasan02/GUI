@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ChevronLeft, Save, Plus, Trash2, Bed, Utensils, Bus, Camera, Activity, MapPin } from 'lucide-react';
-import { getTripById, getTripActivities, updateActivity, addActivity, deleteActivity, updateTrip } from '../../api';
+import { ChevronLeft, Save, Plus, Trash2, Bed, Utensils, Bus, Camera, Activity} from 'lucide-react';
+import { getTripById, getTripActivities, updateTrip } from '../../api';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -38,11 +38,6 @@ const Header = styled.header`
 const Title = styled.h1`
   font-size: 1.5rem;
   font-weight: bold;
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: 1rem;
 `;
 
 const Button = styled.button`
@@ -127,9 +122,7 @@ const Tab = styled.button`
   }
 `;
 
-const TabContent = styled.div`
-  margin-top: 1rem;
-`;
+
 
 const ActivityContainer = styled.div`
   margin-bottom: 2rem;
@@ -255,13 +248,13 @@ const EditTripPage = () => {
   useEffect(() => {
     const fetchTripData = async () => {
       try {
-        // Fetch trip details
+        
         const trip = await getTripById(id);
         
-        // Fetch activities
+        
         const activities = await getTripActivities(id);
         
-        // Set trip data
+       
         setTripData({
           name: trip.name,
           startDate: new Date(trip.start_date),
@@ -270,12 +263,12 @@ const EditTripPage = () => {
           currency: trip.currency || 'USD'
         });
         
-        // Calculate number of days
+        
         const startDate = new Date(trip.start_date);
         const endDate = new Date(trip.end_date);
         const durationInDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
         
-        // Create days array
+        
         const daysArray = [];
         
         for (let i = 0; i < durationInDays; i++) {
@@ -288,13 +281,13 @@ const EditTripPage = () => {
           });
         }
         
-        // Populate activities in the days array
+        // Actvities are stored in an array, so we need to map them to the correct day
         activities.forEach(activity => {
           const activityDate = new Date(activity.date);
           const dayIndex = Math.floor((activityDate - startDate) / (1000 * 60 * 60 * 24));
           
           if (dayIndex >= 0 && dayIndex < daysArray.length) {
-            // Convert time strings to Date objects for DatePicker
+            // Create date objects for start and end times
             let startTime = null;
             let endTime = null;
             
@@ -325,7 +318,7 @@ const EditTripPage = () => {
         });
         
         setDays(daysArray);
-        setActiveTab('1'); // Show first day by default
+        setActiveTab('1'); // First day is shown as default
       } catch (error) {
         console.error('Error fetching trip data:', error);
         setError('Failed to load trip data. Please try again.');
@@ -335,7 +328,7 @@ const EditTripPage = () => {
     fetchTripData();
   }, [id]);
   
-  // Add a helper function to format time for display and API
+  
   const formatTimeForAPI = (timeDate) => {
     if (!timeDate) return null;
     
@@ -343,7 +336,7 @@ const EditTripPage = () => {
     const minutes = timeDate.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`;
   };
-  // Add these handler functions after the useEffect and before the handleSave function
+  
 
 const handleTripDataChange = (field, value) => {
     setTripData(prevData => ({
@@ -404,7 +397,7 @@ const handleTripDataChange = (field, value) => {
     
     setDays(newDays);
   
-    // Update active tab if necessary
+    // If the active tab is now out of range, reset it to the first day
     if (parseInt(activeTab) > newDays.length) {
       setActiveTab('1');
     }
@@ -437,14 +430,14 @@ const handleTripDataChange = (field, value) => {
     updatedDays[dayIndex].activities.splice(activityIndex, 1);
     setDays(updatedDays);
   };
-  // Update the handleSave function to format time properly
+  
   const handleSave = async () => {
     try {
       setIsSaving(true);
       setMessage(null);
       setError(null);
   
-      // Format data for API with time values in the correct format
+      
       const formattedData = {
         name: tripData.name,
         startDate: tripData.startDate,
@@ -467,13 +460,13 @@ const handleTripDataChange = (field, value) => {
   
       console.log('Saving trip with data:', formattedData);
   
-      // Update trip in the database
+      // Updating trip in the database
       const result = await updateTrip(id, formattedData);
       
       console.log('Trip update successful:', result);
       setMessage('Trip updated successfully!');
       
-      // After short delay, redirect back to view page
+      // Redirect to the itinerary page after a short delay
       setTimeout(() => {
         navigate(`/itinerary/${id}`);
       }, 1500);

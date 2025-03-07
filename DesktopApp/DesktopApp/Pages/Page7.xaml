@@ -59,7 +59,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Center content grid -->
+       
         <Grid Grid.Column="1" Width="350" Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

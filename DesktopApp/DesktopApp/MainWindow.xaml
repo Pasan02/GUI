@@ -20,7 +20,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- Left side with hero image -->
+        
         <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
                 CornerRadius="0,12,12,0" 
                 Margin="0,0,0,0" 
@@ -29,7 +29,7 @@
                 <Image Source="Images/hero-image.jpg" 
                        Stretch="UniformToFill"/>
                 <Border Background="#4D000000" />
-                <!-- Semi-transparent overlay -->
+                
                 <StackPanel VerticalAlignment="Bottom" Margin="30,0,0,40">
                     <TextBlock Text="EXPLORE THE WORLD" 
                                Foreground="White" 
@@ -48,18 +48,18 @@
             </Grid>
         </Border>
 
-        <!-- Empty top bar (Need Help section removed) -->
+        
         <Border Grid.Column="1" Grid.Row="0" 
                 Background="White"
                 Padding="20,20,20,0">
         </Border>
 
-        <!-- Right side with login info (Logo removed) -->
+        
         <Border Grid.Column="1" Grid.Row="1" 
                 Background="White" 
                 Padding="40,20,40,20">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <!-- Welcome Text -->
+                
                 <TextBlock Text="Welcome to Travel Planner"
                            FontSize="24" 
                            FontWeight="SemiBold" 
@@ -75,7 +75,7 @@
                            Margin="0,0,0,40"
                            Width="250"/>
 
-                <!-- Buttons -->
+                
                 <Button Content="Sign In" 
                         Background="#1a73e8" 
                         Foreground="White" 
@@ -112,7 +112,7 @@
             </StackPanel>
         </Border>
 
-        <!-- Footer -->
+        
         <Border Grid.Column="1" Grid.Row="2" 
                 Background="White"
                 Padding="20,15,20,15">
@@ -124,7 +124,7 @@
             </StackPanel>
         </Border>
 
-        <!-- Navigation frame that will be used for page navigation -->
+      
         <Frame NavigationUIVisibility="Hidden"
                x:Name="MainFrame" 
                Grid.ColumnSpan="2" 

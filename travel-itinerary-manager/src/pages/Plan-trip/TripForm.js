@@ -49,7 +49,7 @@ export function TripForm() {
         startDate: startDate.toISOString(),
         endDate: endDate.toISOString(),
         cost: tripCost ? parseFloat(tripCost) : 0,
-        currency: 'USD', // Add default currency if not set
+        currency: 'USD', 
         activities: Object.entries(activities).map(([date, dayActivities]) => ({
           date,
           activities: dayActivities

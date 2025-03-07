@@ -18,9 +18,7 @@ using static DesktopApp.Pages.Page4;
 
 namespace DesktopApp.Pages
 {
-    /// <summary>
-    /// Interaction logic for Page2.xaml
-    /// </summary>
+    
     public partial class Page2 : Page
     {
         public Page2()
@@ -53,7 +51,7 @@ namespace DesktopApp.Pages
             {
                 using (var context = new UserDbContext())
                 {
-                    // Use direct SQL query to bypass EF materialization issues
+                    
                     var sql = "SELECT * FROM users WHERE Username = @p0";
                     var userList = context.Database.SqlQuery<User>(sql, username).ToList();
 
@@ -71,7 +69,7 @@ namespace DesktopApp.Pages
                         return false;
                     }
 
-                    // Set the current user ID in the session manager
+                    
                     SessionManager.CurrentUserId = user.UserID;
 
                     return true;

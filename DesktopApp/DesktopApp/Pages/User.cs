@@ -15,10 +15,10 @@ namespace DesktopApp.Pages
         public string Name { get; set; }
         public string Country { get; set; }
 
-        // Changed to int? to match database schema and allow null values
+        
         public int? PhoneNumber { get; set; }
 
-        // Create a copy method to help with updates
+        
         public User Clone()
         {
             return new User
